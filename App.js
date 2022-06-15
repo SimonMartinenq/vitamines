@@ -1,43 +1,45 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import WelcomeScreen from './src/screens/WelcomeScreen';
-import SplashScreen from './src/screens/SplashScreen';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { useFonts } from "expo-font";
 
-const Stack = createNativeStackNavigator();
+import Home from "./screens/Home";
+import Details from "./screens/Details";
 
-export default function App() {
-  
-    const InitialStackScreen = () => (
-      <Stack.Navigator screenOptions={{headerShown:false}}>
-        <Stack.Screen
-          name="SplashScreen"
-          component={SplashScreen}
-          options={{ title: 'SplashScreen' }}
-        />
-        <Stack.Screen
-          name="Home"
-          component={WelcomeScreen}
-          options={{ title: 'Welcome' }}
-        />
-      </Stack.Navigator>
-  )
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: "transparent",
+  },
+};
+
+const Stack = createStackNavigator();
+
+const App = () => {
+  const [loaded] = useFonts({
+    InterBold: require("./assets/fonts/Inter-Bold.ttf"),
+    InterSemiBold: require("./assets/fonts/Inter-SemiBold.ttf"),
+    InterMedium: require("./assets/fonts/Inter-Medium.ttf"),
+    InterRegular: require("./assets/fonts/Inter-Regular.ttf"),
+    InterLight: require("./assets/fonts/Inter-Light.ttf"),
+  });
+
+  if (!loaded) return null;
+
   return (
-    <NavigationContainer>
-      <InitialStackScreen>
-
-      </InitialStackScreen>
+    <NavigationContainer theme={theme}>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+        initialRouteName="Home"
+      >
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Details" component={Details} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
