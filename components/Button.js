@@ -14,7 +14,7 @@ export const CircleButton = ({ imgUrl, handlePress, ...props }) => {
         borderRadius: SIZES.extraLarge,
         alignItems: "center",
         justifyContent: "center",
-        ...SHADOWS.light,
+        ...SHADOWS.dark,
         ...props,
       }}
       onPress={handlePress}

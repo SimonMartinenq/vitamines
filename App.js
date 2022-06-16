@@ -5,6 +5,9 @@ import { useFonts } from "expo-font";
 
 import Home from "./screens/Home";
 import Details from "./screens/Details";
+import LoginScreen from "./screens/LoginScreen";
+import UserInfo from "./screens/UserInfo";
+import { StatusBar } from "react-native";
 
 const theme = {
   ...DefaultTheme,
@@ -29,14 +32,18 @@ const App = () => {
 
   return (
     <NavigationContainer theme={theme}>
+      <StatusBar
+        barStyle={'dark-content'}/>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName="Home"
+        initialRouteName="LoginScreen"
       >
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Details" component={Details} />
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Screen name="UserInfo" component={UserInfo} />
       </Stack.Navigator>
     </NavigationContainer>
   );

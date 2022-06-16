@@ -1,9 +1,15 @@
 import React from "react";
-import { View, Text, Image, TextInput } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { COLORS, FONTS, SIZES, assets } from "../constants";
+import { auth } from "../firebase";
+import UserInfo from "../screens/UserInfo";
+import Home from "../screens/Home";
+
 
 const HomeHeader = ({ onSearch }) => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -18,43 +24,30 @@ const HomeHeader = ({ onSearch }) => {
           alignItems: "center",
         }}
       >
-        <Image
-          source={assets.logo}
-          resizeMode="contain"
-          style={{ width: 90, height: 25 }}
-        />
-
-        <View style={{ width: 45, height: 45 }}>
+        <TouchableOpacity
+        onPress={() => navigation.navigate(Home)}
+        >
           <Image
-            source={assets.person01}
+            source={assets.logo}
             resizeMode="contain"
-            style={{ width: "100%", height: "100%" }}
+            style={{ width: 80, height: 80 }}
           />
+        </TouchableOpacity>
+        
+
+        <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
           <Image
-            source={assets.badge}
+            source={assets.userIcon}
             resizeMode="contain"
             style={{
-              position: "absolute",
-              width: 15,
-              height: 15,
-              bottom: 0,
-              right: 0,
+              width: 50, 
+              height: 50
             }}
           />
-        </View>
+        </TouchableOpacity>
       </View>
 
       <View style={{ marginVertical: SIZES.font }}>
-        <Text
-          style={{
-            fontFamily: FONTS.regular,
-            fontSize: SIZES.small,
-            color: COLORS.white,
-          }}
-        >
-          Hello Victoria 👋
-        </Text>
-
         <Text
           style={{
             fontFamily: FONTS.bold,
@@ -63,7 +56,7 @@ const HomeHeader = ({ onSearch }) => {
             marginTop: SIZES.base / 2,
           }}
         >
-          Let’s find masterpiece Art
+          Hello {auth.currentUser?.email} 👋
         </Text>
       </View>
 
@@ -86,8 +79,9 @@ const HomeHeader = ({ onSearch }) => {
           />
           <TextInput
             placeholder="Trouver une recette, un aliment,..."
+            placeholderTextColor="gray"
             style={{ 
-              flex: 1
+              flex: 1,
             }}
             
             onChangeText={onSearch}
