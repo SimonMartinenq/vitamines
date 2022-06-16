@@ -10,6 +10,16 @@ import { assets } from '../constants'
 
 export default function UserInfo() {
   const navigation = useNavigation();
+
+  const handleSignOut = () => {
+    auth
+      .signOut()
+      .then(()=>{
+        navigation.replace("LoginScreen")
+      })
+      .catch(error => alert(error.message))
+  }
+
   return (
     <View style={{
       width: "100%", 
@@ -25,11 +35,12 @@ export default function UserInfo() {
       
     />
       <Text>
+      {/* on mets ? au cas ou l'email est undefine */}
       Email : {auth.currentUser?.email} 
       </Text>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-        onPress={()=>{}}
+        onPress={handleSignOut}
         style={styles.button}
         >
             <Text style={styles.buttonText}>Logout</Text>
