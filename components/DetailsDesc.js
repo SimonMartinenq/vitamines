@@ -24,8 +24,6 @@ const DetailsDesc = ({ data }) => {
           titleSize={SIZES.extraLarge}
           subTitleSize={SIZES.font}
         />
-
-        <EthPrice price={data.price} />
       </View>
 
       <View style={{ marginVertical: SIZES.extraLarge * 1.5 }}>
@@ -36,7 +34,7 @@ const DetailsDesc = ({ data }) => {
             color: COLORS.primary,
           }}
         >
-          Description
+          Préparation
         </Text>
         <View
           style={{
