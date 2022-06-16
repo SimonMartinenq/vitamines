@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { View, SafeAreaView, FlatList } from "react-native";
+import { View, SafeAreaView, FlatList ,Text, Button} from "react-native";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 
 import { NFTCard, HomeHeader, FocusedStatusBar } from "../components";
 import { COLORS, NFTData } from "../constants";
+import { db } from "../firebase";
 
 const Home = () => {
   const [nftData, setNftData] = useState(NFTData);
@@ -22,6 +26,23 @@ const Home = () => {
       setNftData(filteredData);
     }
   };
+
+  const Create = () => {
+    const maRecette = firebase.doc(db,"Mycollection","MyDocument")
+    const docData = {
+      "titre":"nouvelle recette"
+    }
+    firebase.setDoc(maRecette,docData)
+    .then(()=>{
+      alert("nouveaux recette creer")
+    })
+    .catch((error)=>{
+      alert(error.message)
+    })
+  }
+
+
+
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -50,6 +71,9 @@ const Home = () => {
           <View
             style={{ height: 300, backgroundColor: COLORS.primary }} />
           <View style={{ flex: 1, backgroundColor: COLORS.white }} />
+        </View>
+        <View>
+          <Button title='Create' onPress={Create}></Button>
         </View>
       </View>
     </SafeAreaView>
