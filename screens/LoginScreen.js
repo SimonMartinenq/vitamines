@@ -69,7 +69,7 @@ const LoginScreen = () => {
         onPress={hanfleSignUp}
         style={[styles.button,styles.buttonOutline] }
         >
-            <Text style={styles.buttonOutlineText}>Register</Text>
+            <Text style={styles.buttonOutlineText}>coucou</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
