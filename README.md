@@ -1,7 +1,5 @@
-# NFT Marketplace - Modern UI/UX React Native App
-![NFT Marketplace](https://i.ibb.co/X5kYdvB/image.png)
+# Vitamines
+Dans le cadre du Mastercamp nous réalisons une application répondant à la problématique suivante : L'alimentation est un sujet au cœur de nombreuses problématiques : santé, bien être et écologie. Par exemple la consommation excessive de viande engendre l'émission de CO2 et une grande consommation d'eau.Proposer une solution qui suggère des recettes saines, équilibrées, à la fois bonnes et vertueuses.
 
-## Introduction
-This is a code repository for the corresponding video tutorial.
-
-Master React Native by building a modern NFT Marketplace iOS and Android #ReactNative Application in one video! Alongside developing the application, you'll also build a special landing page to showcase all of your app's features! Essentially, this is a full React Native Crash Course Tutorial video, enjoy!
+##Problèmatique : 
+Dans le cadre du Mastercamp nous réalisons une application répondant à la problématique suivante : proposer une solution qui suggère des recettes saines, équilibrées, à la fois bonnes et vertueuses. **Contexte : ** L'alimentation est un sujet au cœur de nombreuses problématiques : santé, bien être et écologie. Par exemple la consommation excessive de viande engendre l'émission de CO2 et une grande consommation d'eau.
