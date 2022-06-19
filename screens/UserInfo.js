@@ -23,7 +23,7 @@ export default function UserInfo() {
   const getUser = async () => {
       db
         .collection('Users')
-        .doc("Qgpf27ua01gjXgHbXAonko6AX3o2")
+        .doc(auth.currentUser.uid)
         .get()
         .then((querySnapshot) => {
             const dic = querySnapshot.data()
@@ -47,12 +47,13 @@ export default function UserInfo() {
       imgUrl={assets.left}
       handlePress={() => navigation.goBack("Home")}
       left={15}
+      flex={1}
       />
       <View style={{justifyContent:'flex-start'}}>
         <Text>Nom : {user?.nom}</Text>
-        <Text>Age : {user?.age}</Text>
+        <Text>Age : {user?.age} ans</Text>
         <Text>Objectif : {user?.objectif}</Text>
-        <Text>Poids : {user?.poid}</Text>
+        <Text>Poids : {user?.poid} Kg</Text>
         <Text>Taille : {user?.taille}</Text>
       </View>
       

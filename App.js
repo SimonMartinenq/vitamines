@@ -8,12 +8,13 @@ import Details from "./screens/Details";
 import LoginScreen from "./screens/LoginScreen";
 import UserInfo from "./screens/UserInfo";
 import { StatusBar } from "react-native";
+import { COLORS } from "./constants";
 
 const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: "transparent",
+    background:"transparent",
   },
 };
 
