@@ -1,15 +1,15 @@
-import React from 'react'
 import { View , Text, TouchableOpacity, StyleSheet,StatusBar} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import { auth } from '../firebase'
-import { CircleButton } from '../components'
+import { auth , db} from '../firebase'
+import { CircleButton} from '../components'
 import { assets } from '../constants'
-
-
+import { useState , useEffect} from 'react'
 
 export default function UserInfo() {
+  
   const navigation = useNavigation();
+  const [user,setUser] = useState(null)
 
   const handleSignOut = () => {
     auth
@@ -19,6 +19,21 @@ export default function UserInfo() {
       })
       .catch(error => alert(error.message))
   }
+  
+  const getUser = async () => {
+      db
+        .collection('Users')
+        .doc("Qgpf27ua01gjXgHbXAonko6AX3o2")
+        .get()
+        .then((querySnapshot) => {
+            const dic = querySnapshot.data()
+            setUser(dic);
+          });
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <View style={{
@@ -27,17 +42,20 @@ export default function UserInfo() {
       flex:1,
       alignItems:'center',
       justifyContent:'center'
-    }}>
+      }}>
       <CircleButton
       imgUrl={assets.left}
       handlePress={() => navigation.goBack("Home")}
       left={15}
+      />
+      <View style={{justifyContent:'flex-start'}}>
+        <Text>Nom : {user?.nom}</Text>
+        <Text>Age : {user?.age}</Text>
+        <Text>Objectif : {user?.objectif}</Text>
+        <Text>Poids : {user?.poid}</Text>
+        <Text>Taille : {user?.taille}</Text>
+      </View>
       
-    />
-      <Text>
-      {/* on mets ? au cas ou l'email est undefine */}
-      Email : {auth.currentUser?.email} 
-      </Text>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
         onPress={handleSignOut}

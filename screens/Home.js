@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, SafeAreaView, FlatList , Button,Text,Image} from "react-native";
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -12,7 +12,7 @@ import { db } from "../firebase";
 
 const Home = () => {
   const [nftData, setNftData] = useState(NFTData);
-  const [userDoc, setUserDoc] = useState(null)
+
   const handleSearch = (value) => {
     if (value.length === 0) {
       setNftData(NFTData);
@@ -29,72 +29,6 @@ const Home = () => {
     }
   };
 
-  /* const Create = () => {
-    // Add a new document in collection "cities"
-    var citiesRef = db.collection("cities");
-
-    citiesRef.doc("SF").set({
-        name: "San Francisco", state: "CA", country: "USA",
-        capital: false, population: 860000,
-        regions: ["west_coast", "norcal"] });
-    citiesRef.doc("LA").set({
-        name: "Los Angeles", state: "CA", country: "USA",
-        capital: false, population: 3900000,
-        regions: ["west_coast", "socal"] });
-    citiesRef.doc("DC").set({
-        name: "Washington, D.C.", state: null, country: "USA",
-        capital: true, population: 680000,
-        regions: ["east_coast"] });
-    citiesRef.doc("TOK").set({
-        name: "Tokyo", state: null, country: "Japan",
-        capital: true, population: 9000000,
-        regions: ["kanto", "honshu"] });
-    citiesRef.doc("BJ").set({
-        name: "Beijing", state: null, country: "China",
-        capital: true, population: 21500000,
-        regions: ["jingjinji", "hebei"] })
-    .then(() => {
-      console.log("Document successfully written!");
-    })
-    .catch((error) => {
-      console.error("Error writing document: ", error);
-    });
-  } */
-
-  const Create = () => {
-    // Add a new document in collection "cities"
-    var citiesRef = db.collection("images");
-
-    citiesRef.doc("SF").set({
-        name: "San Francisco",
-        ref: "/assets/adaptive-icon.png"})
-    .then(() => {
-      console.log("Document successfully written!");
-    })
-    .catch((error) => {
-      console.error("Error writing document: ", error);
-    });
-  }
-
-  const Read = () => {
-    var docRef = db.collection("cities").doc("LA");
-
-    docRef.get().then((doc) => {
-      if (doc.exists) {
-        setUserDoc(doc.data());
-        console.log("Document data:", doc.data());
-      } else {
-          console.log("No such document!");
-      }
-      })
-      .then(() => {
-        console.log("Document successfully read!");
-      })
-      .catch((error) => {
-          console.log("Error getting document:", error);
-      });
-  }
-
 
 
 
@@ -103,13 +37,6 @@ const Home = () => {
       <FocusedStatusBar backgroundColor={COLORS.primary} />
       <View style={{ flex: 1 }}>
       <View>
-          <Button title='Create' onPress={Create}></Button>
-          <Button title='Read' onPress={Read}></Button>
-          {
-            userDoc != null &&
-              <Text>nom : {userDoc.name}</Text>
-          }
-
         </View>
         <View style={{ zIndex: 0 }}>
           <FlatList
