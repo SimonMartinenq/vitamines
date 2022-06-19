@@ -1,15 +1,35 @@
-import React from "react";
+import {React, useState, useEffect} from "react";
 import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { COLORS, FONTS, SIZES, assets } from "../constants";
-import { auth } from "../firebase";
+import { auth,db } from "../firebase";
 import UserInfo from "../screens/UserInfo";
 import Home from "../screens/Home";
 
 
 const HomeHeader = ({ onSearch }) => {
   const navigation = useNavigation();
+  const [user,setUser] = useState(null)
+
+  const getUser = async () => {
+    db
+      .collection('Users')
+      .doc("Qgpf27ua01gjXgHbXAonko6AX3o2")
+      .get()
+      .then((querySnapshot) => {
+          const dic = querySnapshot.data()
+          setUser(dic);
+        });
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+
+
+
   return (
     <View
       style={{
@@ -56,7 +76,7 @@ const HomeHeader = ({ onSearch }) => {
             marginTop: SIZES.base / 2,
           }}
         >
-          Hello {auth.currentUser?.email} 👋
+          Hello {user?.nom} 👋
         </Text>
       </View>
 
