@@ -1,11 +1,11 @@
 import React from 'react'
-import { View , Text, TouchableOpacity, StyleSheet,StatusBar} from 'react-native'
+import { View , Text, Image, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView, StatusBar} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-
 import { auth } from '../firebase'
 import { CircleButton } from '../components'
 import { assets } from '../constants'
-
+//import firestore from '@react-antive-firebase/firestore'
+import Button from '../components/Button'
 
 
 export default function UserInfo() {
@@ -20,7 +20,43 @@ export default function UserInfo() {
       .catch(error => alert(error.message))
   }
 
+  const ProfilSreen = () => {
+    const {user, logout} = userContext(AuthContext);
+    return (
+      <View style={styles.container}>
+        <Text style={style.text}>Welcome {user.id}</Text>
+        <Button buttonTitle="Logout" onPress={() => logout()}/>
+      </View>
+    );
+  };
+
   return (
+    <SafeAreaView style={{flex:1, backgroundColor: '#fff'}}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
+        showsVerticalScrollIndicator={false}
+        >
+
+        <Image 
+          style={styles.userImg} 
+          source={require('../assets/users/vivi.jpg')}
+        />
+        <Text style={styles.userName}>Victoria Stasik</Text>
+        <Text style={styles.aboutUser}>
+          Bla bla bla j'aime les licornes
+        </Text>
+        <View style={styles.userBtnWrapper}>
+          <TouchableOpacity style={styles.userBtn} onPress={() => {}}> 
+            <Text style={styles.userBtnTxt}>Message</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.userBtn} onPress={() => {}}> 
+            <Text style={styles.userBtnTxt}>Follow</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+    /*
     <View style={{
       width: "100%", 
       height: 373,
@@ -35,7 +71,7 @@ export default function UserInfo() {
       
     />
       <Text>
-      {/* on mets ? au cas ou l'email est undefine */}
+      {/* on mets ? au cas ou l'email est undefine */ /*}
       Email : {auth.currentUser?.email} 
       </Text>
       <View style={styles.buttonContainer}>
@@ -47,6 +83,7 @@ export default function UserInfo() {
         </TouchableOpacity>
       </View>
     </View>
+    */
   )
 }
 
@@ -59,8 +96,6 @@ const styles = StyleSheet.create({
   },
   inputcontainer:{
       width:'80%',
-      
-
   },
   input:{
       backgroundColor:'white',
@@ -99,4 +134,67 @@ const styles = StyleSheet.create({
       fontWeight:'700',
       fontSize:16,
   },
-})
+
+
+
+  contentContainer:{
+    justifyContent : 'center',
+    alignItems : 'center'
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    padding: 20
+  },
+  userImg: {
+    height: 150,
+    width: 150,
+    borderRadius: 75,
+  },
+  userName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  aboutUser: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#666',
+    textAlign: 'center',
+    marginBottom:10  
+  },
+  userBtnWrapper:{
+    flexDirection: 'row',
+    justifyContent:'center',
+    width: '100%',
+    marginBottom: 10  
+  },
+  userBtn: {
+    borderColor: '#2e64e5',
+    borderWidth: 2,
+    borderRadius: 3,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    marginHorizontal: 5
+  },
+  userBtnTxt: {
+    color: '#2e64e5'
+  },
+  userInfoWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginVertical: 20
+  },
+  userInfoItem: {
+    justifyContent: 'center'
+  },
+  userInfoTitle:{
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 5,
+    textAlign: 'center'
+  }
+});
