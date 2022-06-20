@@ -6,14 +6,16 @@ import { useFonts } from "expo-font";
 import Home from "./screens/Home";
 import Details from "./screens/Details";
 import LoginScreen from "./screens/LoginScreen";
+import SignUp from "./screens/SignUp";
 import UserInfo from "./screens/UserInfo";
 import { StatusBar } from "react-native";
+import { COLORS } from "./constants";
 
 const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: "transparent",
+    background:"transparent",
   },
 };
 
@@ -43,6 +45,7 @@ const App = () => {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Details" component={Details} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="UserInfo" component={UserInfo} />
       </Stack.Navigator>
     </NavigationContainer>

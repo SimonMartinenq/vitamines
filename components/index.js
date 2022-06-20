@@ -7,16 +7,15 @@ import FocusedStatusBar from "./FocusedStatusBar";
 import DetailsDesc from './DetailsDesc';
 
 export {
-  HomeHeader,
-  NFTCard,
-  SubInfo,
-  People,
-  EndDate,
-  RectButton,
-  CircleButton,
-  EthPrice,
-  NFTTitle,
-  DetailsBid,
-  FocusedStatusBar,
-  DetailsDesc,
+    HomeHeader,
+    NFTCard,
+    SubInfo,
+    EndDate,
+    RectButton,
+    CircleButton,
+    EthPrice,
+    NFTTitle,
+    DetailsBid,
+    FocusedStatusBar,
+    DetailsDesc,
 };

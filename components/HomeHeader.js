@@ -15,7 +15,7 @@ const HomeHeader = ({ onSearch }) => {
   const getUser = async () => {
     db
       .collection('Users')
-      .doc("Qgpf27ua01gjXgHbXAonko6AX3o2")
+      .doc(auth.currentUser.uid)
       .get()
       .then((querySnapshot) => {
           const dic = querySnapshot.data()
@@ -26,8 +26,6 @@ const HomeHeader = ({ onSearch }) => {
   useEffect(() => {
     getUser();
   }, []);
-
-
 
 
   return (
@@ -50,7 +48,7 @@ const HomeHeader = ({ onSearch }) => {
           <Image
             source={assets.logo}
             resizeMode="contain"
-            style={{ width: 80, height: 80 }}
+            style={{ width: 60, height: 60 }}
           />
         </TouchableOpacity>
         

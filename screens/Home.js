@@ -6,7 +6,7 @@ import 'firebase/firestore';
 
 import { NFTCard, HomeHeader, FocusedStatusBar } from "../components";
 import { COLORS, NFTData } from "../constants";
-import { db } from "../firebase";
+
 
 
 
@@ -28,10 +28,6 @@ const Home = () => {
       setNftData(filteredData);
     }
   };
-
-
-
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar backgroundColor={COLORS.primary} />
@@ -60,7 +56,7 @@ const Home = () => {
         >
           <View
             style={{ height: 300, backgroundColor: COLORS.primary }} />
-          <View style={{ flex: 1, backgroundColor: COLORS.white }} />
+          <View style={{ flex: 1, backgroundColor: COLORS.primary }} />
         </View>
         
       </View>

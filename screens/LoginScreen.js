@@ -3,16 +3,11 @@ import React, { useEffect , useState} from 'react'
 import { auth , db} from '../firebase'
 import { useNavigation } from '@react-navigation/native'
 import SelectBox from 'react-native-multi-selectbox'
-
+import SignUp from '../screens/SignUp'
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [age, setAge] = useState('')
-    const [poid, setPoid] = useState('')
-    const [taille, setTaille] = useState('')
-    const [nom, setNom] = useState('')
-    const [objectif, setObjectif] = useState({})
     const navigation = useNavigation();
 
     useEffect(() => {
@@ -24,38 +19,6 @@ const LoginScreen = () => {
         return unsubscribe
     },[])
 
-    const hanfleSignUp = () =>{
-        auth
-        .createUserWithEmailAndPassword(email,password)
-        .then(userCredentials => {
-            const user = userCredentials.user;
-            CreateUser()
-            console.log("Register with",user.email);
-        })
-        .catch(error => alert(error.message))
-    }
-
-    const CreateUser = () => {
-        // Add a new document in collection "cities"
-        var userRef = db.collection("Users");
-    
-        userRef.doc(auth.currentUser.uid).set({
-            uid:auth.currentUser.uid,
-            nom:nom,
-            email: email,
-            age:age,
-            poid:poid,
-            taille:taille.toLowerCase(),
-            objectif:objectif.item.toLowerCase(),
-            })
-        .then(() => {
-          console.log("User successfully create!");
-        })
-        .catch((error) => {
-          console.error("Error creating document: ", error);
-        });
-      }
-
     const handleLogin = () =>{
         auth
         .signInWithEmailAndPassword(email,password)
@@ -66,17 +29,6 @@ const LoginScreen = () => {
         .catch(error => alert(error.message))
     }
 
-    const K_OPTIONS = [
-        {
-          item: "Perdre du poid",
-        },
-        {
-          item: "Mieux manger",
-        },
-        {
-          item:  "Manger pas cher",
-        },
-      ]
 
   return (
     <KeyboardAvoidingView
@@ -84,12 +36,6 @@ const LoginScreen = () => {
     behavior="padding"
     >
       <View  style={styles.inputcontainer}>
-        <TextInput
-            placeholder="Nom"
-            value={nom}
-            onChangeText={text => setNom(text)}
-            style={styles.input}
-        />
         <TextInput
         placeholder="Email"
         value={email}
@@ -103,55 +49,23 @@ const LoginScreen = () => {
         style={styles.input}
         secureTextEntry
         />
-        <View>
-            
-            <TextInput
-                placeholder="Age"
-                value={age}
-                onChangeText={text => setAge(text)}
-                style={styles.input}
-            />
-            <TextInput
-                placeholder="Poid"
-                value={poid}
-                onChangeText={text => setPoid(text)}
-                style={styles.input}
-            />
-            <TextInput
-                placeholder="Taille"
-                value={taille}
-                onChangeText={text => setTaille(text)}
-                style={styles.input}
-            />
-            </View>
-            <View style={{ margin:10 }}>
-                <SelectBox
-                    label=""
-                    options={K_OPTIONS}
-                    value={objectif}
-                    onChange={ val => setObjectif(val)}
-                    hideInputFilter={true}
-                    inputPlaceholder="Choisir son objectif"
-                    arrowIconColor="black"
-                />
-            </View>
-        
         
       </View>
+      
       <View style={styles.buttonContainer}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate(SignUp)}
+        >
+            <Text >Créer un compte</Text>
+        </TouchableOpacity>
         <TouchableOpacity
         onPress={handleLogin}
         style={styles.button}
         >
             <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-        onPress={hanfleSignUp}
-        style={[styles.button,styles.buttonOutline] }
-        >
-            <Text style={styles.buttonOutlineText}>Register</Text>
-        </TouchableOpacity>
       </View>
+     
     </KeyboardAvoidingView>
   )
 }
