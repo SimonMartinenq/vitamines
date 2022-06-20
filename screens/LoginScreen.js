@@ -1,9 +1,11 @@
-import { View, TextInput ,StyleSheet,KeyboardAvoidingView, TouchableOpacity, Text} from 'react-native'
+import { View, Image, TextInput ,StyleSheet,KeyboardAvoidingView, TouchableOpacity, Text} from 'react-native'
 import React, { useEffect , useState} from 'react'
 import { auth , db} from '../firebase'
 import { useNavigation } from '@react-navigation/native'
 import SelectBox from 'react-native-multi-selectbox'
 import SignUp from '../screens/SignUp'
+import logo from "../assets/images/logo.png";
+import Colors from 'react-native-multi-selectbox/src/constants/Colors'
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('')
@@ -36,14 +38,23 @@ const LoginScreen = () => {
     behavior="padding"
     >
       <View  style={styles.inputcontainer}>
+        <View style={styles.imgcontainer}>
+            <Image 
+                style={styles.imagelogo}
+                source={logo}
+            />
+            <Text style={styles.txttittle}>Se connecter</Text>
+        </View>
         <TextInput
         placeholder="Email"
+        placeholderTextColor="grey"
         value={email}
         onChangeText={text =>setEmail(text)}
         style={styles.input}
         />
         <TextInput
-        placeholder="Password"
+        placeholder="Mot de passe"
+        placeholderTextColor="grey"
         value={password }
         onChangeText={text => setPassword(text)}
         style={styles.input}
@@ -53,16 +64,16 @@ const LoginScreen = () => {
       </View>
       
       <View style={styles.buttonContainer}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate(SignUp)}
-        >
-            <Text >Créer un compte</Text>
-        </TouchableOpacity>
         <TouchableOpacity
         onPress={handleLogin}
         style={styles.button}
         >
-            <Text style={styles.buttonText}>Login</Text>
+            <Text style={styles.buttonText}>Connexion</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate(SignUp)}
+        >
+            <Text style={styles.underline}>Créer un compte</Text>
         </TouchableOpacity>
       </View>
      
@@ -75,12 +86,28 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:'center',
         alignItems:'center',
-        backgroundColor:'#D9D9D9'
+        backgroundColor:'#F1F1F1'
+    },
+    underline:{
+        textDecorationLine: "underline"
     },
     inputcontainer:{
         width:'80%',
-        
-
+    },
+    imgcontainer:{
+        width:'100%',
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    imagelogo:{
+        width: 200,
+        height: 200,
+        resizeMode: "contain",
+    },
+    txttittle:{
+        fontWeight: 'bold',
+        fontSize: 28,
+        padding: 5,
     },
     input:{
         backgroundColor:'white',
@@ -88,20 +115,21 @@ const styles = StyleSheet.create({
         paddingVertical:10,
         borderRadius:10,
         marginTop:5,
-        
+        //color: "#000000",
     },
     buttonContainer:{
         width:'60%',
         justifyContent:'center',
         alignItems:'center',
-        marginTop:40,
+        marginTop:20,
     },
     button:{
        backgroundColor:'#D26767',
        width:'100%',
        padding:15,
        borderRadius:10,
-       alignItems:'center'
+       alignItems:'center',
+       marginBottom:15,
     },
     buttonOutline:{
         backgroundColor:'white',
