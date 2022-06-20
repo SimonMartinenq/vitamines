@@ -28,8 +28,6 @@ const HomeHeader = ({ onSearch }) => {
   }, []);
 
 
-
-
   return (
     <View
       style={{
