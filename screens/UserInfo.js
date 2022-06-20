@@ -24,20 +24,19 @@ export default function UserInfo() {
     const {user, logout} = userContext(AuthContext);
     return (
       <View style={styles.container}>
-        <Text style={style.text}>Welcome {user.id}</Text>
+        <Text style={styles.text}>Welcome {user.id}</Text>
         <Button buttonTitle="Logout" onPress={() => logout()}/>
       </View>
     );
   };
 
   return (
-    <SafeAreaView style={{flex:1, backgroundColor: '#fff'}}>
+    <SafeAreaView>
       <ScrollView
-        style={styles.container}
-        contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
+        contentContainerStyle={{alignItems:'center'}}
+        
         showsVerticalScrollIndicator={false}
         >
-
         <Image 
           style={styles.userImg} 
           source={require('../assets/users/vivi.jpg')}
@@ -140,12 +139,6 @@ const styles = StyleSheet.create({
   contentContainer:{
     justifyContent : 'center',
     alignItems : 'center'
-  },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    padding: 20
   },
   userImg: {
     height: 150,
