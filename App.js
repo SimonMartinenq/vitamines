@@ -11,6 +11,7 @@ import UserInfo from "./screens/UserInfo";
 import { StatusBar } from "react-native";
 import { COLORS } from "./constants";
 import ForgotPassword from "./screens/ForgotPassword";
+import About_us from "./screens/About_us";
 
 const theme = {
   ...DefaultTheme,
@@ -49,6 +50,7 @@ const App = () => {
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="UserInfo" component={UserInfo} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+        <Stack.Screen name="About_us" component={About_us} />
       </Stack.Navigator>
     </NavigationContainer>
   );

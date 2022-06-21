@@ -6,6 +6,7 @@ import { COLORS, FONTS, SIZES, assets } from "../constants";
 import { auth,db } from "../firebase";
 import UserInfo from "../screens/UserInfo";
 import Home from "../screens/Home";
+import About_us from "../screens/About_us";
 
 
 const HomeHeader = ({ onSearch }) => {
@@ -63,6 +64,15 @@ const HomeHeader = ({ onSearch }) => {
             }}
           />
         </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate(About_us)}>
+          <Image
+            source={assets.userIcon}
+            resizeMode="contain"
+            style={{ width: 60, height: 60 }}
+          />
+        </TouchableOpacity>
+
       </View>
 
       <View style={{ marginVertical: SIZES.font }}>
