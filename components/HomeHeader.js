@@ -67,7 +67,7 @@ const HomeHeader = ({ onSearch }) => {
 
         <TouchableOpacity onPress={() => navigation.navigate(About_us)}>
           <Image
-            source={assets.userIcon}
+            source={assets.aboutus}
             resizeMode="contain"
             style={{ width: 60, height: 60 }}
           />

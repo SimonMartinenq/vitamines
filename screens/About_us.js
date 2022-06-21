@@ -12,8 +12,47 @@ function About_us(){
     return (
         <View style={styles.container}>
             <Text style={styles.txttittle}>About us page</Text>
-            <View>
-                <Text style={styles.box}>je bz ta mer la chienne</Text>
+            <View style={styles.box}>
+                <Image 
+                    style={styles.imagelogo}
+                    source={logo}
+                />
+                <Text style={styles.txtbox}>Mael Gueguen</Text>
+            </View>
+            <View style={styles.box}>
+                <Image 
+                    style={styles.imagelogo}
+                    source={logo}
+                />
+                <Text style={styles.txtbox}>Anne-julie Hottin</Text>
+            </View>
+            <View style={styles.box}>
+                <Image 
+                    style={styles.imagelogo}
+                    source={logo}
+                />
+                <Text style={styles.txtbox}>Victoria Stasik</Text>
+            </View>
+            <View style={styles.box}>
+                <Image 
+                    style={styles.imagelogo}
+                    source={logo}
+                />
+                <Text style={styles.txtbox}>Simon Martinenq</Text>
+            </View>
+            <View style={styles.box}>
+                <Image 
+                    style={styles.imagelogo}
+                    source={logo}
+                />
+                <Text style={styles.txtbox}>Mike Leveleux</Text>
+            </View>
+            <View style={styles.box}>
+                <Image 
+                    style={styles.imagelogo}
+                    source={logo}
+                />
+                <Text style={styles.txtbox}>Théo MASSON</Text>
             </View>
         </View>
         
@@ -37,6 +76,9 @@ function About_us(){
             borderWidth: 1,
             borderRadius: 30,
             padding: 20,
+            justifyContent:'center',
+            alignItems:'center',
+            marginTop: 5,
         },
         underline:{
             textDecorationLine: "underline"
@@ -50,14 +92,18 @@ function About_us(){
             alignItems:'center',
         },
         imagelogo:{
-            width: 200,
-            height: 200,
+            width: 50,
+            height: 50,
             resizeMode: "contain",
         },
         txttittle:{
             fontWeight: 'bold',
             fontSize: 28,
             padding: 5,
+        },
+        txtbox:{
+            padding: 5,
+            textAlign: 'center',
         },
         input:{
             backgroundColor:'white',
