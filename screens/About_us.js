@@ -12,9 +12,12 @@ function About_us(){
     return (
         <View style={styles.container}>
             <Text style={styles.txttittle}>About us page</Text>
-
-
+            <View>
+                <Text style={styles.box}>je bz ta mer la chienne</Text>
+            </View>
         </View>
+        
+        
     )
 }
     const styles = StyleSheet.create({
@@ -22,7 +25,18 @@ function About_us(){
             flex:1,
             justifyContent:'center',
             alignItems:'center',
-            backgroundColor:'#F1F1F1'
+            backgroundColor:'#F1F1F1',
+            borderWidth: 1,
+            borderColor: 'black',
+        },
+        box: {
+            color: 'black',
+            fontWeight: 'bold',
+            fontSize: 20,
+            borderColor: 'blue',
+            borderWidth: 1,
+            borderRadius: 30,
+            padding: 20,
         },
         underline:{
             textDecorationLine: "underline"
