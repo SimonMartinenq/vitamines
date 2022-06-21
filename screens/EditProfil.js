@@ -6,28 +6,41 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { CircleButton } from '../components'
 import { assets } from '../constants'
 import { useNavigation } from '@react-navigation/native'
-//import BottomSheet from 'reanimated-bottom-sheet';
-//import { Animated } from 'react-native-reanimated';
+import BottomSheet from 'reanimated-bottom-sheet';
+import Animated from 'react-native-reanimated';
 
 const EditProfilScreen = () => {
     const navigation = useNavigation();
 
-    /*
-    const renderInner = () => {
-        <Text>Hello</Text>
-    }
+    renderInner = () => (
+        <View style={styles.panel}>
+            <View style={{alignItems: 'center'}}>
+                <Text style={styles.panelTitle}>Importer une photo</Text>
+                <Text style={styles.panelSubtitle}>Quel sera votre nouvelle photo de profil?</Text>
+            </View>
+            <TouchableOpacity style={styles.panelButton}>
+                <Text style={styles.panelButtonTitle}>Prendre Une Photo</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.panelButton}>
+                <Text style={styles.panelButtonTitle}>Choisir Dans La Bibliothèque</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.panelButton} onPress={() => this.bs.current.snapTo(1)}>
+                <Text style={styles.panelButtonTitle}>Annuler</Text>
+            </TouchableOpacity>
+        </View>
+    );
 
-    const renderHeader = () => {
+    renderHeader = () => (
         <View style={styles.header}>
             <View style={styles.panelHeader}>
-                <View style={styles.panelHandle}></View>
+                <View style={styles.panelHandel}></View>
             </View>
         </View>
-    }
-    */
+    );
 
-    //bs = React.createRef();
-    //fall  = new Animated.Value(1);
+    bs = React.createRef();
+    fall  = new Animated.Value(1);
+    
     const K_OPTIONS = [
         {
           item: "Perdre du poid",
@@ -43,15 +56,25 @@ const EditProfilScreen = () => {
     return (
         <SafeAreaView>
             <View style = {StyleSheet.container}>
-                 
-                <View style={{margin: 20}}>
+                <BottomSheet
+                    ref={this.bs}
+                    snapPoints={[400, 0]}
+                    renderContent={this.renderInner}
+                    renderHeader={this.renderHeader}
+                    initialSnap={1}
+                    callbackNode={this.fall}
+                    enabledGestureInteraction={true}
+                /> 
+                <Animated.View style={{margin: 20,
+                opacity: Animated.add(0.3, Animated.multiply(this.fall, 1.0)),
+                }}>
                     <View style={{alignItems: 'center'}}>
                         <CircleButton
                             imgUrl={assets.left}
                             handlePress={() => navigation.goBack("UserProfil")}
-                            left={15}
+                            left={15} 
                         />
-                        <TouchableOpacity onPress={() => this.current.snapPoints(0)}>
+                        <TouchableOpacity onPress={() => this.bs.current.snapTo(0)}>
                             <View style = {{
                                 height: 100,
                                 width : 100,
@@ -136,7 +159,7 @@ const EditProfilScreen = () => {
                     <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
                         <Text style={styles.panelButtonTitle}>Mettre à jour</Text>
                     </TouchableOpacity>
-                </View>
+                </Animated.View>
             </View>
         </SafeAreaView>
     );
@@ -153,7 +176,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: '#D26767',
         alignItems: 'center',
-        marginTop: 10
+        marginTop: 10,
+        marginBottom : 300
     },
     panel: {
         padding: 20,
@@ -219,6 +243,14 @@ const styles = StyleSheet.create({
         marginTop: 10,
         paddingLeft: 10,
         color: '#05375a'
+    },
+    panelHandel:{
+        width:40,
+        height: 8,
+        borderRadius: 4,
+        backgroundColor: '#00000040',
+        marginBottom: 20,
+        marginLeft : 175,
     }
 
 });
