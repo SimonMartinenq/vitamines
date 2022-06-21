@@ -13,8 +13,8 @@ const SignUp = () => {
     const [age, setAge] = useState('')
     const [poid, setPoid] = useState('')
     const [taille, setTaille] = useState('')
-    const [nom, setPrenom] = useState('')
-    const [prenom, setNom] = useState('')
+    const [prenom, setPrenom] = useState('')
+    const [nom, setNom] = useState('')
     const [objectif, setObjectif] = useState({})
     const navigation = useNavigation();
 
@@ -86,18 +86,18 @@ const SignUp = () => {
             <Text style={styles.txttittle}>Créer un compte</Text>
         </View>
       <View  style={styles.inputcontainer}>
+      <TextInput
+            placeholder="Prénom"
+            placeholderTextColor="grey"
+            value={prenom}
+            onChangeText={text => setPrenom(text)}
+            style={styles.input}
+        />
         <TextInput
             placeholder="Nom"
             placeholderTextColor="grey"
             value={nom}
             onChangeText={text => setNom(text)}
-            style={styles.input}
-        />
-        <TextInput
-            placeholder="Prénom"
-            placeholderTextColor="grey"
-            value={nom}
-            onChangeText={text => setPrenom(text)}
             style={styles.input}
         />
         <TextInput

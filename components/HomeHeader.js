@@ -74,7 +74,7 @@ const HomeHeader = ({ onSearch }) => {
             marginTop: SIZES.base / 2,
           }}
         >
-          Hello {user?.nom} 👋
+          Hello {user?.prenom} 👋
         </Text>
       </View>
 
