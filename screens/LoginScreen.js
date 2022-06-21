@@ -6,6 +6,8 @@ import SelectBox from 'react-native-multi-selectbox'
 import SignUp from '../screens/SignUp'
 import logo from "../assets/images/logo.png";
 import Colors from 'react-native-multi-selectbox/src/constants/Colors'
+import ForgotPassword from './ForgotPassword'
+
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('')
@@ -49,7 +51,7 @@ const LoginScreen = () => {
         placeholder="Email"
         placeholderTextColor="grey"
         value={email}
-        onChangeText={text =>setEmail(text)}
+        onChangeText={text =>setEmail(text.toLowerCase())}
         style={styles.input}
         />
         <TextInput
@@ -64,6 +66,11 @@ const LoginScreen = () => {
       </View>
       
       <View style={styles.buttonContainer}>
+        <TouchableOpacity
+        onPress={() => navigation.navigate(ForgotPassword)}
+        >
+            <Text >Mots de passe oublié</Text>
+        </TouchableOpacity>
         <TouchableOpacity
         onPress={handleLogin}
         style={styles.button}

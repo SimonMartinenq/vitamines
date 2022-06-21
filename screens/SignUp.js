@@ -104,7 +104,7 @@ const SignUp = () => {
         placeholder="Email"
         placeholderTextColor="grey"
         value={email}
-        onChangeText={text =>setEmail(text)}
+        onChangeText={text =>setEmail(text.toLowerCase())}
         style={styles.input}
         />
         <TextInput
