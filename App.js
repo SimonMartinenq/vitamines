@@ -7,6 +7,7 @@ import Home from "./screens/Home";
 import Details from "./screens/Details";
 import LoginScreen from "./screens/LoginScreen";
 import UserInfo from "./screens/UserInfo";
+import EditProfil from "./screens/EditProfil"
 import { StatusBar } from "react-native";
 
 const theme = {
@@ -44,6 +45,7 @@ const App = () => {
         <Stack.Screen name="Details" component={Details} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="UserInfo" component={UserInfo} />
+        <Stack.Screen name="EditProfil" component={EditProfil} />
       </Stack.Navigator>
     </NavigationContainer>
   );

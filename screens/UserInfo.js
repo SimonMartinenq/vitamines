@@ -8,7 +8,7 @@ import { assets } from '../constants'
 import Button from '../components/Button'
 
 
-export default function UserInfo() {
+export default function UserInfo({}) {
   const navigation = useNavigation();
 
   const handleSignOut = () => {
@@ -30,59 +30,66 @@ export default function UserInfo() {
     );
   };
 
+
   return (
     <SafeAreaView>
+    
       <ScrollView
         contentContainerStyle={{alignItems:'center'}}
-        
         showsVerticalScrollIndicator={false}
         >
+        <CircleButton
+        imgUrl={assets.left}
+        handlePress={() => navigation.goBack("Home")}
+        left={15}
+        />
         <Image 
           style={styles.userImg} 
           source={require('../assets/users/vivi.jpg')}
         />
         <Text style={styles.userName}>Victoria Stasik</Text>
+        <Text style={styles.userEmail}>
+          {/* on mets ? au cas ou l'email est undefine */}
+          {auth.currentUser?.email} 
+        </Text>
         <Text style={styles.aboutUser}>
-          Bla bla bla j'aime les licornes
+          Objectif : manger sainement
         </Text>
         <View style={styles.userBtnWrapper}>
-          <TouchableOpacity style={styles.userBtn} onPress={() => {}}> 
-            <Text style={styles.userBtnTxt}>Message</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.userBtn} onPress={() => {}}> 
-            <Text style={styles.userBtnTxt}>Follow</Text>
+          <TouchableOpacity 
+            style={styles.userBtn} 
+            onPress={() => {navigation.navigate('EditProfil')}}>
+            <Text style={styles.userBtnTxt}>
+              Modifier le profil
+            </Text>
           </TouchableOpacity>
         </View>
+        <View style={styles.userInfoWrapper}>
+          <View style={styles.userInfoItem}>
+            <Text style={styles.userInfoSubTitle}>Âge</Text>
+            <Text style={styles.userInfoTitle}>21</Text>
+          </View>
+          <View style={styles.userInfoItem}>
+            <Text style={styles.userInfoSubTitle}>Poids</Text>
+            <Text style={styles.userInfoTitle}>60 kg</Text>
+          </View>
+          <View style={styles.userInfoItem}>
+            <Text style={styles.userInfoSubTitle}>Taille</Text>
+            <Text style={styles.userInfoTitle}>165 cm</Text>
+          </View>
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            onPress={handleSignOut}
+            style={styles.button}>
+            <Text style={styles.buttonText}>Logout</Text>
+          </TouchableOpacity>
+        </View>
+        
+
       </ScrollView>
     </SafeAreaView>
-    /*
-    <View style={{
-      width: "100%", 
-      height: 373,
-      flex:1,
-      alignItems:'center',
-      justifyContent:'center'
-    }}>
-      <CircleButton
-      imgUrl={assets.left}
-      handlePress={() => navigation.goBack("Home")}
-      left={15}
-      
-    />
-      <Text>
-      {/* on mets ? au cas ou l'email est undefine */ /*}
-      Email : {auth.currentUser?.email} 
-      </Text>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-        onPress={handleSignOut}
-        style={styles.button}
-        >
-            <Text style={styles.buttonText}>Logout</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-    */
   )
 }
 
@@ -143,16 +150,20 @@ const styles = StyleSheet.create({
   userImg: {
     height: 150,
     width: 150,
-    borderRadius: 75,
+    borderRadius: 75
   },
   userName: {
     fontSize: 18,
     fontWeight: 'bold',
     marginTop: 10,
+  },
+  userEmail: {
+    fontSize: 12,
     marginBottom: 10,
+    fontWeight: 'bold'
   },
   aboutUser: {
-    fontSize: 12,
+    fontSize: 16,
     fontWeight: '600',
     color: '#666',
     textAlign: 'center',
@@ -165,7 +176,7 @@ const styles = StyleSheet.create({
     marginBottom: 10  
   },
   userBtn: {
-    borderColor: '#2e64e5',
+    borderColor: '#D26767',
     borderWidth: 2,
     borderRadius: 3,
     paddingVertical: 8,
@@ -173,7 +184,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5
   },
   userBtnTxt: {
-    color: '#2e64e5'
+    color: '#D26767'
   },
   userInfoWrapper: {
     flexDirection: 'row',
