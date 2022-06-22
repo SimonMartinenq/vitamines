@@ -1,15 +1,19 @@
-import { View , Text, TouchableOpacity, StyleSheet,StatusBar} from 'react-native'
+import { View , Text, TouchableOpacity, StyleSheet, TextInput} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import { auth , db} from '../firebase'
-import { CircleButton} from '../components'
+import { CircleButton, MealList} from '../components'
 import { assets } from '../constants'
 import { useState , useEffect} from 'react'
+
+
 
 export default function UserInfo() {
   
   const navigation = useNavigation();
-  const [user,setUser] = useState(null)
+  const [user,setUser] = useState(null);
+  const [mealData, setMealData] = useState(null);
+  const [calories, setCalories] = useState(2000);
 
   const handleSignOut = () => {
     auth
@@ -31,6 +35,21 @@ export default function UserInfo() {
           });
   };
 
+  const handleChange = () => {setCalories(calories)};
+
+  const getMeal = () => {
+    fetch(
+      "https://api.spoonacular.com/recipes/generate?apiKey=1271db9043d840aeaf257403b2962d77&timeFrame=day&targetCalories=2000"
+    )
+    .then(response => response.json())
+    .then((data) => {
+      setMealData(data)
+      console.log(data)
+    })
+    .catch(() => {
+      console.log("error")
+    })
+  };
   useEffect(() => {
     getUser();
   }, []);
@@ -43,6 +62,20 @@ export default function UserInfo() {
       alignItems:'center',
       justifyContent:'center'
       }}>
+        <TextInput
+        placeholder="calories"
+        placeholderTextColor="grey"
+        value={calories}
+        onChangeText={handleChange}
+        style={styles.input}
+        />
+        <TouchableOpacity
+        onPress={getMeal}
+        style={styles.button}
+        >
+            <Text style={styles.buttonText}>get meal</Text>
+        </TouchableOpacity>
+
       <CircleButton
       imgUrl={assets.left}
       handlePress={() => navigation.goBack("Home")}
