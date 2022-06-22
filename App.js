@@ -7,6 +7,7 @@ import Home from "./screens/Home";
 import Details from "./screens/Details";
 import LoginScreen from "./screens/LoginScreen";
 import SignUp from "./screens/SignUp";
+import Favoris from "./screens/Favoris";
 import UserInfo from "./screens/UserInfo";
 import { StatusBar } from "react-native";
 import { COLORS } from "./constants";
@@ -47,6 +48,7 @@ const App = () => {
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="UserInfo" component={UserInfo} />
+        <Stack.Screen name="Favoris" component={Favoris} />
       </Stack.Navigator>
     </NavigationContainer>
   );
