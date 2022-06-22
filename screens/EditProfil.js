@@ -1,16 +1,45 @@
-import React from 'react';
-import {View, Text, Button, StyleSheet, TouchableOpacity, SafeAreaView, ImageBackground, TextInput, Platform} from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import {View, Text, Button, StyleSheet, TouchableOpacity, SafeAreaView, ImageBackground, TextInput, Platform, ImagePickerIOS} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-//import FontAwesome from 'react-native-vector-icons/FontAwesome';
-//import Feather from 'react-native-vector-icons/Feather;'
 import { CircleButton } from '../components'
 import { assets } from '../constants'
 import { useNavigation } from '@react-navigation/native'
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
+import * as ImagePicker from 'expo-image-picker';
+import { StatusBar } from 'react-native-web';
+
 
 const EditProfilScreen = () => {
     const navigation = useNavigation();
+    const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
+
+    useEffect(() => {
+        (async () => {
+            const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
+            setHasGalleryPermission(galleryStatus.status === 'granted');
+        })();
+    }, []);
+
+    const pickImage = async() => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            madiaTypes : ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [4,3],
+            quality: 1,
+        });
+
+        console.log(result);
+        if (!result.cancelled){
+            setImage(result.uri);
+        }
+    };
+
+    if (hasGalleryPermission === false){
+        return <Text>Vitamines n'a pas accès à la galerie photo!</Text>
+    }
+
+    
 
     renderInner = () => (
         <View style={styles.panel}>
@@ -21,13 +50,13 @@ const EditProfilScreen = () => {
             <TouchableOpacity style={styles.panelButton}>
                 <Text style={styles.panelButtonTitle}>Prendre Une Photo</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.panelButton}>
+            <TouchableOpacity style={styles.panelButton} onPress={() => pickImage()}>
                 <Text style={styles.panelButtonTitle}>Choisir Dans La Bibliothèque</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.panelButton} onPress={() => this.bs.current.snapTo(1)}>
                 <Text style={styles.panelButtonTitle}>Annuler</Text>
             </TouchableOpacity>
-        </View>
+        </View> 
     );
 
     renderHeader = () => (
