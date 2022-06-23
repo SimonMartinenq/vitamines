@@ -1,8 +1,14 @@
-import React, { useState } from "react";
-import { View, SafeAreaView, FlatList } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, SafeAreaView, FlatList , Button,Text,Image} from "react-native";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 
 import { NFTCard, HomeHeader, FocusedStatusBar } from "../components";
 import { COLORS, NFTData } from "../constants";
+
+
+
 
 const Home = () => {
   const [nftData, setNftData] = useState(NFTData);
@@ -22,11 +28,12 @@ const Home = () => {
       setNftData(filteredData);
     }
   };
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar backgroundColor={COLORS.primary} />
       <View style={{ flex: 1 }}>
+      <View>
+        </View>
         <View style={{ zIndex: 0 }}>
           <FlatList
             data={nftData}
@@ -49,8 +56,9 @@ const Home = () => {
         >
           <View
             style={{ height: 300, backgroundColor: COLORS.primary }} />
-          <View style={{ flex: 1, backgroundColor: COLORS.white }} />
+          <View style={{ flex: 1, backgroundColor: COLORS.primary }} />
         </View>
+        
       </View>
     </SafeAreaView>
   );

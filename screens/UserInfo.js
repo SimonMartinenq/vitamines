@@ -1,15 +1,16 @@
-import React from 'react'
 import { View , Text, Image, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView, StatusBar} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { auth } from '../firebase'
-import { CircleButton } from '../components'
+
+import { auth , db} from '../firebase'
+import { CircleButton} from '../components'
 import { assets } from '../constants'
-//import firestore from '@react-antive-firebase/firestore'
-import Button from '../components/Button'
+import { useState , useEffect} from 'react'
+ import Button from '../components/Button'
 
+export default function UserInfo() {
 
-export default function UserInfo({}) {
   const navigation = useNavigation();
+  const [user,setUser] = useState(null)
 
   const handleSignOut = () => {
     auth
@@ -19,17 +20,21 @@ export default function UserInfo({}) {
       })
       .catch(error => alert(error.message))
   }
-
-  const ProfilSreen = () => {
-    const {user, logout} = userContext(AuthContext);
-    return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Welcome {user.id}</Text>
-        <Button buttonTitle="Logout" onPress={() => logout()}/>
-      </View>
-    );
+  
+  const getUser = async () => {
+      db
+        .collection('Users')
+        .doc(auth.currentUser.uid)
+        .get()
+        .then((querySnapshot) => {
+            const dic = querySnapshot.data()
+            setUser(dic);
+          });
   };
 
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <SafeAreaView>
@@ -47,13 +52,13 @@ export default function UserInfo({}) {
           style={styles.userImg} 
           source={require('../assets/users/vivi.jpg')}
         />
-        <Text style={styles.userName}>Victoria Stasik</Text>
+        <Text style={styles.userName}>{user?.nom}</Text>
         <Text style={styles.userEmail}>
           {/* on mets ? au cas ou l'email est undefine */}
           {auth.currentUser?.email} 
         </Text>
         <Text style={styles.aboutUser}>
-          Objectif : manger sainement
+          Objectif : {user?.objectif}
         </Text>
         <View style={styles.userBtnWrapper}>
           <TouchableOpacity 
@@ -67,15 +72,15 @@ export default function UserInfo({}) {
         <View style={styles.userInfoWrapper}>
           <View style={styles.userInfoItem}>
             <Text style={styles.userInfoSubTitle}>Âge</Text>
-            <Text style={styles.userInfoTitle}>21</Text>
+            <Text style={styles.userInfoTitle}>{user?.age}</Text>
           </View>
           <View style={styles.userInfoItem}>
             <Text style={styles.userInfoSubTitle}>Poids</Text>
-            <Text style={styles.userInfoTitle}>60 kg</Text>
+            <Text style={styles.userInfoTitle}> {user?.poid} kg</Text>
           </View>
           <View style={styles.userInfoItem}>
             <Text style={styles.userInfoSubTitle}>Taille</Text>
-            <Text style={styles.userInfoTitle}>165 cm</Text>
+            <Text style={styles.userInfoTitle}>{user?.taille} cm</Text>
           </View>
         </View>
 
