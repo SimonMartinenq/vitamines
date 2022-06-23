@@ -121,14 +121,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical:10,
         borderRadius:10,
-        marginTop:5,
+        marginTop:'3%',
         //color: "#000000",
     },
     buttonContainer:{
         width:'60%',
         justifyContent:'center',
         alignItems:'center',
-        marginTop:20,
+        marginTop:'5%',
     },
     button:{
        backgroundColor:'#D26767',
@@ -136,7 +136,8 @@ const styles = StyleSheet.create({
        padding:15,
        borderRadius:10,
        alignItems:'center',
-       marginBottom:15,
+       marginBottom:'2%',
+       marginTop: '2%',
     },
     buttonOutline:{
         backgroundColor:'white',

@@ -1,60 +1,89 @@
-import { View, Image, TextInput ,StyleSheet,KeyboardAvoidingView, TouchableOpacity, Text} from 'react-native'
+import { View, Image, ScrollView, TextInput ,StyleSheet,KeyboardAvoidingView, TouchableOpacity, Text} from 'react-native'
 import React, { useEffect , useState} from 'react'
-import { auth , db} from '../firebase'
-import { useNavigation } from '@react-navigation/native'
-import SelectBox from 'react-native-multi-selectbox'
-import SignUp from '../screens/SignUp'
 import logo from "../assets/images/logo.png";
-import Colors from 'react-native-multi-selectbox/src/constants/Colors'
-import ForgotPassword from './ForgotPassword'
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 function About_us(){
     return (
-        <View style={styles.container}>
-            <Text style={styles.txttittle}>About us page</Text>
-            <View style={styles.box}>
-                <Image 
-                    style={styles.imagelogo}
-                    source={logo}
-                />
-                <Text style={styles.txtbox}>Mael Gueguen</Text>
-            </View>
-            <View style={styles.box}>
-                <Image 
-                    style={styles.imagelogo}
-                    source={logo}
-                />
-                <Text style={styles.txtbox}>Anne-julie Hottin</Text>
-            </View>
-            <View style={styles.box}>
-                <Image 
-                    style={styles.imagelogo}
-                    source={logo}
-                />
-                <Text style={styles.txtbox}>Victoria Stasik</Text>
-            </View>
-            <View style={styles.box}>
-                <Image 
-                    style={styles.imagelogo}
-                    source={logo}
-                />
-                <Text style={styles.txtbox}>Simon Martinenq</Text>
-            </View>
-            <View style={styles.box}>
-                <Image 
-                    style={styles.imagelogo}
-                    source={logo}
-                />
-                <Text style={styles.txtbox}>Mike Leveleux</Text>
-            </View>
-            <View style={styles.box}>
-                <Image 
-                    style={styles.imagelogo}
-                    source={logo}
-                />
-                <Text style={styles.txtbox}>Théo MASSON</Text>
-            </View>
-        </View>
+        <SafeAreaView style={styles.back}>
+            <ScrollView>
+                <View style={styles.container}>
+                    <Text style={styles.tittle}>About us page</Text>
+                    <View style={styles.align}>
+                        <View>
+                            <Image 
+                                style={styles.imagelogoleft}
+                                source={logo}
+                            />
+                        </View>
+                        <View>
+                            <Text style={styles.txttittle}>Mael Gueguen</Text>
+                            <Text style={styles.txtbox}>Généralement les professeurs de français recommandent à leurs élèves de ne pas faire de phrases trop longues. Victor Hugo ou Marcel Proust n’ont pas vraiment respecté ce principe. Chez Proust, les phrases comptent en moyenne 43 mots contre une vingtaine en moyenne chez les écrivains de langue française.</Text>
+                        </View>
+                    </View>
+                    <View style={styles.align2}>
+                        <View style={styles.decallage}>
+                            <Text style={styles.txttittle}>Mael Gueguen</Text>
+                            <Text style={styles.txtbox}>Généralement les professeurs de français recommandent à leurs élèves de ne pas faire de phrases trop longues. Victor Hugo ou Marcel Proust n’ont pas vraiment respecté ce principe. Chez Proust, les phrases comptent en moyenne 43 mots contre une vingtaine en moyenne chez les écrivains de langue française.</Text>
+                        </View>
+                        <View>
+                            <Image 
+                                style={styles.imagelogo}
+                                source={logo}
+                            />
+                        </View> 
+                    </View>
+                    <View style={styles.align}>
+                        <View>
+                            <Image 
+                                style={styles.imagelogoleft}
+                                source={logo}
+                            />
+                        </View>
+                        <View>
+                            <Text style={styles.txttittle}>Mael Gueguen</Text>
+                            <Text style={styles.txtbox}>Généralement les professeurs de français recommandent à leurs élèves de ne pas faire de phrases trop longues. Victor Hugo ou Marcel Proust n’ont pas vraiment respecté ce principe. Chez Proust, les phrases comptent en moyenne 43 mots contre une vingtaine en moyenne chez les écrivains de langue française.</Text>
+                        </View>
+                    </View>
+                    <View style={styles.align2}>
+                        <View style={styles.decallage}>
+                            <Text style={styles.txttittle}>Mael Gueguen</Text>
+                            <Text style={styles.txtbox}>Généralement les professeurs de français recommandent à leurs élèves de ne pas faire de phrases trop longues. Victor Hugo ou Marcel Proust n’ont pas vraiment respecté ce principe. Chez Proust, les phrases comptent en moyenne 43 mots contre une vingtaine en moyenne chez les écrivains de langue française.</Text>
+                        </View>
+                        <View>
+                            <Image 
+                                style={styles.imagelogo}
+                                source={logo}
+                            />
+                        </View> 
+                    </View>
+                    <View style={styles.align}>
+                        <View>
+                            <Image 
+                                style={styles.imagelogoleft}
+                                source={logo}
+                            />
+                        </View>
+                        <View>
+                            <Text style={styles.txttittle}>Mael Gueguen</Text>
+                            <Text style={styles.txtbox}>Généralement les professeurs de français recommandent à leurs élèves de ne pas faire de phrases trop longues. Victor Hugo ou Marcel Proust n’ont pas vraiment respecté ce principe. Chez Proust, les phrases comptent en moyenne 43 mots contre une vingtaine en moyenne chez les écrivains de langue française.</Text>
+                        </View>
+                    </View>
+                    <View style={styles.align2}>
+                        <View style={styles.decallage}>
+                            <Text style={styles.txttittle}>Mael Gueguen</Text>
+                            <Text style={styles.txtbox}>Généralement les professeurs de français recommandent à leurs élèves de ne pas faire de phrases trop longues. Victor Hugo ou Marcel Proust n’ont pas vraiment respecté ce principe. Chez Proust, les phrases comptent en moyenne 43 mots contre une vingtaine en moyenne chez les écrivains de langue française.</Text>
+                        </View>
+                        <View>
+                            <Image 
+                                style={styles.imagelogo}
+                                source={logo}
+                            />
+                        </View> 
+                    </View>
+                </View>
+            </ScrollView>
+        </SafeAreaView>
         
         
     )
@@ -65,83 +94,77 @@ function About_us(){
             justifyContent:'center',
             alignItems:'center',
             backgroundColor:'#F1F1F1',
-            borderWidth: 1,
-            borderColor: 'black',
         },
-        box: {
+        align:{
+            flexDirection: "row",
             color: 'black',
+            backgroundColor: '#D26767',
             fontWeight: 'bold',
             fontSize: 20,
-            borderColor: 'blue',
+            borderColor: 'black',
             borderWidth: 1,
             borderRadius: 30,
             padding: 20,
             justifyContent:'center',
             alignItems:'center',
-            marginTop: 5,
+            marginTop: '2%',
+            marginBottom: '2%',
+            marginLeft: '16%',
+            marginRight: '16%',
         },
-        underline:{
-            textDecorationLine: "underline"
-        },
-        inputcontainer:{
-            width:'80%',
-        },
-        imgcontainer:{
-            width:'100%',
+        align2:{
+            flexDirection: "row",
+            color: 'black',
+            backgroundColor: '#CBC7C7',
+            fontWeight: 'bold',
+            fontSize: 20,
+            borderColor: 'black',
+            borderWidth: 1,
+            borderRadius: 30,
+            padding: 20,
             justifyContent:'center',
             alignItems:'center',
+            marginTop: '2%',
+            marginBottom: '2%',
+            marginLeft: '9.5%',
+            marginRight: '9.5%',
+        },
+        back:{
+            backgroundColor: "#F1F1F1",
+        },
+        decallage:{
+            marginLeft: '10%',
         },
         imagelogo:{
-            width: 50,
-            height: 50,
+            width: 100,
+            height: 100,
             resizeMode: "contain",
+            marginLeft: '5%',
+            padding: 10
+        },
+        imagelogoleft:{
+            width: 100,
+            height: 100,
+            resizeMode: "contain",
+            marginLeft: '50%',
         },
         txttittle:{
             fontWeight: 'bold',
+            fontSize: 20,
+            padding: 5,
+            textAlign: 'center',
+            marginLeft: '10%',
+        },
+        tittle:{
+            fontWeight: 'bold',
             fontSize: 28,
             padding: 5,
+            textAlign: 'center',
         },
         txtbox:{
             padding: 5,
             textAlign: 'center',
-        },
-        input:{
-            backgroundColor:'white',
-            paddingHorizontal: 15,
-            paddingVertical:10,
-            borderRadius:10,
-            marginTop:5,
-            //color: "#000000",
-        },
-        buttonContainer:{
-            width:'60%',
-            justifyContent:'center',
-            alignItems:'center',
-            marginTop:20,
-        },
-        button:{
-           backgroundColor:'#D26767',
-           width:'100%',
-           padding:15,
-           borderRadius:10,
-           alignItems:'center',
-           marginBottom:15,
-        },
-        buttonOutline:{
-            backgroundColor:'white',
-            marginTop:5,
-            borderColor:'#D26767',
-            borderWidth:2,
-        },
-        buttonText:{
-            color:'white',
-            fontWeight:'700',
-            fontSize:16,
-        },
-        buttonOutlineText:{
-            color:'#D26767',
-            fontWeight:'700',
-            fontSize:16,
+            marginLeft: '10%',
         },
     })
 
