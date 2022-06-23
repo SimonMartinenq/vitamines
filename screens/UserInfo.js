@@ -2,7 +2,7 @@ import { View , Text, TouchableOpacity, StyleSheet, TextInput} from 'react-nativ
 import { useNavigation } from '@react-navigation/native'
 
 import { auth , db} from '../firebase'
-import { CircleButton, MealList} from '../components'
+import { CircleButton} from '../components'
 import { assets } from '../constants'
 import { useState , useEffect} from 'react'
 
@@ -12,7 +12,6 @@ export default function UserInfo() {
   
   const navigation = useNavigation();
   const [user,setUser] = useState(null);
-  const [mealData, setMealData] = useState(null);
   const [calories, setCalories] = useState(2000);
 
   const handleSignOut = () => {
