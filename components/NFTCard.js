@@ -26,7 +26,7 @@ const NFTCard = ({ data }) => {
         }}
       >
         <Image
-          source={data.image}
+          source={{uri : data.image}}
           resizeMode="cover"
           style={{
             width: "100%",

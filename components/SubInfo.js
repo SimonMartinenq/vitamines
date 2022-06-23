@@ -43,7 +43,7 @@ export const EthPrice = ({ price }) => {
 
 
 
-export const EndDate = () => {
+export const EndDate = ({tmpPrep}) => {
   return (
     <View
       style={{
@@ -74,13 +74,13 @@ export const EndDate = () => {
           color: COLORS.primary,
         }}
       >
-        30m
+        {tmpPrep}
       </Text>
     </View>
   );
 };
 
-export const SubInfo = () => {
+export const SubInfo = ({tmpPrep}) => {
   return (
     <View
       style={{
@@ -91,7 +91,7 @@ export const SubInfo = () => {
         justifyContent: "space-between",
       }}
     >
-      <EndDate />
+      <EndDate  tmpPrep={tmpPrep}/>
     </View>
   );
 };
