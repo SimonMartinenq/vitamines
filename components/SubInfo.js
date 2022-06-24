@@ -1,7 +1,7 @@
 import React from "react";
-import { View, Image, Text } from "react-native";
+import { View, Text } from "react-native";
 
-import { SIZES, FONTS, COLORS, SHADOWS, assets } from "../constants";
+import { SIZES, FONTS, COLORS, SHADOWS } from "../constants";
 
 export const NFTTitle = ({ title, titleSize }) => {
   return (

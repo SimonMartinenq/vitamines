@@ -1,4 +1,4 @@
-import { View , Text, Image, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView, StatusBar} from 'react-native'
+import { View , Text, Image, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Favoris from "../screens/Favoris"
 
@@ -6,7 +6,6 @@ import { auth , db} from '../firebase'
 import { CircleButton} from '../components'
 import { assets } from '../constants'
 import { useState , useEffect} from 'react'
- import Button from '../components/Button'
 
 
 

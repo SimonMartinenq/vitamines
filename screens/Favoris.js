@@ -8,7 +8,7 @@ import { useState , useEffect} from 'react'
 
 const Favoris = ({ onSearch }) => {
     const navigation = useNavigation();
-    const [user,setUser] = useState(null);
+    const [mealData,setMealData] = useState(null);
       
     const getUser = async () => {
     db
@@ -17,8 +17,30 @@ const Favoris = ({ onSearch }) => {
         .get()
         .then((querySnapshot) => {
             const dic = querySnapshot.data()
-            setUser(dic);
-        });
+            console.log(dic);
+            return dic.favoris
+        })
+        .then((array) => {
+          let favTab = []
+          array.forEach(element => {
+            fetch(
+              "https://api.spoonacular.com/recipes/716429/information?apiKey=1271db9043d840aeaf257403b2962d77&includeNutrition=false"
+            )
+            //?apiKey=1271db9043d840aeaf257403b2962d77
+            .then(response => response.json())
+            .then((data) => {
+              favTab.push(data)
+              setMealData(favTab)
+              console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",favTab)
+            })
+            .catch(() => {
+              console.log("error")
+            })
+          })
+          console.log("Nombre de favoris : ", mealData.length)
+          
+        })
+        
     };
       
     useEffect(() => {
@@ -26,10 +48,18 @@ const Favoris = ({ onSearch }) => {
     }, []);
 
     function AffichageFav(){
-        const FavNumber = 0 ;
+        const FavNumber = 1 ;
         if (FavNumber){
             return (
-               <View style={{flex:1}}><Text style={styles.textFav}>Vos Favoris </Text></View> 
+               <View style={{flex:1}}>
+                <Text style={styles.textFav}>Vos Favoris </Text>
+                {/* <FlatList
+                  data={mealData}
+                  renderItem={({ item }) => <NFTCard data={item} />}
+                  keyExtractor={(item) => item.id}
+                  showsVerticalScrollIndicator={false}
+                /> */}
+                </View> 
             );
         } else{
             return (
