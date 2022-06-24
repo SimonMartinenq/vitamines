@@ -1,4 +1,4 @@
-import React from "react";
+import {useEffect} from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Image } from "react-native";
 
@@ -6,7 +6,12 @@ import { COLORS, SIZES, SHADOWS, assets } from "../constants";
 import { SubInfo, NFTTitle } from "./SubInfo";
 import { RectButton, CircleButton } from "./Button";
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+
 import { db, auth } from "../firebase";
+import Favoris from "../screens/Favoris";
 
 const NFTCard = ({ data }) => {
 
@@ -24,10 +29,19 @@ const NFTCard = ({ data }) => {
         })
       .then((dic) => {
         const fav = dic.favoris
-        fav.push(data.id)
-        db.collection('Users').doc(auth.currentUser.uid).update({favoris:fav})
-      })
+        if(fav.includes(data.id) !== true){
+          fav.push(data.id)
+          db.collection('Users').doc(auth.currentUser.uid).update({favoris:fav})
+          console.log("favoris add")
+        }else{
+          db.collection('Users').doc(auth.currentUser.uid).update({
+            favoris:firebase.firestore.FieldValue.arrayRemove(data.id)
+          })
+          console.log("favoris remove")
+        }
+      }).then(() => navigation.navigate(Favoris))
   };
+
   
   return (
     <View

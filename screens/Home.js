@@ -33,7 +33,7 @@ const Home = () => {
 
   const getMeal = () => {
     fetch(
-      "https://api.spoonacular.com/recipes/complexSearch?apiKey=1271db9043d840aeaf257403b2962d77&query=pasta&maxFat=25&number=8"
+      "https://api.spoonacular.com/recipes/complexSearch?apiKey=9ddf84b242c4417f8ac96d8a6ac16ef3&query=pasta&maxFat=25&number=8"
     )
     //?apiKey=1271db9043d840aeaf257403b2962d77
     .then(response => response.json())
