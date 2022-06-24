@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { COLORS, FONTS, SIZES, assets } from "../constants";
 import { auth,db } from "../firebase";
 import UserInfo from "../screens/UserInfo";
+import Favoris from "../screens/Favoris";
 import Home from "../screens/Home";
 
 
@@ -56,6 +57,17 @@ const HomeHeader = ({ onSearch }) => {
         <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
           <Image
             source={assets.userIcon}
+            resizeMode="contain"
+            style={{
+              width: 50, 
+              height: 50
+            }}
+          />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate(Favoris)}>
+          <Image
+            source={assets.favIcon}
             resizeMode="contain"
             style={{
               width: 50, 
