@@ -6,6 +6,7 @@ import { COLORS, FONTS, SIZES, assets } from "../constants";
 import { auth,db } from "../firebase";
 import UserInfo from "../screens/UserInfo";
 import Home from "../screens/Home";
+import About_us from "../screens/About_us";
 
 
 const HomeHeader = ({ onSearch }) => {
@@ -63,6 +64,7 @@ const HomeHeader = ({ onSearch }) => {
             }}
           />
         </TouchableOpacity>
+
       </View>
 
       <View style={{ marginVertical: SIZES.font }}>

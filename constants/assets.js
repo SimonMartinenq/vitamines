@@ -5,7 +5,11 @@ import left from "../assets/icons/left.png";
 import search from "../assets/icons/search.png";
 
 import logo from "../assets/images/logo.png";
-import userIcon from "../assets/icons/user.png"
+import userIcon from "../assets/icons/user.png";
+import aboutus from "../assets/icons/aboutus.png";
+import favIcon from "../assets/icons/favicon.png";
+import heartbroken from "../assets/icons/heartbroken.png";
+
 
 
 import nft01 from "../assets/images/recette01.jpeg";
@@ -30,6 +34,12 @@ export default {
 
     logo,
     userIcon,
+
+    aboutus,
+
+    favIcon,
+    heartbroken,
+
 
     nft01,
     nft02,

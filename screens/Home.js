@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, SafeAreaView, FlatList , Button,Text,Image} from "react-native";
+import { View, SafeAreaView, FlatList, Button,Text,Image} from "react-native";
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import Footer from '../components/Footer'
 
 import { NFTCard, HomeHeader, FocusedStatusBar } from "../components";
-import { COLORS, NFTData } from "../constants";
+import { COLORS, NFTData, assets } from "../constants";
 
 
 
@@ -53,17 +54,17 @@ const Home = () => {
   }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.primary}}>
       <FocusedStatusBar backgroundColor={COLORS.primary} />
       <View style={{ flex: 1 }}>
-      <View>
-        </View>
+
         <View style={{ zIndex: 0 }}>
           <FlatList
             data={mealData}
             renderItem={({ item }) => <NFTCard data={item} />}
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
+            ListFooterComponent={<Footer/>}
             ListHeaderComponent={<HomeHeader onSearch={handleSearch} />}
           />
         </View>
@@ -82,7 +83,7 @@ const Home = () => {
             style={{ height: 300, backgroundColor: COLORS.primary }} />
           <View style={{ flex: 1, backgroundColor: COLORS.primary }} />
         </View>
-        
+
       </View>
     </SafeAreaView>
   );

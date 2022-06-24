@@ -10,6 +10,16 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+      [
+        "expo-media-library",
+        {
+          "photoPermission": "Autorisez Vitamines à acceder à vos photos",
+          "savePhotosPermission": "Autorisez Vitamines à sauvegarder la photo",
+          "isAccesMediaLocationEnabled": "true"
+        }
+      ]
+    ],
     "updates": {
       "fallbackToCacheTimeout": 0
     },

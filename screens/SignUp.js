@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     box:{
         width: '31%',
         height: 50,
-        margin: 4,
+        margin: '1%',
     },
     container:{
         flex:1,
@@ -209,14 +209,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical:10,
         borderRadius:10,
-        marginTop:5,
+        marginTop:'2%',
         
     },
     buttonContainer:{
         width:'60%',
         justifyContent:'center',
         alignItems:'center',
-        marginTop:20,
+        marginTop:'5%',
     },
     button:{
        backgroundColor:'#D26767',
