@@ -65,14 +65,6 @@ const HomeHeader = ({ onSearch }) => {
           />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate(About_us)}>
-          <Image
-            source={assets.aboutus}
-            resizeMode="contain"
-            style={{ width: 60, height: 60 }}
-          />
-        </TouchableOpacity>
-
       </View>
 
       <View style={{ marginVertical: SIZES.font }}>
