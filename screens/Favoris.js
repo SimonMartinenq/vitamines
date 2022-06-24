@@ -26,7 +26,7 @@ const Favoris = ({ onSearch }) => {
     }, []);
 
     function AffichageFav(){
-        const FavNumber = 1;
+        const FavNumber = 0;
         if (FavNumber){
             return (
                <View style={{flex:1}}><Text style={styles.textFav}>Vos Favoris </Text></View> 
