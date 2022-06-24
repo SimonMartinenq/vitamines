@@ -6,9 +6,29 @@ import { COLORS, SIZES, SHADOWS, assets } from "../constants";
 import { SubInfo, EthPrice, NFTTitle } from "./SubInfo";
 import { RectButton, CircleButton } from "./Button";
 
+import { db, auth } from "../firebase";
+
 const NFTCard = ({ data }) => {
+
   const navigation = useNavigation();
 
+
+  const updateFav = () => {
+    db
+      .collection('Users')
+      .doc(auth.currentUser.uid)
+      .get()
+      .then((querySnapshot) => {
+          const dic = querySnapshot.data()
+          return dic
+        })
+      .then((dic) => {
+        const fav = dic.favoris
+        fav.push(data.id)
+        db.collection('Users').doc(auth.currentUser.uid).update({favoris:fav})
+      })
+  };
+  
   return (
     <View
       style={{
@@ -26,7 +46,7 @@ const NFTCard = ({ data }) => {
         }}
       >
         <Image
-          source={data.image}
+          source={{uri : data.image}}
           resizeMode="cover"
           style={{
             width: "100%",
@@ -36,17 +56,15 @@ const NFTCard = ({ data }) => {
           }}
         />
 
-        <CircleButton imgUrl={assets.heart} right={10} top={10} />
+        <CircleButton imgUrl={assets.heart} right={10} top={10} handlePress={updateFav}/>
       </View>
 
       <SubInfo />
 
       <View style={{ width: "100%", padding: SIZES.font }}>
         <NFTTitle
-          title={data.name}
-          subTitle={data.creator}
+          title={data.title}
           titleSize={SIZES.large}
-          subTitleSize={SIZES.small}
         />
 
         <View

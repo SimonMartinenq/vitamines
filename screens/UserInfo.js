@@ -8,11 +8,12 @@ import { assets } from '../constants'
 import { useState , useEffect} from 'react'
  import Button from '../components/Button'
 
+
+
 export default function UserInfo() {
 
   const navigation = useNavigation();
-  const [user,setUser] = useState(null)
-
+  const [user,setUser] = useState(null);
   const handleSignOut = () => {
     auth
       .signOut()
