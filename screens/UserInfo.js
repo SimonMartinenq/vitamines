@@ -1,13 +1,15 @@
-import { View , Text, TouchableOpacity, StyleSheet,StatusBar} from 'react-native'
+import { View , Text, Image, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView, StatusBar} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import Favoris from "../screens/Favoris"
 
 import { auth , db} from '../firebase'
 import { CircleButton} from '../components'
 import { assets } from '../constants'
 import { useState , useEffect} from 'react'
+ import Button from '../components/Button'
 
 export default function UserInfo() {
-  
+
   const navigation = useNavigation();
   const [user,setUser] = useState(null)
 
@@ -36,36 +38,74 @@ export default function UserInfo() {
   }, []);
 
   return (
-    <View style={{
-      width: "100%", 
-      height: 373,
-      flex:1,
-      alignItems:'center',
-      justifyContent:'center'
-      }}>
-      <CircleButton
-      imgUrl={assets.left}
-      handlePress={() => navigation.goBack("Home")}
-      left={15}
-      flex={1}
-      />
-      <View style={{justifyContent:'flex-start'}}>
-        <Text>Nom : {user?.nom}</Text>
-        <Text>Age : {user?.age} ans</Text>
-        <Text>Objectif : {user?.objectif}</Text>
-        <Text>Poids : {user?.poid} Kg</Text>
-        <Text>Taille : {user?.taille}</Text>
-      </View>
-      
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-        onPress={handleSignOut}
-        style={styles.button}
+    <SafeAreaView style={{top:"5%"}}>
+    
+      <ScrollView
+        contentContainerStyle={{alignItems:'center'}}
+        showsVerticalScrollIndicator={false}
         >
-            <Text style={styles.buttonText}>Logout</Text>
+        <CircleButton
+        imgUrl={assets.left}
+        handlePress={() => navigation.goBack("Home")}
+        left={15}
+        />
+        <TouchableOpacity style={{left:"40%"}} onPress={() => navigation.navigate(Favoris)}>
+          <Image
+            source={assets.favIcon}
+            resizeMode="contain"
+            style={{
+              width: 40, 
+              height: 40, 
+            }}
+          />
         </TouchableOpacity>
-      </View>
-    </View>
+        <Image 
+          style={styles.userImg} 
+          source={require('../assets/users/vivi.jpg')}
+        />
+        <Text style={styles.userName}>{user?.nom}</Text>
+        <Text style={styles.userEmail}>
+          {/* on mets ? au cas ou l'email est undefine */}
+          {auth.currentUser?.email} 
+        </Text>
+        <Text style={styles.aboutUser}>
+          Objectif : {user?.objectif}
+        </Text>
+        <View style={styles.userBtnWrapper}>
+          <TouchableOpacity 
+            style={styles.userBtn} 
+            onPress={() => {navigation.navigate('EditProfil')}}>
+            <Text style={styles.userBtnTxt}>
+              Modifier le profil
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.userInfoWrapper}>
+          <View style={styles.userInfoItem}>
+            <Text style={styles.userInfoSubTitle}>Âge</Text>
+            <Text style={styles.userInfoTitle}>{user?.age}</Text>
+          </View>
+          <View style={styles.userInfoItem}>
+            <Text style={styles.userInfoSubTitle}>Poids</Text>
+            <Text style={styles.userInfoTitle}> {user?.poid} kg</Text>
+          </View>
+          <View style={styles.userInfoItem}>
+            <Text style={styles.userInfoSubTitle}>Taille</Text>
+            <Text style={styles.userInfoTitle}>{user?.taille} cm</Text>
+          </View>
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            onPress={handleSignOut}
+            style={styles.button}>
+            <Text style={styles.buttonText}>Logout</Text>
+          </TouchableOpacity>
+        </View>
+        
+
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 
@@ -78,8 +118,6 @@ const styles = StyleSheet.create({
   },
   inputcontainer:{
       width:'80%',
-      
-
   },
   input:{
       backgroundColor:'white',
@@ -118,4 +156,65 @@ const styles = StyleSheet.create({
       fontWeight:'700',
       fontSize:16,
   },
-})
+
+
+
+  contentContainer:{
+    justifyContent : 'center',
+    alignItems : 'center'
+  },
+  userImg: {
+    height: 150,
+    width: 150,
+    borderRadius: 75
+  },
+  userName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  userEmail: {
+    fontSize: 12,
+    marginBottom: 10,
+    fontWeight: 'bold'
+  },
+  aboutUser: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#666',
+    textAlign: 'center',
+    marginBottom:10  
+  },
+  userBtnWrapper:{
+    flexDirection: 'row',
+    justifyContent:'center',
+    width: '100%',
+    marginBottom: 10  
+  },
+  userBtn: {
+    borderColor: '#D26767',
+    borderWidth: 2,
+    borderRadius: 3,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    marginHorizontal: 5
+  },
+  userBtnTxt: {
+    color: '#D26767'
+  },
+  userInfoWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginVertical: 20
+  },
+  userInfoItem: {
+    justifyContent: 'center'
+  },
+  userInfoTitle:{
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 5,
+    textAlign: 'center'
+  }
+});
