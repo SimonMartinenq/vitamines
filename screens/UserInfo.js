@@ -1,5 +1,6 @@
 import { View , Text, Image, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView, StatusBar} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import Favoris from "../screens/Favoris"
 
 import { auth , db} from '../firebase'
 import { CircleButton} from '../components'
@@ -37,7 +38,7 @@ export default function UserInfo() {
   }, []);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{top:"5%"}}>
     
       <ScrollView
         contentContainerStyle={{alignItems:'center'}}
@@ -48,6 +49,16 @@ export default function UserInfo() {
         handlePress={() => navigation.goBack("Home")}
         left={15}
         />
+        <TouchableOpacity style={{left:"40%"}} onPress={() => navigation.navigate(Favoris)}>
+          <Image
+            source={assets.favIcon}
+            resizeMode="contain"
+            style={{
+              width: 40, 
+              height: 40, 
+            }}
+          />
+        </TouchableOpacity>
         <Image 
           style={styles.userImg} 
           source={require('../assets/users/vivi.jpg')}
