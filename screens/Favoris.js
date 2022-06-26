@@ -1,7 +1,7 @@
-import { View , SafeAreaView,Image, TextInput, Text, StyleSheet} from 'react-native'
+import { View , SafeAreaView,Image, TextInput, Text, StyleSheet, FlatList} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { auth , db} from '../firebase'
-import {CircleButton} from '../components'
+import {CircleButton, NFTCard} from '../components'
 import { assets, COLORS, SIZES} from '../constants'
 import { useState , useEffect} from 'react'
 
@@ -10,7 +10,7 @@ const Favoris = ({ onSearch }) => {
     const navigation = useNavigation();
     const [mealData,setMealData] = useState(null);
       
-    const getUser = async () => {
+    const getFavoris = async () => {
     db
         .collection('Users')
         .doc(auth.currentUser.uid)
@@ -24,7 +24,7 @@ const Favoris = ({ onSearch }) => {
           let favTab = []
           array.forEach(element => {
             fetch(
-              "https://api.spoonacular.com/recipes/716429/information?apiKey=1271db9043d840aeaf257403b2962d77&includeNutrition=false"
+              `https://api.spoonacular.com/recipes/${element}/information?apiKey=9ddf84b242c4417f8ac96d8a6ac16ef3&includeNutrition=false`
             )
             //?apiKey=1271db9043d840aeaf257403b2962d77
             .then(response => response.json())
@@ -37,14 +37,12 @@ const Favoris = ({ onSearch }) => {
               console.log("error")
             })
           })
-          console.log("Nombre de favoris : ", mealData.length)
-          
         })
         
     };
       
     useEffect(() => {
-        getUser();
+        getFavoris();
     }, []);
 
     function AffichageFav(){
@@ -53,12 +51,12 @@ const Favoris = ({ onSearch }) => {
             return (
                <View style={{flex:1}}>
                 <Text style={styles.textFav}>Vos Favoris </Text>
-                {/* <FlatList
+                <FlatList
                   data={mealData}
                   renderItem={({ item }) => <NFTCard data={item} />}
                   keyExtractor={(item) => item.id}
                   showsVerticalScrollIndicator={false}
-                /> */}
+                />
                 </View> 
             );
         } else{
