@@ -9,6 +9,7 @@ import { useState , useEffect} from 'react'
 const Favoris = ({ onSearch }) => {
     const navigation = useNavigation();
     const [mealData,setMealData] = useState(null);
+    const [nbrFav, setNbrFav] = useState(0)
       
     const getFavoris = async () => {
     db
@@ -21,6 +22,7 @@ const Favoris = ({ onSearch }) => {
             return dic.favoris
         })
         .then((array) => {
+          setNbrFav(array.length)
           let favTab = []
           array.forEach(element => {
             fetch(
@@ -46,8 +48,7 @@ const Favoris = ({ onSearch }) => {
     }, []);
 
     function AffichageFav(){
-        const FavNumber = 1 ;
-        if (FavNumber){
+        if (nbrFav){
             return (
                <View style={{flex:1}}>
                 <Text style={styles.textFav}>Vos Favoris </Text>
