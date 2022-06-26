@@ -43,15 +43,12 @@ const HomeHeader = ({ onSearch }) => {
           alignItems: "center",
         }}
       >
-        <TouchableOpacity
-        onPress={() => navigation.navigate(Home)}
-        >
-          <Image
-            source={assets.logo}
-            resizeMode="contain"
-            style={{ width: 60, height: 60 }}
-          />
-        </TouchableOpacity>
+    
+        <Image
+          source={assets.logo}
+          resizeMode="contain"
+          style={{ width: 60, height: 60 }}
+        />
         
 
         <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>

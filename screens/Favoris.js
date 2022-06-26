@@ -10,7 +10,7 @@ const Favoris = ({ onSearch }) => {
     const navigation = useNavigation();
     const [mealData,setMealData] = useState(null);
       
-    const getUser = async () => {
+    const getFavoris = async () => {
     db
         .collection('Users')
         .doc(auth.currentUser.uid)
@@ -42,7 +42,7 @@ const Favoris = ({ onSearch }) => {
     };
       
     useEffect(() => {
-        getUser();
+        getFavoris();
     }, []);
 
     function AffichageFav(){
