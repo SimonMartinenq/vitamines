@@ -3,7 +3,6 @@ import React, { useEffect , useState} from 'react'
 import { auth , db} from '../firebase'
 import { useNavigation } from '@react-navigation/native'
 import SelectBox from 'react-native-multi-selectbox'
-import LoginScreen from './LoginScreen'
 import logo from "../assets/images/logo.png";
 
 
@@ -51,6 +50,7 @@ const SignUp = () => {
             poid:poid,
             taille:taille.toLowerCase(),
             objectif:objectif.item.toLowerCase(),
+            favoris: [],
             })
         .then(() => {
           console.log("User successfully create!");

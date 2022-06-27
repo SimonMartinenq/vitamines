@@ -6,8 +6,10 @@ import { COLORS, FONTS, SIZES, assets } from "../constants";
 import { auth,db } from "../firebase";
 import UserInfo from "../screens/UserInfo";
 import Home from "../screens/Home";
+
 import About_us from "../screens/About_us";
 import Meal_plan from "../screens/Meal_plan";
+
 
 
 const HomeHeader = ({ onSearch }) => {
@@ -44,15 +46,12 @@ const HomeHeader = ({ onSearch }) => {
           alignItems: "center",
         }}
       >
-        <TouchableOpacity
-        onPress={() => navigation.navigate(Home)}
-        >
-          <Image
-            source={assets.logo}
-            resizeMode="contain"
-            style={{ width: 60, height: 60 }}
-          />
-        </TouchableOpacity>
+    
+        <Image
+          source={assets.logo}
+          resizeMode="contain"
+          style={{ width: 60, height: 60 }}
+        />
         
 
         <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>

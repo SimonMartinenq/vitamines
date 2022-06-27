@@ -1,11 +1,9 @@
 import { View, Image, TextInput ,StyleSheet,KeyboardAvoidingView, TouchableOpacity, Text} from 'react-native'
 import React, { useEffect , useState} from 'react'
-import { auth , db} from '../firebase'
+import { auth } from '../firebase'
 import { useNavigation } from '@react-navigation/native'
-import SelectBox from 'react-native-multi-selectbox'
 import SignUp from '../screens/SignUp'
 import logo from "../assets/images/logo.png";
-import Colors from 'react-native-multi-selectbox/src/constants/Colors'
 import ForgotPassword from './ForgotPassword'
 
 

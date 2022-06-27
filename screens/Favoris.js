@@ -1,35 +1,63 @@
-import { View , SafeAreaView,Image, TextInput, Text, StyleSheet} from 'react-native'
+import { View , SafeAreaView,Image, TextInput, Text, StyleSheet, FlatList} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { auth , db} from '../firebase'
-import {CircleButton} from '../components'
+import {CircleButton, NFTCard} from '../components'
 import { assets, COLORS, SIZES} from '../constants'
 import { useState , useEffect} from 'react'
 
-
 const Favoris = ({ onSearch }) => {
     const navigation = useNavigation();
-    const [user,setUser] = useState(null);
+    const [mealData,setMealData] = useState(null);
+    const [nbrFav, setNbrFav] = useState(0)
       
-    const getUser = async () => {
+    const getFavoris = async () => {
     db
         .collection('Users')
         .doc(auth.currentUser.uid)
         .get()
         .then((querySnapshot) => {
             const dic = querySnapshot.data()
-            setUser(dic);
-        });
+            console.log(dic);
+            return dic.favoris
+        })
+        .then((array) => {
+          setNbrFav(array.length)
+          let favTab = []
+          array.forEach(element => {
+            fetch(
+              `https://api.spoonacular.com/recipes/${element}/information?apiKey=9ddf84b242c4417f8ac96d8a6ac16ef3&includeNutrition=false`
+            )
+            //?apiKey=1271db9043d840aeaf257403b2962d77
+            .then(response => response.json())
+            .then((data) => {
+              favTab.push(data)
+              setMealData(favTab)
+              console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",favTab)
+            })
+            .catch(() => {
+              console.log("error")
+            })
+          })
+        })
+        
     };
       
     useEffect(() => {
-        getUser();
+        getFavoris();
     }, []);
 
     function AffichageFav(){
-        const FavNumber = 0 ;
-        if (FavNumber){
+        if (nbrFav){
             return (
-               <View style={{flex:1}}><Text style={styles.textFav}>Vos Favoris </Text></View> 
+               <View style={{flex:1}}>
+                <Text style={styles.textFav}>Vos Favoris </Text>
+                <FlatList
+                  data={mealData}
+                  renderItem={({ item }) => <NFTCard data={item} />}
+                  keyExtractor={(item) => item.id}
+                  showsVerticalScrollIndicator={false}
+                />
+                </View> 
             );
         } else{
             return (

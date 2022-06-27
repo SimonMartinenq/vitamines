@@ -1,4 +1,4 @@
-import { View , Text, Image, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView, StatusBar} from 'react-native'
+import { View , Text, Image, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Favoris from "../screens/Favoris"
 
@@ -6,13 +6,13 @@ import { auth , db} from '../firebase'
 import { CircleButton} from '../components'
 import { assets } from '../constants'
 import { useState , useEffect} from 'react'
- import Button from '../components/Button'
+
+
 
 export default function UserInfo() {
 
   const navigation = useNavigation();
-  const [user,setUser] = useState(null)
-
+  const [user,setUser] = useState(null);
   const handleSignOut = () => {
     auth
       .signOut()
@@ -63,7 +63,7 @@ export default function UserInfo() {
           style={styles.userImg} 
           source={require('../assets/users/vivi.jpg')}
         />
-        <Text style={styles.userName}>{user?.nom}</Text>
+        <Text style={styles.userName}>{user?.prenom} {user?.nom}</Text>
         <Text style={styles.userEmail}>
           {/* on mets ? au cas ou l'email est undefine */}
           {auth.currentUser?.email} 
