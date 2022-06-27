@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import logo from "../assets/images/logo.png";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import UserInfo from "../screens/UserInfo";
+import Day from '../components/Day';
 
 const Meal_plan = () => {
     const navigation = useNavigation();
@@ -12,346 +13,21 @@ const Meal_plan = () => {
     return (
         <SafeAreaView style={styles.back}>
             <ScrollView scrollEventThrottle={16}>
-                <View style={styles.container}>
-                    <Text style={styles.tittle}>Meal Plan page</Text>
+                <View style={styles.container}>             
 
-                    
-                    
-                    <View style={{flex:1, backgroundColor: 'white', padding: 20}}>
-                        <Text style={{fontSize:24, fontWeight: '700'}}>
-                            Here you can choose the day in order to access to your meal plan of this day.
-                        </Text>
-
-                        
-                    </View>
-                    <View style={{height:75, marginTop:30}}>
+                    <View style={{height:780, marginTop:10}}>
+                    <Text style={styles.tittle}>Meal Plan page</Text> 
                         <ScrollView horizontal={true}
-                        showsHorizontalScrollIndicator={false}>
+                        showsHorizontalScrollIndicator={true}>
 
-                            <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
-                                <View style={{height:50, width:120, marginLeft: 15, borderColor:'black', borderWidth: 1}}>
-                                    <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                        <Text style={{textAlign:'center'}}>Monday</Text>
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
-
+                            <Day day={'Monday'}/>
+                            <Day day={'Tuesday'}/>
+                            <Day day={'Wednesday'}/>
+                            <Day day={'Thursday'}/>
+                            <Day day={'Friday'}/>
+                            <Day day={'Saturday'}/>
+                            <Day day={'Sunday'}/>
                             
-
-                            <View style={{height:50, width:120, marginLeft: 15, borderColor:'black', borderWidth: 1}}>
-                                <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                    <Text style={{textAlign:'center'}}>Tuesday</Text>
-                                </View>
-                            </View>
-
-                            <View style={{height:50, width:120, marginLeft: 15, borderColor:'black', borderWidth: 1}}>
-                                <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                    <Text style={{textAlign:'center'}}>Wednesday</Text>
-                                </View>
-                            </View>
-
-                            <View style={{height:50, width:120, marginLeft: 15, borderColor:'black', borderWidth: 1}}>
-                                <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                    <Text style={{textAlign:'center'}}>Thursday</Text>
-                                </View>
-                            </View>
-
-                            <View style={{height:50, width:120, marginLeft: 15, borderColor:'black', borderWidth: 1}}>
-                                <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                    <Text style={{textAlign:'center'}}>Friday</Text>
-                                </View>
-                            </View>
-
-                            <View style={{height:50, width:120, marginLeft: 15, borderColor:'black', borderWidth: 1}}>
-                                <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                    <Text style={{textAlign:'center'}}>Saturday</Text>
-                                </View>
-                            </View>
-
-                            <View style={{height:50, width:120, marginLeft: 15, borderColor:'black', borderWidth: 1}}>
-                                <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                    <Text style={{textAlign:'center'}}>Sunday</Text>
-                                </View>
-                            </View>
-
-                            
-                            
-                        </ScrollView>
-                    </View>
-
-
-
-                    <View style={{height:450, marginTop:10}}>
-                    <Text style={{fontWeight:'bold', fontSize:'28', padding: 10}}>Monday</Text>
-                        <ScrollView horizontal={true}
-                        showsHorizontalScrollIndicator={false}>
-
-                            <View style={{height:350, width:250, marginLeft: 15, borderColor:'black', borderWidth: 1, borderRadius: 30}}>
-                                <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                    <Text style={{textAlign:'center'}}>Breakfast</Text>
-                                </View>
-                                <View style={{alignItems:'center'}}>
-                                    <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
-                                        <View style={{height:100, width:220,marginBottom: 5, borderColor:'black', borderWidth: 1, borderRadius: 30}}>
-                                        <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                            <Text style={{textAlign:'center', fontWeight: 'bold'}}>Entrée</Text>
-                                            <View style={styles.align}>
-                                                <View>
-                                                    <Image 
-                                                        style={styles.imagelogoleft}
-                                                        source={logo}
-                                                    />
-                                                </View>
-                                                <View style={styles.txtbox}>
-                                                    <Text style={{fontWeight:'bold', fontSize: 15, color:'black', textAlign: "center"}}>Nom de la recette</Text>
-                                                    <TouchableOpacity style={{
-                                                        backgroundColor: 'pink',
-                                                        padding: 2,
-                                                        borderRadius: 20,
-                                                    }}>
-                                                        <Text style={{fontSize: 12, color:'black', textAlign: "center"}}>
-                                                            Voir la recette
-                                                        </Text>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
-                                        </View>
-                                    </View>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
-                                        <View style={{height:100, width:220,marginBottom: 5, borderColor:'black', borderWidth: 1, borderRadius: 30}}>
-                                        <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                            <Text style={{textAlign:'center', fontWeight: 'bold'}}>Plat</Text>
-                                            <View style={styles.align}>
-                                                <View>
-                                                    <Image 
-                                                        style={styles.imagelogoleft}
-                                                        source={logo}
-                                                    />
-                                                </View>
-                                                <View style={styles.txtbox}>
-                                                    <Text style={{fontWeight:'bold', fontSize: 15, color:'black', textAlign: "center"}}>Nom de la recette</Text>
-                                                    <TouchableOpacity style={{
-                                                        backgroundColor: 'pink',
-                                                        padding: 2,
-                                                        borderRadius: 20,
-                                                    }}>
-                                                        <Text style={{fontSize: 12, color:'black', textAlign: "center"}}>
-                                                            Voir la recette
-                                                        </Text>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
-                                        </View>
-                                    </View>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
-                                        <View style={{height:100, width:220,marginBottom: 5, borderColor:'black', borderWidth: 1, borderRadius: 30}}>
-                                        <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                            <Text style={{textAlign:'center', fontWeight: 'bold'}}>Dessert</Text>
-                                            <View style={styles.align}>
-                                                <View>
-                                                    <Image 
-                                                        style={styles.imagelogoleft}
-                                                        source={logo}
-                                                    />
-                                                </View>
-                                                <View style={styles.txtbox}>
-                                                    <Text style={{fontWeight:'bold', fontSize: 15, color:'black', textAlign: "center"}}>Nom de la recette</Text>
-                                                    <TouchableOpacity style={{
-                                                        backgroundColor: 'pink',
-                                                        padding: 2,
-                                                        borderRadius: 20,
-                                                    }}>
-                                                        <Text style={{fontSize: 12, color:'black', textAlign: "center"}}>
-                                                            Voir la recette
-                                                        </Text>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
-                                        </View>
-                                    </View>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-
-                            <View style={{height:350, width:250, marginLeft: 15, borderColor:'black', borderWidth: 1, borderRadius: 30}}>
-                                <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                    <Text style={{textAlign:'center'}}>Lunch</Text>
-                                </View>
-                                <View style={{alignItems:'center'}}>
-                                    <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
-                                        <View style={{height:100, width:220,marginBottom: 5, borderColor:'black', borderWidth: 1, borderRadius: 30}}>
-                                        <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                            <Text style={{textAlign:'center', fontWeight: 'bold'}}>Entrée</Text>
-                                            <View style={styles.align}>
-                                                <View>
-                                                    <Image 
-                                                        style={styles.imagelogoleft}
-                                                        source={logo}
-                                                    />
-                                                </View>
-                                                <View style={styles.txtbox}>
-                                                    <Text style={{fontWeight:'bold', fontSize: 15, color:'black', textAlign: "center"}}>Nom de la recette</Text>
-                                                    <TouchableOpacity style={{
-                                                        backgroundColor: 'pink',
-                                                        padding: 2,
-                                                        borderRadius: 20,
-                                                    }}>
-                                                        <Text style={{fontSize: 12, color:'black', textAlign: "center"}}>
-                                                            Voir la recette
-                                                        </Text>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
-                                        </View>
-                                    </View>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
-                                        <View style={{height:100, width:220,marginBottom: 5, borderColor:'black', borderWidth: 1, borderRadius: 30}}>
-                                        <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                            <Text style={{textAlign:'center', fontWeight: 'bold'}}>Plat</Text>
-                                            <View style={styles.align}>
-                                                <View>
-                                                    <Image 
-                                                        style={styles.imagelogoleft}
-                                                        source={logo}
-                                                    />
-                                                </View>
-                                                <View style={styles.txtbox}>
-                                                    <Text style={{fontWeight:'bold', fontSize: 15, color:'black', textAlign: "center"}}>Nom de la recette</Text>
-                                                    <TouchableOpacity style={{
-                                                        backgroundColor: 'pink',
-                                                        padding: 2,
-                                                        borderRadius: 20,
-                                                    }}>
-                                                        <Text style={{fontSize: 12, color:'black', textAlign: "center"}}>
-                                                            Voir la recette
-                                                        </Text>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
-                                        </View>
-                                    </View>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
-                                        <View style={{height:100, width:220,marginBottom: 5, borderColor:'black', borderWidth: 1, borderRadius: 30}}>
-                                        <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                            <Text style={{textAlign:'center', fontWeight: 'bold'}}>Dessert</Text>
-                                            <View style={styles.align}>
-                                                <View>
-                                                    <Image 
-                                                        style={styles.imagelogoleft}
-                                                        source={logo}
-                                                    />
-                                                </View>
-                                                <View style={styles.txtbox}>
-                                                    <Text style={{fontWeight:'bold', fontSize: 15, color:'black', textAlign: "center"}}>Nom de la recette</Text>
-                                                    <TouchableOpacity style={{
-                                                        backgroundColor: 'pink',
-                                                        padding: 2,
-                                                        borderRadius: 20,
-                                                    }}>
-                                                        <Text style={{fontSize: 12, color:'black', textAlign: "center"}}>
-                                                            Voir la recette
-                                                        </Text>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
-                                        </View>
-                                    </View>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-
-                            <View style={{height:350, width:250, marginLeft: 15, borderColor:'black', borderWidth: 1, borderRadius: 30}}>
-                                <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                    <Text style={{textAlign:'center'}}>Dinner</Text>
-                                </View>
-                                <View style={{alignItems:'center'}}>
-                                    <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
-                                        <View style={{height:100, width:220,marginBottom: 5, borderColor:'black', borderWidth: 1, borderRadius: 30}}>
-                                        <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                            <Text style={{textAlign:'center', fontWeight: 'bold'}}>Entrée</Text>
-                                            <View style={styles.align}>
-                                                <View>
-                                                    <Image 
-                                                        style={styles.imagelogoleft}
-                                                        source={logo}
-                                                    />
-                                                </View>
-                                                <View style={styles.txtbox}>
-                                                    <Text style={{fontWeight:'bold', fontSize: 15, color:'black', textAlign: "center"}}>Nom de la recette</Text>
-                                                    <TouchableOpacity style={{
-                                                        backgroundColor: 'pink',
-                                                        padding: 2,
-                                                        borderRadius: 20,
-                                                    }}>
-                                                        <Text style={{fontSize: 12, color:'black', textAlign: "center"}}>
-                                                            Voir la recette
-                                                        </Text>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
-                                        </View>
-                                    </View>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
-                                        <View style={{height:100, width:220,marginBottom: 5, borderColor:'black', borderWidth: 1, borderRadius: 30}}>
-                                        <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                            <Text style={{textAlign:'center', fontWeight: 'bold'}}>Plat</Text>
-                                            <View style={styles.align}>
-                                                <View>
-                                                    <Image 
-                                                        style={styles.imagelogoleft}
-                                                        source={logo}
-                                                    />
-                                                </View>
-                                                <View style={styles.txtbox}>
-                                                    <Text style={{fontWeight:'bold', fontSize: 15, color:'black', textAlign: "center"}}>Nom de la recette</Text>
-                                                    <TouchableOpacity style={{
-                                                        backgroundColor: 'pink',
-                                                        padding: 2,
-                                                        borderRadius: 20,
-                                                    }}>
-                                                        <Text style={{fontSize: 12, color:'black', textAlign: "center"}}>
-                                                            Voir la recette
-                                                        </Text>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
-                                        </View>
-                                    </View>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
-                                        <View style={{height:100, width:220,marginBottom: 5, borderColor:'black', borderWidth: 1, borderRadius: 30}}>
-                                        <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                                            <Text style={{textAlign:'center', fontWeight: 'bold'}}>Dessert</Text>
-                                            <View style={styles.align}>
-                                                <View>
-                                                    <Image 
-                                                        style={styles.imagelogoleft}
-                                                        source={logo}
-                                                    />
-                                                </View>
-                                                <View style={styles.txtbox}>
-                                                    <Text style={{fontWeight:'bold', fontSize: 15, color:'black', textAlign: "center"}}>Nom de la recette</Text>
-                                                    <TouchableOpacity style={{
-                                                        backgroundColor: 'pink',
-                                                        padding: 2,
-                                                        borderRadius: 20,
-                                                    }}>
-                                                        <Text style={{fontSize: 12, color:'black', textAlign: "center"}}>
-                                                            Voir la recette
-                                                        </Text>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
-                                        </View>
-                                    </View>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
 
                         </ScrollView>
                     </View>
@@ -368,10 +44,10 @@ const Meal_plan = () => {
             flex:1,
             justifyContent:'center',
             alignItems:'center',
-            backgroundColor:'#F1F1F1',
+            backgroundColor:'#E5E4E4',
         },
         align:{
-            flexDirection: "row",
+            //flexDirection: "row",
             //color: 'black',
             //backgroundColor: '#D26767',
             //fontWeight: 'bold',
@@ -389,7 +65,7 @@ const Meal_plan = () => {
         },
         
         back:{
-            backgroundColor: "#F1F1F1",
+            backgroundColor: "#E5E4E4",
         },
         decallage:{
             marginLeft: '10%',
@@ -402,8 +78,8 @@ const Meal_plan = () => {
             padding: 10
         },
         imagelogoleft:{
-            width: 30,
-            height: 30,
+            width: 120,
+            height: 120,
             resizeMode: "contain",
             //marginLeft: '50%',
         },
@@ -417,7 +93,7 @@ const Meal_plan = () => {
         tittle:{
             fontWeight: 'bold',
             fontSize: 28,
-            padding: 5,
+            padding: 25,
             textAlign: 'center',
         },
         txtbox:{
