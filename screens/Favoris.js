@@ -4,6 +4,7 @@ import { auth , db} from '../firebase'
 import {CircleButton, NFTCard} from '../components'
 import { assets, COLORS, SIZES} from '../constants'
 import { useState , useEffect} from 'react'
+import { apiKeySimon } from '../constants/api'
 
 const Favoris = ({ onSearch }) => {
     const navigation = useNavigation();
@@ -17,7 +18,6 @@ const Favoris = ({ onSearch }) => {
         .get()
         .then((querySnapshot) => {
             const dic = querySnapshot.data()
-            console.log(dic);
             return dic.favoris
         })
         .then((array) => {
@@ -25,7 +25,7 @@ const Favoris = ({ onSearch }) => {
           let favTab = []
           array.forEach(element => {
             fetch(
-              `https://api.spoonacular.com/recipes/${element}/information?apiKey=9ddf84b242c4417f8ac96d8a6ac16ef3&includeNutrition=false`
+              `https://api.spoonacular.com/recipes/${element}/information?apiKey=${apiKeySimon}&includeNutrition=false`
             )
             //?apiKey=1271db9043d840aeaf257403b2962d77
             .then(response => response.json())

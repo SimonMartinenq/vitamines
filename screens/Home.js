@@ -7,9 +7,7 @@ import Footer from '../components/Footer'
 
 import { NFTCard, HomeHeader, FocusedStatusBar } from "../components";
 import { COLORS, NFTData } from "../constants";
-
-
-
+import { apiKeySimon } from "../constants/api";
 
 const Home = () => {
   const [mealData, setMealData] = useState(null);
@@ -31,15 +29,17 @@ const Home = () => {
   };
 
 
+
   const getMeal = () => {
     fetch(
-      "https://api.spoonacular.com/recipes/complexSearch?apiKey=9ddf84b242c4417f8ac96d8a6ac16ef3&query=pasta&maxFat=25&number=8"
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKeySimon}&query=scones&number=1&addRecipeInformation=true`
     )
     //?apiKey=1271db9043d840aeaf257403b2962d77
     .then(response => response.json())
     .then((data) => {
       setMealData(data.results)
       //console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",data.results)
+      
     })
     .catch(() => {
       console.log("error")
