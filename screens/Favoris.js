@@ -5,7 +5,6 @@ import {CircleButton, NFTCard} from '../components'
 import { assets, COLORS, SIZES} from '../constants'
 import { useState , useEffect} from 'react'
 
-
 const Favoris = ({ onSearch }) => {
     const navigation = useNavigation();
     const [mealData,setMealData] = useState(null);
