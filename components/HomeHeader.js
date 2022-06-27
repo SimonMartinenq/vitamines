@@ -7,6 +7,9 @@ import { auth,db } from "../firebase";
 import UserInfo from "../screens/UserInfo";
 import Home from "../screens/Home";
 
+import About_us from "../screens/About_us";
+import Meal_plan from "../screens/Meal_plan";
+
 
 
 const HomeHeader = ({ onSearch }) => {
@@ -54,6 +57,17 @@ const HomeHeader = ({ onSearch }) => {
         <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
           <Image
             source={assets.userIcon}
+            resizeMode="contain"
+            style={{
+              width: 50, 
+              height: 50
+            }}
+          />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate(Meal_plan)}>
+          <Image
+            source={assets.aboutus}
             resizeMode="contain"
             style={{
               width: 50, 
