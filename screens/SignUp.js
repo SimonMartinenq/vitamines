@@ -50,6 +50,7 @@ const SignUp = () => {
             poid:poid,
             taille:taille.toLowerCase(),
             objectif:objectif.item.toLowerCase(),
+            favoris: [],
             })
         .then(() => {
           console.log("User successfully create!");
