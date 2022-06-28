@@ -1,5 +1,5 @@
 import {React, useState, useEffect } from "react";
-import { View, Text, Image, TextInput, TouchableOpacity,StyleSheet, StatusBar,FlatList } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity,StyleSheet, StatusBar,FlatList,Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { COLORS, FONTS, SIZES, assets } from "../constants";
@@ -9,6 +9,27 @@ import IngredientCard from "./IngredientCard";
 
 
 const RecetteHeader = ({ data }) => {
+  function renderData() {
+    let ingredientsTab = []
+    let toolsTab = []
+    
+    for (const iterator of data["analyzedInstructions"][0].steps) {
+      for (const element of iterator.equipment) {
+        if(toolsTab.includes(element) !== true){
+          toolsTab.push(element.name)
+        }
+      }
+      for (const element of iterator.ingredients) {
+        if(ingredientsTab.includes(element) !== true){
+          ingredientsTab.push(element.name)
+        }
+      }
+
+    }
+    return [[...new Set(ingredientsTab)],[...new Set(toolsTab)]]
+    
+    
+  }
   return (
     <View
       style={{
@@ -24,13 +45,20 @@ const RecetteHeader = ({ data }) => {
         <Text>{data.title}</Text>
         <Text>Temps de préparation : {data.readyInMinutes}</Text>
         <FlatList
-            data={data["analyzedInstructions"][0].steps}
-            renderItem={({ item }) =><IngredientCard data={item.ingredients}/>}
-            keyExtractor={(item) => item.number+""+item.id}
+            data={renderData()[0]}
+            renderItem={({ item }) => <Text>{item}</Text>}
+            keyExtractor={(item) => item}
             showsVerticalScrollIndicator={false}
-            ListHeaderComponent={<Text>Ingredients</Text>}
+            ListHeaderComponent = {<Text style={{fontSize:30}}>Ingredients</Text>}
           />
-    
+        <FlatList
+            data={renderData()[1]}
+            renderItem={({ item }) => <Text>{item}</Text>}
+            keyExtractor={(item) => item}
+            showsVerticalScrollIndicator={false}
+            ListHeaderComponent = {<Text style={{fontSize:30}}>Tools</Text>}
+          />
+        <Text style={{fontSize:30}}> Preparation</Text>
     </View>
   );
 };
