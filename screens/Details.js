@@ -4,29 +4,9 @@ import { View, Text, SafeAreaView, Image, StatusBar, FlatList ,StyleSheet,Scroll
 import { COLORS, SIZES, assets, SHADOWS, FONTS } from "../constants";
 import { CircleButton, RectButton, SubInfo, DetailsDesc, DetailsBid, FocusedStatusBar } from "../components";
 import { useState } from "react";
+import RecetteHeader from "../components/RecetteHeader";
+import RecetteCard from "../components/RecetteCard"
 
-const DetailsHeader = ({ data, navigation }) => (
-  <View style={{ width: "100%", height: 373 }}>
-    <Image
-      source={data.image}
-      resizeMode="cover"
-      style={{ width: "100%", height: "100%" }}
-    />
-
-    <CircleButton
-      imgUrl={assets.left}
-      handlePress={() => navigation.goBack()}
-      left={15}
-      top={StatusBar.currentHeight + 10}
-    />
-
-    <CircleButton
-      imgUrl={assets.heart}
-      right={15}
-      top={StatusBar.currentHeight + 10}
-    />
-  </View>
-);
 
 const Details = ({ route }) => {
 
@@ -42,18 +22,12 @@ const Details = ({ route }) => {
         backgroundColor="transparent"
         translucent={true}
       />
-      
-      <Image 
-        source={{uri : data.image}}
-        resizeMode='contain'
-        style={styles.image}
-        />
-        
         <FlatList
             data={data["analyzedInstructions"][0].steps}
-            renderItem={({ item }) => <Text style={styles.text}>{item.step}{"\n"}</Text>}
+            renderItem={({ item }) => <RecetteCard data={item}/>}
             keyExtractor={(item) => item.number}
             showsVerticalScrollIndicator={false}
+            ListHeaderComponent={<RecetteHeader data={data} />}
           />
       
     </SafeAreaView>

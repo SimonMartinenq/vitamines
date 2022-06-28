@@ -38,7 +38,7 @@ const Home = () => {
     .then(response => response.json())
     .then((data) => {
       setMealData(data.results)
-      //console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",data.results)
+      console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",data.results)
       
     })
     .catch(() => {
