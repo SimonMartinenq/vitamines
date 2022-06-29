@@ -1,15 +1,45 @@
-import {React, useState, useEffect } from "react";
-import { View, Text, Image, TextInput, TouchableOpacity,StyleSheet, StatusBar,FlatList,Button } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import {React } from "react";
+import { View, Text, Image,StyleSheet, StatusBar,FlatList } from "react-native";
 
-import { COLORS, FONTS, SIZES, assets } from "../constants";
-import IngredientCard from "./IngredientCard";
+import { COLORS, SIZES } from "../constants";
 
+export const EtapeCard = ({ data }) => {
+    return (
+      <View
+        style={{
+          backgroundColor: COLORS.primary,
+          padding: SIZES.font,
+        }}
+      >
+          <Text>{data.number}</Text>
+          <Text>{data.step}</Text>
+          
+      </View>
+    );
+  };
+  
+export const IngredientCard = ({ data }) => {
+    return (
+      <View
+        style={{
+          backgroundColor: COLORS.primary,
+          padding: SIZES.font,
+        }}
+      >
+          
+          <FlatList
+              data={data}
+              renderItem={({ item }) => <Text>{item.name}</Text>    }
+              keyExtractor={(item) => item.id}
+              showsVerticalScrollIndicator={false}
+            />    
+      </View>
+    );
+  };
 
+export const RecetteHeader = ({ data }) => {
 
-
-const RecetteHeader = ({ data }) => {
-  function renderData() {
+  const renderData = () => {
     let ingredientsTab = []
     let toolsTab = []
     
@@ -26,10 +56,10 @@ const RecetteHeader = ({ data }) => {
       }
 
     }
+    console.log([...new Set(ingredientsTab)],[...new Set(toolsTab)])
     return [[...new Set(ingredientsTab)],[...new Set(toolsTab)]]
-    
-    
   }
+  const dataTab = renderData();
   return (
     <View
       style={{
@@ -45,19 +75,23 @@ const RecetteHeader = ({ data }) => {
         <Text>{data.title}</Text>
         <Text>Temps de préparation : {data.readyInMinutes}</Text>
         <FlatList
-            data={renderData()[0]}
+            data={dataTab[0]}
             renderItem={({ item }) => <Text>{item}</Text>}
             keyExtractor={(item) => item}
+            listKey="ingredients"
             showsVerticalScrollIndicator={false}
             ListHeaderComponent = {<Text style={{fontSize:30}}>Ingredients</Text>}
           />
+        <View>
         <FlatList
-            data={renderData()[1]}
+            data={dataTab[1]}
             renderItem={({ item }) => <Text>{item}</Text>}
             keyExtractor={(item) => item}
+            listKey="tools"
             showsVerticalScrollIndicator={false}
             ListHeaderComponent = {<Text style={{fontSize:30}}>Tools</Text>}
           />
+        </View>
         <Text style={{fontSize:30}}> Preparation</Text>
     </View>
   );
@@ -82,4 +116,3 @@ const styles = StyleSheet.create({
     }
   });
 
-export default RecetteHeader;

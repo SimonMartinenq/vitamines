@@ -32,7 +32,7 @@ const Home = () => {
 
   const getMeal = () => {
     fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKeySimon}&query=scones&number=10&addRecipeInformation=true`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKeySimon}&query=scones&number=1&addRecipeInformation=true`
     )
     //?apiKey=1271db9043d840aeaf257403b2962d77
     .then(response => response.json())
