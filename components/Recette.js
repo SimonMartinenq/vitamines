@@ -37,7 +37,7 @@ export const IngredientCard = ({ data }) => {
     );
   };
 
-export const RecetteHeader = ({ data }) => {
+export const RecetteHeader = ({ data, dataInfos }) => {
 
   const renderData = () => {
     let ingredientsTab = []
@@ -56,6 +56,7 @@ export const RecetteHeader = ({ data }) => {
       }
 
     }
+    console.log("data INFOS",dataInfos)
     console.log([...new Set(ingredientsTab)],[...new Set(toolsTab)])
     return [[...new Set(ingredientsTab)],[...new Set(toolsTab)]]
   }
@@ -73,7 +74,9 @@ export const RecetteHeader = ({ data }) => {
         style={styles.image}
         />
         <Text>{data.title}</Text>
-        <Text>Temps de préparation : {data.readyInMinutes}</Text>
+        <Text>Preparation time : {data.readyInMinutes}</Text>
+        <Text>For {data.servings} person</Text>
+        <Text>Price per serving {data.pricePerServing}</Text>
         <FlatList
             data={dataTab[0]}
             renderItem={({ item }) => <Text>{item}</Text>}
