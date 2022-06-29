@@ -36,7 +36,7 @@ const EditProfilScreen = () => {
     };
 
     if (hasGalleryPermission === false){
-        return <Text>Vitamines n'a pas accès à la galerie photo!</Text>
+        return <Text>Vitamins does not have access to the photo gallery!</Text>
     }
 
     
@@ -44,17 +44,17 @@ const EditProfilScreen = () => {
     renderInner = () => (
         <View style={styles.panel}>
             <View style={{alignItems: 'center'}}>
-                <Text style={styles.panelTitle}>Importer une photo</Text>
-                <Text style={styles.panelSubtitle}>Quel sera votre nouvelle photo de profil?</Text>
+                <Text style={styles.panelTitle}>Import a photo</Text>
+                <Text style={styles.panelSubtitle}>What will be your new profile photo?</Text>
             </View>
             <TouchableOpacity style={styles.panelButton}>
-                <Text style={styles.panelButtonTitle}>Prendre Une Photo</Text>
+                <Text style={styles.panelButtonTitle}>Take a photo</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.panelButton} onPress={() => pickImage()}>
-                <Text style={styles.panelButtonTitle}>Choisir Dans La Bibliothèque</Text>
+                <Text style={styles.panelButtonTitle}>Choose In The Library</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.panelButton} onPress={() => this.bs.current.snapTo(1)}>
-                <Text style={styles.panelButtonTitle}>Annuler</Text>
+                <Text style={styles.panelButtonTitle}>Cancel</Text>
             </TouchableOpacity>
         </View> 
     );
@@ -72,13 +72,13 @@ const EditProfilScreen = () => {
     
     const K_OPTIONS = [
         {
-          item: "Perdre du poid",
+          item: "Lose weight",
         },
         {
-          item: "Mieux manger",
+          item: "Eat better",
         },
         {
-          item:  "Manger pas cher",
+          item:  "Eat cheap",
         },
       ]
 
@@ -141,7 +141,7 @@ const EditProfilScreen = () => {
                     <View style={styles.action}>
             
                         <TextInput
-                            placeholder="Nom"
+                            placeholder="Name"
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             style={styles.textInput}
@@ -150,7 +150,7 @@ const EditProfilScreen = () => {
                     <View style={styles.action}>
             
                         <TextInput
-                            placeholder="Prénom"
+                            placeholder="Firstname"
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             style={styles.textInput}
@@ -159,7 +159,7 @@ const EditProfilScreen = () => {
                     <View style={styles.action}>
                     
                         <TextInput
-                            placeholder="Âge"
+                            placeholder="Age"
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             keyboardType= 'number-pad'
@@ -169,7 +169,7 @@ const EditProfilScreen = () => {
                     <View style={styles.action}>
                         
                         <TextInput
-                            placeholder="Poids (kg)"
+                            placeholder="Weight (kg)"
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             keyboardType= 'number-pad'
@@ -178,7 +178,7 @@ const EditProfilScreen = () => {
                     </View>
                     <View style={styles.action}>
                         <TextInput
-                            placeholder="Taille (cm)"
+                            placeholder="Size (cm)"
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             keyboardType= 'number-pad'
@@ -186,7 +186,7 @@ const EditProfilScreen = () => {
                         />
                     </View>
                     <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
-                        <Text style={styles.panelButtonTitle}>Mettre à jour</Text>
+                        <Text style={styles.panelButtonTitle}>Update</Text>
                     </TouchableOpacity>
                 </Animated.View>
             </View>

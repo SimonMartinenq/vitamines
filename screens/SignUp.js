@@ -63,16 +63,15 @@ const SignUp = () => {
 
     const K_OPTIONS = [
         {
-          item: "Perdre du poids",
+            item: "Lose weight",
         },
         {
-          item: "Mieux manger",
+            item: "Eat better",
         },
         {
-          item:  "Manger pas cher",
+            item:  "Eat cheap",
         },
-      ]
-
+    ]
   return (
     <KeyboardAvoidingView
     style={styles.container}
@@ -83,18 +82,18 @@ const SignUp = () => {
                 style={styles.imagelogo}
                 source={logo}
             />
-            <Text style={styles.txttittle}>Créer un compte</Text>
+            <Text style={styles.txttittle}>Create an account</Text>
         </View>
       <View  style={styles.inputcontainer}>
       <TextInput
-            placeholder="Prénom"
+            placeholder="Firstname"
             placeholderTextColor="grey"
             value={prenom}
             onChangeText={text => setPrenom(text)}
             style={styles.input}
         />
         <TextInput
-            placeholder="Nom"
+            placeholder="Name"
             placeholderTextColor="grey"
             value={nom}
             onChangeText={text => setNom(text)}
@@ -108,7 +107,7 @@ const SignUp = () => {
         style={styles.input}
         />
         <TextInput
-        placeholder="Mot de passe"
+        placeholder="Password"
         placeholderTextColor="grey"
         value={password }
         onChangeText={text => setPassword(text)}
@@ -128,7 +127,7 @@ const SignUp = () => {
             </View>
             <View style={styles.box}>
                 <TextInput
-                    placeholder="Poids"
+                    placeholder="Weight"
                     placeholderTextColor="grey"
                     keyboardType= 'number-pad'
                     value={poid}
@@ -138,7 +137,7 @@ const SignUp = () => {
             </View>
             <View style={styles.box}>
                 <TextInput
-                    placeholder="Taille (cm)"
+                    placeholder="Size (cm)"
                     placeholderTextColor="grey"
                     keyboardType= 'number-pad'
                     value={taille}
@@ -154,7 +153,7 @@ const SignUp = () => {
                     value={objectif}
                     onChange={ val => setObjectif(val)}
                     hideInputFilter={true}
-                    inputPlaceholder="Choisir son objectif"
+                    inputPlaceholder="Choose your goal"
                     arrowIconColor="black"
                 />
             </View>
@@ -165,7 +164,7 @@ const SignUp = () => {
         onPress={hanfleSignUp}
         style={styles.button }
         >
-            <Text style={styles.buttonText}>S'inscrire</Text>
+            <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
