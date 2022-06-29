@@ -28,6 +28,8 @@ const Home = () => {
     }
   };
 
+
+
   const getMeal = () => {
     fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKeySimon}&query=scones&number=1&addRecipeInformation=true`
@@ -35,8 +37,8 @@ const Home = () => {
     //?apiKey=1271db9043d840aeaf257403b2962d77
     .then(response => response.json())
     .then((data) => {
-      console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",data.results)
       setMealData(data.results)
+      console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",data.results)
       
     })
     .catch(() => {
