@@ -110,7 +110,7 @@ const SignUp = () => {
         <TextInput
         placeholder="Mot de passe"
         placeholderTextColor="grey"
-        value={password }
+        value={password}
         onChangeText={text => setPassword(text)}
         style={styles.input}
         secureTextEntry

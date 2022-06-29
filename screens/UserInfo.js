@@ -1,7 +1,6 @@
 import { View , Text, Image, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Favoris from "../screens/Favoris"
-
 import { auth , db} from '../firebase'
 import { CircleButton} from '../components'
 import { assets } from '../constants'
@@ -60,8 +59,9 @@ export default function UserInfo() {
           />
         </TouchableOpacity>
         <Image 
-          style={styles.userImg} 
-          source={require('../assets/users/vivi.jpg')}
+          style = {{height:100, width: 100}}
+          imageStyle={{borderRadius: 15}}
+          source={require('../assets/users/avocat.jpeg')}
         />
         <Text style={styles.userName}>{user?.prenom} {user?.nom}</Text>
         <Text style={styles.userEmail}>

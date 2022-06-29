@@ -8,6 +8,8 @@ import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 import * as ImagePicker from 'expo-image-picker';
 import { StatusBar } from 'react-native-web';
+import SelectBox from 'react-native-multi-selectbox'
+import { auth , db} from '../firebase'
 
 
 const EditProfilScreen = () => {
@@ -82,6 +84,57 @@ const EditProfilScreen = () => {
         },
       ]
 
+    const [age, setAge] = useState('')
+    const [poid, setPoid] = useState('')
+    const [taille, setTaille] = useState('')
+    const [prenom, setPrenom] = useState('')
+    const [nom, setNom] = useState('')
+    const [objectif, setObjectif] = useState({})
+
+    const editUser = async() => {
+        /*
+        const update = {nom : nom, prenom : prenom, age : age, poid : poid, taille : taille, objectif : objectif}
+        db
+        .collection("Users").doc(auth.currentUser.uid)
+        .update(update)
+        .then(() => {console.log("Document successfully updated!");})
+        .catch((error) => {console.error("Error updating document: ", error);});
+        */
+        var userRef = db.collection("Users");
+    
+        userRef.doc(auth.currentUser.uid).update({
+            nom:nom,
+            prenom:prenom,
+            age:age,
+            poid:poid,
+            taille:taille.toLowerCase(),
+            objectif:objectif.item.toLowerCase()
+            })
+        .then(() => {
+          console.log("User successfully create!");
+        })
+        .catch((error) => {
+          console.error("Error creating document: ", error);
+        });
+    }
+
+    
+    const getUser = async () => {
+        db
+          .collection('Users')
+          .doc(auth.currentUser.uid)
+          .get()
+          .then((querySnapshot) => {
+              const dic = querySnapshot.data()
+              setUser(dic);
+            });
+    };
+  
+    useEffect(() => {
+      getUser();
+    }, []);
+
+    
     return (
         <SafeAreaView>
             <View style = {StyleSheet.container}>
@@ -112,7 +165,7 @@ const EditProfilScreen = () => {
                                 alignItems: 'center'
                             }}>
                                 <ImageBackground
-                                    source={require('../assets/users/vivi.jpg')}
+                                    source={require('../assets/users/avocat.jpeg')}
                                     style = {{height:100, width: 100}}
                                     imageStyle={{borderRadius: 15}}
                                 >
@@ -141,51 +194,72 @@ const EditProfilScreen = () => {
                     <View style={styles.action}>
             
                         <TextInput
-                            placeholder="Nom"
+                            placeholder="Nom *"
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             style={styles.textInput}
+                            value={nom}
+                            onChangeText={text => setNom(text)}
                         />
                     </View>
                     <View style={styles.action}>
             
                         <TextInput
-                            placeholder="Prénom"
+                            placeholder="Prénom * "
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             style={styles.textInput}
+                            value={prenom}
+                            onChangeText={text => setPrenom(text)}
                         />
                     </View>
                     <View style={styles.action}>
                     
                         <TextInput
-                            placeholder="Âge"
+                            placeholder="Âge *"
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             keyboardType= 'number-pad'
                             style={styles.textInput}
+                            value={age}
+                            onChangeText={text => setAge(text)}
                         />
                     </View>
                     <View style={styles.action}>
                         
                         <TextInput
-                            placeholder="Poids (kg)"
+                            placeholder="Poids (kg) *"
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             keyboardType= 'number-pad'
                             style={styles.textInput}
+                            value={poid}
+                            onChangeText={text => setPoid(text)}
                         />
                     </View>
                     <View style={styles.action}>
                         <TextInput
-                            placeholder="Taille (cm)"
+                            placeholder="Taille (cm) *"
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             keyboardType= 'number-pad'
                             style={styles.textInput}
+                            value={taille}
+                            onChangeText={text => setTaille(text)}
                         />
                     </View>
-                    <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
+                    <View style={{ margin:10 }}>
+                        <SelectBox
+                            label="Objectif"
+                            options={K_OPTIONS}
+                            value={objectif}
+                            onChange={ val => setObjectif(val)}
+                            hideInputFilter={true}
+                            inputPlaceholder="Choisir son objectif *"
+                            arrowIconColor="black"
+                        />
+                    </View>
+                    <TouchableOpacity style={styles.commandButton} onPress={editUser}>
                         <Text style={styles.panelButtonTitle}>Mettre à jour</Text>
                     </TouchableOpacity>
                 </Animated.View>
@@ -271,7 +345,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 10,
         paddingLeft: 10,
-        color: '#05375a'
+        color: '#D26767'
     },
     panelHandel:{
         width:40,
