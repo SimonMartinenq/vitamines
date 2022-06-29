@@ -11,7 +11,6 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 import { db, auth } from "../firebase";
-import Favoris from "../screens/Favoris";
 
 
 const NFTCard = ({ data }) => {
@@ -42,7 +41,7 @@ const NFTCard = ({ data }) => {
           setFavColor(assets.heartEmpty)
           console.log("favoris remove")
         }
-      }).then(() => navigation.navigate(Favoris))
+      })
   };
 
   const updateColor = () => {
@@ -98,7 +97,7 @@ const NFTCard = ({ data }) => {
         <CircleButton imgUrl={FavColor} right={10} top={10} handlePress={updateFav}/>
       </View>
 
-      <SubInfo />
+      <SubInfo tmpPrep={data.readyInMinutes}/>
 
       <View style={{ width: "100%", padding: SIZES.font }}>
         <NFTTitle
