@@ -7,13 +7,13 @@ import SelectBox from 'react-native-multi-selectbox'
 
 const K_OPTIONS = [
   {
-    item: "Perdre du poid",
+    item: "Lose weight",
   },
   {
-    item: "Mieux manger",
+    item: "Eat better",
   },
   {
-    item:  "Manger pas cher",
+    item:  "Eat cheap",
   },
 ]
 
@@ -27,7 +27,7 @@ const SelectObj = () =>  {
         value={objectif}
         onChange={onChange()}
         hideInputFilter={true}
-        inputPlaceholder="Choisir son objectif"
+        inputPlaceholder="Choose your goal"
         arrowIconColor="black"
       />
     </View>

@@ -44,7 +44,7 @@ export const EndDate = ({tmpPrep}) => {
           color: COLORS.primary,
         }}
       >
-        Temps de préparation
+        Preparation time
       </Text>
       <Text
         style={{

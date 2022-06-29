@@ -34,7 +34,7 @@ const DetailsDesc = ({ data }) => {
             color: COLORS.primary,
           }}
         >
-          Préparation
+          Preparation
         </Text>
         <View
           style={{

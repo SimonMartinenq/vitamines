@@ -48,7 +48,7 @@ export const RectButton = ({ minWidth, fontSize, handlePress, ...props }) => {
           textAlign: "center",
         }}
       >
-        Voir la recette
+        See the recipe
       </Text>
     </TouchableOpacity>
   );
