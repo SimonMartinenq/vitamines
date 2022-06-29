@@ -43,7 +43,7 @@ const LoginScreen = () => {
                 style={styles.imagelogo}
                 source={logo}
             />
-            <Text style={styles.txttittle}>Se connecter</Text>
+            <Text style={styles.txttittle}>Login</Text>
         </View>
         <TextInput
         placeholder="Email"
@@ -53,7 +53,7 @@ const LoginScreen = () => {
         style={styles.input}
         />
         <TextInput
-        placeholder="Mot de passe"
+        placeholder="Password"
         placeholderTextColor="grey"
         value={password }
         onChangeText={text => setPassword(text)}
@@ -67,18 +67,18 @@ const LoginScreen = () => {
         <TouchableOpacity
         onPress={() => navigation.navigate(ForgotPassword)}
         >
-            <Text >Mots de passe oublié</Text>
+            <Text >Forgotten passwords</Text>
         </TouchableOpacity>
         <TouchableOpacity
         onPress={handleLogin}
         style={styles.button}
         >
-            <Text style={styles.buttonText}>Connexion</Text>
+            <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
         onPress={() => navigation.navigate(SignUp)}
         >
-            <Text style={styles.underline}>Créer un compte</Text>
+            <Text style={styles.underline}>Create an account</Text>
         </TouchableOpacity>
       </View>
      

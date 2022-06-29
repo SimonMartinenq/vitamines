@@ -43,7 +43,7 @@ function ForgotPassword() {
         onPress={HandleReset}
         style={styles.button}
         >
-            <Text style={styles.buttonText}>Envoyer l'email de vérification</Text>
+            <Text style={styles.buttonText}>Send the verification email</Text>
         </TouchableOpacity>
       </View>
      

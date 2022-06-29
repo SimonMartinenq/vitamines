@@ -32,7 +32,7 @@ const Favoris = ({ onSearch }) => {
             .then((data) => {
               favTab.push(data)
               setMealData(favTab)
-              console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",favTab)
+              console.log("\n\n\n\n\n\n\n\n\n\n\nLISTS OF DISHES\n",favTab)
             })
             .catch(() => {
               console.log("error")
@@ -50,7 +50,7 @@ const Favoris = ({ onSearch }) => {
         if (nbrFav){
             return (
                <View style={{flex:1}}>
-                <Text style={styles.textFav}>Vos Favoris </Text>
+                <Text style={styles.textFav}>Your favorites</Text>
                 <FlatList
                   data={mealData}
                   renderItem={({ item }) => <NFTCard data={item} />}
@@ -73,7 +73,7 @@ const Favoris = ({ onSearch }) => {
                     height: 50,
                     }}
                 />
-                <Text style={styles.textFav}>Aucune recette sauvegardée pour le moment. Ajoutez-en une ! </Text></View> 
+                <Text style={styles.textFav}>No recipe saved yet. Add one!</Text></View> 
             );
         }
     }
@@ -87,7 +87,7 @@ const Favoris = ({ onSearch }) => {
                     handlePress={() => navigation.goBack("Home")}
                     left={15}
                 />
-                <Text style={styles.textnavbar}> Favoris </Text>
+                <Text style={styles.textnavbar}> Favorites </Text>
             </View>
             <View style={{ marginTop: SIZES.font }}>
                 <View
@@ -99,7 +99,7 @@ const Favoris = ({ onSearch }) => {
                     style={{ width: 20, height: 20, marginRight: SIZES.base }}
                 />
                 <TextInput
-                    placeholder="Trouver une recette, un aliment,..."
+                    placeholder="Find a recipe, a food,..."
                     placeholderTextColor="gray"
                     style={{ 
                     flex: 1,

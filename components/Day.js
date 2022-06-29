@@ -1,12 +1,8 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, Image , Text, TouchableOpacity, StyleSheet} from "react-native";
+import { View, Text, StyleSheet} from "react-native";
 
-import { COLORS, SIZES, SHADOWS, assets } from "../constants";
-import { SubInfo, EthPrice, NFTTitle } from "./SubInfo";
-import { RectButton, CircleButton } from "./Button";
 import MealBox from "./MealBox";
-import logo from '../assets/images/logo.png'
 
 
 

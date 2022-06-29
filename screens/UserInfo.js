@@ -69,28 +69,28 @@ export default function UserInfo() {
           {auth.currentUser?.email} 
         </Text>
         <Text style={styles.aboutUser}>
-          Objectif : {user?.objectif}
+          Goal : {user?.objectif}
         </Text>
         <View style={styles.userBtnWrapper}>
           <TouchableOpacity 
             style={styles.userBtn} 
             onPress={() => {navigation.navigate('EditProfil')}}>
             <Text style={styles.userBtnTxt}>
-              Modifier le profil
+              Modify the profile
             </Text>
           </TouchableOpacity>
         </View>
         <View style={styles.userInfoWrapper}>
           <View style={styles.userInfoItem}>
-            <Text style={styles.userInfoSubTitle}>Âge</Text>
+            <Text style={styles.userInfoSubTitle}>Age</Text>
             <Text style={styles.userInfoTitle}>{user?.age}</Text>
           </View>
           <View style={styles.userInfoItem}>
-            <Text style={styles.userInfoSubTitle}>Poids</Text>
+            <Text style={styles.userInfoSubTitle}>Weight</Text>
             <Text style={styles.userInfoTitle}> {user?.poid} kg</Text>
           </View>
           <View style={styles.userInfoItem}>
-            <Text style={styles.userInfoSubTitle}>Taille</Text>
+            <Text style={styles.userInfoSubTitle}>Size</Text>
             <Text style={styles.userInfoTitle}>{user?.taille} cm</Text>
           </View>
         </View>
