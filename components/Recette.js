@@ -17,30 +17,30 @@ export const EtapeCard = ({ data }) => {
       </View>
     );
   };
-  
-export const IngredientCard = ({ data }) => {
-    return (
-      <View
-        style={{
-          backgroundColor: COLORS.primary,
-          padding: SIZES.font,
-        }}
-      >
+
+export const RecetteFooter = ({ data }) => {
+  return (
+    <View
+    style={{
+      backgroundColor: COLORS.primary,
+      padding: SIZES.font,
+    }}
+    >
+        <FlatList
+          data={data.nutrition.nutrients}
+          renderItem={({ item }) => <Text>{item.name} {item.amount} {item.unit} ({item.percentOfDailyNeeds}% of daily needs)</Text>}
+          keyExtractor={(item) => item.name}
+          showsVerticalScrollIndicator={false}
           
-          <FlatList
-              data={data}
-              renderItem={({ item }) => <Text>{item.name}</Text>    }
-              keyExtractor={(item) => item.id}
-              showsVerticalScrollIndicator={false}
-            />    
-      </View>
-    );
-  };
+      />
+    </View>
+  );
+};
+
 
 export const RecetteHeader = ({ data }) => {
 
   const renderData = () => {
-    let ingredientsTab = []
     let toolsTab = []
     
     for (const iterator of data["analyzedInstructions"][0].steps) {
@@ -49,15 +49,9 @@ export const RecetteHeader = ({ data }) => {
           toolsTab.push(element.name)
         }
       }
-      for (const element of iterator.ingredients) {
-        if(ingredientsTab.includes(element) !== true){
-          ingredientsTab.push(element.name)
-        }
-      }
 
     }
-    console.log([...new Set(ingredientsTab)],[...new Set(toolsTab)])
-    return [[...new Set(ingredientsTab)],[...new Set(toolsTab)]]
+    return [...new Set(toolsTab)]
   }
   const dataTab = renderData();
   return (
@@ -73,18 +67,21 @@ export const RecetteHeader = ({ data }) => {
         style={styles.image}
         />
         <Text>{data.title}</Text>
-        <Text>Temps de préparation : {data.readyInMinutes}</Text>
+        <Text>Preparation time : {data.readyInMinutes}</Text>
+        <Text>For {data.servings} people </Text>
+        <Text>${data.pricePerServing/100} per serving</Text>
+        <Text>Health score : {data.healthScore}%</Text>
         <FlatList
-            data={dataTab[0]}
-            renderItem={({ item }) => <Text>{item}</Text>}
-            keyExtractor={(item) => item}
+            data={data.extendedIngredients}
+            renderItem={({ item }) => <Text>{item.name} {item.measures.metric.amount} {item.measures.metric.unitShort}</Text>}
+            keyExtractor={(item) => item.id}
             listKey="ingredients"
             showsVerticalScrollIndicator={false}
             ListHeaderComponent = {<Text style={{fontSize:30}}>Ingredients</Text>}
           />
         <View>
         <FlatList
-            data={dataTab[1]}
+            data={dataTab}
             renderItem={({ item }) => <Text>{item}</Text>}
             keyExtractor={(item) => item}
             listKey="tools"

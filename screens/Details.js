@@ -1,28 +1,30 @@
 
-import { SafeAreaView, StatusBar, FlatList ,StyleSheet} from "react-native";
+import { StatusBar, FlatList ,StyleSheet,View} from "react-native";
 
 import { FocusedStatusBar } from "../components";
 
-import {RecetteHeader, EtapeCard} from "../components/Recette";
+import {RecetteHeader, EtapeCard, RecetteFooter} from "../components/Recette";
 
 const Details = ({ route }) => {
 
   const { data } = route.params;
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <FocusedStatusBar
         barStyle="dark-content"
         backgroundColor="transparent"
         translucent={true}
       />
-        <FlatList
-            data={data["analyzedInstructions"][0].steps}
-            renderItem={({ item }) => <EtapeCard data={item}/>}
-            keyExtractor={(item) => item.number}
-            showsVerticalScrollIndicator={false}
-            ListHeaderComponent={<RecetteHeader data={data} />}
-          />
-    </SafeAreaView>
+      <FlatList
+          data={data["analyzedInstructions"][0].steps}
+          renderItem={({ item }) => <EtapeCard data={item}/>}
+          keyExtractor={(item) => item.number}
+          showsVerticalScrollIndicator={false}
+          listKey="etapes"
+          ListHeaderComponent={<RecetteHeader data={data} />}
+          ListFooterComponent={<RecetteFooter data={data} />}
+      />
+    </View>
   );
 };
 

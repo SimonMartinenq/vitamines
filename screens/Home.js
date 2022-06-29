@@ -32,14 +32,12 @@ const Home = () => {
 
   const getMeal = () => {
     fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKeySimon}&query=scones&number=1&addRecipeInformation=true`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKeySimon}&query=scones&number=1&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true`
     )
-    //?apiKey=1271db9043d840aeaf257403b2962d77
     .then(response => response.json())
     .then((data) => {
       setMealData(data.results)
       console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",data.results)
-      
     })
     .catch(() => {
       console.log("error")
