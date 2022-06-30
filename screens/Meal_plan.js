@@ -1,14 +1,28 @@
-import { View, Image, ScrollView, TextInput ,StyleSheet,KeyboardAvoidingView, TouchableOpacity, Text} from 'react-native'
+import { View, Image, ScrollView, TextInput ,StyleSheet,KeyboardAvoidingView, FlatList, Text} from 'react-native'
 import React, { useEffect , useState} from 'react'
-import { useNavigation } from "@react-navigation/native";
 
-import logo from "../assets/images/logo.png";
 import { SafeAreaView } from 'react-native-safe-area-context';
-import UserInfo from "../screens/UserInfo";
 import Day from '../components/Day';
+import { apiKeyAnneJu, apiKeySimon, apiKeyTheo,apiKeyMael1 , apiKeySimon2, apiKey} from '../constants/api';
 
 const Meal_plan = () => {
-    const navigation = useNavigation();
+    const [mealPlan, setMealPlan] = useState(null)
+    const getMealPlan = () => {
+        fetch(
+            `https://api.spoonacular.com/mealplanner/generate?apiKey=${apiKey}&timeFrame=week`
+          )
+          .then(response => response.json())
+          .then((data) => {
+            //console.log("\n\n\n\n\n\n\n\n\n\n\nMEAL PLAN\n",data)
+            setMealPlan(data)
+          })
+          .catch(() => {
+            console.log("error")
+          })
+    } 
+      useEffect(() => {
+        getMealPlan();
+      }, []);
 
     return (
         <SafeAreaView style={styles.back}>
@@ -20,15 +34,14 @@ const Meal_plan = () => {
                         <ScrollView horizontal={true}
                         showsHorizontalScrollIndicator={true}>
 
-                            <Day day={'Monday'}/>
-                            <Day day={'Tuesday'}/>
-                            <Day day={'Wednesday'}/>
-                            <Day day={'Thursday'}/>
-                            <Day day={'Friday'}/>
-                            <Day day={'Saturday'}/>
-                            <Day day={'Sunday'}/>
+                            <Day day={'Monday'} data={mealPlan?.week.monday}/>
+                            <Day day={'Tuesday'}  data={mealPlan?.week.tuesday}/>
+                            <Day day={'Wednesday'}  data={mealPlan?.week.wednesday}/>
+                            <Day day={'Thursday'}  data={mealPlan?.week.thursday}/>
+                            <Day day={'Friday'}  data={mealPlan?.week.friday}/>
+                            <Day day={'Saturday'}  data={mealPlan?.week.saturday}/>
+                            <Day day={'Sunday'}  data={mealPlan?.week.sunday}/>
                             
-
                         </ScrollView>
                     </View>
                     

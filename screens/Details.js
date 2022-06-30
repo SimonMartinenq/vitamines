@@ -6,8 +6,7 @@ import { FocusedStatusBar } from "../components";
 import {RecetteHeader, EtapeCard, RecetteFooter} from "../components/Recette";
 
 const Details = ({ route }) => {
-
-  const { data } = route.params;
+  const {data} = route.params;
   return (
     <View style={styles.container}>
       <FocusedStatusBar

@@ -7,7 +7,7 @@ import Footer from '../components/Footer'
 
 import { NFTCard, HomeHeader, FocusedStatusBar } from "../components";
 import { COLORS, NFTData } from "../constants";
-import { apiKeySimon } from "../constants/api";
+import { apiKeyAnneJu, apiKeySimon, apiKeyTheo ,apiKeyMael1, apiKeySimon2, apiKey} from "../constants/api";
 
 const Home = () => {
   const [mealData, setMealData] = useState(null);
@@ -32,12 +32,12 @@ const Home = () => {
 
   const getMeal = () => {
     fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKeySimon}&query=healthy&number=10&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=healthy&number=1&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true`
     )
     .then(response => response.json())
     .then((data) => {
+      //console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",data)
       setMealData(data.results)
-      console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",data.results)
     })
     .catch(() => {
       console.log("error")
