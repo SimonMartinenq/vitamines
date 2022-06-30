@@ -1,13 +1,12 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, StyleSheet} from "react-native";
+import { View, Text, StyleSheet, FlatList} from "react-native";
 
 import MealBox from "./MealBox";
 
 
 
-function Day ({day}) {
-  const navigation = useNavigation();
+function Day ({day, data}) {
 
   return (
     <View style={{height:680, width:280, marginLeft: 15, borderColor:'black', borderWidth: 1, borderRadius: 30, backgroundColor:'#D26767'}}>
@@ -15,12 +14,12 @@ function Day ({day}) {
             <Text style={{textAlign:'center', fontWeight:'bold', fontSize:'20'}}>{day}</Text>
         </View>
         <View style={{alignItems:'center'}}>
-            
-            <MealBox meal={'Breakfast'}/>
-
-            <MealBox meal={'Lunch'}/>
-
-            <MealBox meal={'Dinner'}/>        
+            <FlatList
+            data={data?.meals}
+            renderItem={({ item }) =><MealBox meal={item}/>}
+            keyExtractor={(item) => item.id}
+            showsVerticalScrollIndicator={false}
+          />     
         </View>
     </View>
   );

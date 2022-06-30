@@ -1,25 +1,47 @@
-import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Image , Text, TouchableOpacity, StyleSheet} from "react-native";
+import { useEffect } from "react";
 
 import { COLORS, SIZES, SHADOWS, assets } from "../constants";
 import { SubInfo, EthPrice, NFTTitle } from "./SubInfo";
 import { RectButton, CircleButton } from "./Button";
 import logo from '../assets/images/logo.png'
+import UserInfo from "../screens/UserInfo";
+import { apiKeyAnneJu, apiKeySimon, apiKeyTheo,apiKeyMael1 , apiKeySimon2, apiKey} from "../constants/api";
+import { useState } from "react";
+
 
 function MealBox ({meal}) {
   const navigation = useNavigation();
+  const [data, setMealData] = useState(null);
+  
+  const getMeal = () => {
+    fetch(
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${meal.title}&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true`
+    )
+    .then(response => response.json())
+    .then((snap) => {
+        console.log("\n\n\n\n\n\n\n\n\n\n\nRecette du jour\n",snap.results)
+        setMealData(snap.results[0])
+    })
+    .catch(() => {
+      console.log("recette not found")
+    })
+  };
+  useEffect(() => {
+    getMeal();
+  }, []);
 
   return (
-            <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
+            <TouchableOpacity onPress={() => navigation.navigate("Details", {data})}>
                 <View style={{height:200, width:260,marginBottom: 10, borderColor:'black', borderWidth: 1, borderRadius: 30, backgroundColor:"#F7F5F5"}}>
                 <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
-                    <Text style={{textAlign:'center', fontWeight: 'bold'}}>{meal}</Text>
+                    <Text style={{textAlign:'center', fontWeight: 'bold'}}>{meal.title}</Text>
                     <View style={styles.align}>
                         <View>
                             <Image 
                                 style={styles.imagelogoleft}
-                                source={logo}
+                                source={{uri : data?.image}}
                             />
                         </View>
                         <View style={styles.txtbox}>
