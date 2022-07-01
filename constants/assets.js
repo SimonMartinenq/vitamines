@@ -13,13 +13,13 @@ import heartbroken from "../assets/icons/heartbroken.png";
 
 
 
-import nft01 from "../assets/images/recette01.jpeg";
-import nft02 from "../assets/images/recette02.jpeg";
-import nft03 from "../assets/images/recette03.jpeg";
-import nft04 from "../assets/images/recette04.jpeg";
-import nft05 from "../assets/images/nft05.jpeg";
-import nft06 from "../assets/images/nft06.jpeg";
-import nft07 from "../assets/images/nft07.jpeg";
+import Receipe01 from "../assets/images/recette01.jpeg";
+import Receipe02 from "../assets/images/recette02.jpeg";
+import Receipe03 from "../assets/images/recette03.jpeg";
+import Receipe04 from "../assets/images/recette04.jpeg";
+import Receipe05 from "../assets/images/Receipe05.jpeg";
+import Receipe06 from "../assets/images/Receipe06.jpeg";
+import Receipe07 from "../assets/images/Receipe07.jpeg";
 
 import person01 from "../assets/images/person01.png";
 import person02 from "../assets/images/person02.png";
@@ -43,13 +43,13 @@ export default {
     heartbroken,
 
 
-    nft01,
-    nft02,
-    nft03,
-    nft04,
-    nft05,
-    nft06,
-    nft07,
+    Receipe01,
+    Receipe02,
+    Receipe03,
+    Receipe04,
+    Receipe05,
+    Receipe06,
+    Receipe07,
 
     person01,
     person02,

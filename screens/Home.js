@@ -5,8 +5,8 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import Footer from '../components/Footer'
 
-import { NFTCard, HomeHeader, FocusedStatusBar } from "../components";
-import { COLORS, NFTData } from "../constants";
+import { ReceipeCard, HomeHeader, FocusedStatusBar } from "../components";
+import { COLORS, ReceipeData } from "../constants";
 import { apiKeyAnneJu, apiKeySimon, apiKeyTheo ,apiKeyMael1, apiKeySimon2, apiKey} from "../constants/api";
 
 const Home = () => {
@@ -14,17 +14,17 @@ const Home = () => {
   
   const handleSearch = (value) => {
     if (value.length === 0) {
-      setNftData(NFTData);
+      setReceipeData(ReceipeData);
     }
 
-    const filteredData = NFTData.filter((item) =>
+    const filteredData = ReceipeData.filter((item) =>
       item.name.toLowerCase().includes(value.toLowerCase())
     );
 
     if (filteredData.length === 0) {
-      setNftData(NFTData);
+      setReceipeData(ReceipeData);
     } else {
-      setNftData(filteredData);
+      setReceipeData(filteredData);
     }
   };
 
@@ -56,7 +56,7 @@ const Home = () => {
         <View style={{ zIndex: 0 }}>
           <FlatList
             data={mealData}
-            renderItem={({ item }) => <NFTCard data={item} />}
+            renderItem={({ item }) => <ReceipeCard data={item} />}
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
             ListFooterComponent={<Footer/>}
