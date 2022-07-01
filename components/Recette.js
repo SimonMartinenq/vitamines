@@ -1,7 +1,38 @@
 import {React } from "react";
 import { View, Text, Image,StyleSheet, StatusBar,FlatList } from "react-native";
+import { useState } from "react";
+import {RecaipeTitle } from "./SubInfo";
+import {COLORS, SIZES, FONTS } from "../constants";
 
-import { COLORS, SIZES } from "../constants";
+const DetailsDesc = ({ data }) => {  const [text, setText] = useState(data.description.slice(0, 100));  const [readMore, setReadMore] = useState(false);
+  return (
+  <>      
+    <View style={{ marginVertical: SIZES.extraLarge * 1.5 }}>
+      <Text  style={{fontSize: SIZES.font, fontFamily: FONTS.semiBold, color: COLORS.primary}}>Description</Text>
+      <View style={{marginTop: SIZES.base}}>
+        <Text style={{color: COLORS.secondary, fontSize: SIZES.small, fontFamily: FONTS.regular, lineHeight: SIZES.large}}>
+          {text}{!readMore && "..."}
+          <Text  style={{color: COLORS.primary, fontSize: SIZES.small, fontFamily: FONTS.semiBold}} 
+            onPress={() => {
+              if (!readMore) {
+                setText(data.description); 
+                setReadMore(true);
+              } 
+              else {
+                setText(data.description.slice(0, 100)); 
+                setReadMore(false);
+                }
+            }}>              
+            {readMore ? " Show Less" : " Read More"}
+          </Text>
+        </Text>
+      </View>
+    </View>
+  </>);
+};
+
+
+export default DetailsDesc;
 
 export const EtapeCard = ({ data }) => {
     return (
@@ -97,6 +128,7 @@ export const RecetteHeader = ({ data }) => {
             ListHeaderComponent = {<Text style={styles.category}>Tools</Text>}
           />
         </View>
+
         <Text style={{fontSize:20, fontWeight:'bold', marginTop:'5%', textAlign:'center'}}> Preparation</Text>
     </View>
   );
