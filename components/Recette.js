@@ -10,9 +10,10 @@ export const EtapeCard = ({ data }) => {
           backgroundColor: COLORS.primary,
           padding: 5,
         }}>
+        <View style={styles.stepbox}>
           <Text style={styles.step}>Step {data.number}</Text>
           <Text style={styles.txtstep}>{data.step}</Text>
-          
+        </View>  
       </View>
     );
   };
@@ -61,13 +62,14 @@ export const RecetteHeader = ({ data }) => {
       }}
     >
         <Text style={styles.tittle}>{data.title}</Text>
-
+      <View style={{justifyContent:'center',
+    alignItems:'center',}}>
         <Image 
         source={{uri : data.image}}
-        resizeMode='contain'
         style={styles.image}
         />
-        
+      </View> 
+
         <Text style={styles.txttittle}>Preparation time : {data.readyInMinutes}</Text>
 
         <Text style={styles.txtsubtittle}>For {data.servings} people </Text>
@@ -84,6 +86,7 @@ export const RecetteHeader = ({ data }) => {
             ListHeaderComponent = {<Text style={styles.category}>Ingredients</Text>}
           />
         </View>
+
         <View style={styles.align}>
         <FlatList
             data={dataTab}
@@ -94,49 +97,24 @@ export const RecetteHeader = ({ data }) => {
             ListHeaderComponent = {<Text style={styles.category}>Tools</Text>}
           />
         </View>
-        <Text style={{fontSize:16, fontWeight:'bold', marginTop:'5%'}}> Preparation</Text>
+        <Text style={{fontSize:20, fontWeight:'bold', marginTop:'5%', textAlign:'center'}}> Preparation</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   align:{
-      //flexDirection: "row",
-      //color: 'black',
-      backgroundColor: 'white',
-      //fontWeight: 'bold',
-      //fontSize: 20,
-      borderColor: 'black',
-      //borderWidth: 2,
+      backgroundColor: '#F9D2D2',
       borderRadius: 30,
       padding: 5,
-      //justifyContent:'center',
-      //alignItems:'center',
       marginTop: '5%',
       marginBottom: '5%',
-      //marginLeft: '16%',
-      //marginRight: '16%',
-      //width: 350,
   },
-  
-  back:{
-      backgroundColor: "#E5E4E4",
-  },
-  decallage:{
-      marginLeft: '10%',
-  },
-  imagelogo:{
-      width: 25,
-      height: 25,
-      resizeMode: "contain",
-      marginLeft: '5%',
-      padding: 10
-  },
-  imagelogoleft:{
-      width: 120,
-      height: 120,
-      resizeMode: "contain",
-      //marginLeft: '50%',
+  stepbox:{
+    backgroundColor: '#F9D2D2',
+    borderRadius: 30,
+    padding: 2,
+    margin:'1%'
   },
   txttittle:{
     fontWeight: 'bold',
@@ -164,12 +142,10 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     padding: 5,
     marginLeft: '10%'
-    //marginTop: '3%',
   },
   step:{
     fontSize:14, 
     fontWeight:'bold',
-    //padding: 5,
     marginLeft: '5%',
   },
   txtlist:{
@@ -182,25 +158,11 @@ const styles = StyleSheet.create({
     textAlign:'justify',
     marginRight: '10%',
   },
-  container: {
-    flex: 1,
-    paddingTop: StatusBar.currentHeight,
-    margin:30,
-    justifyContent:'center',
-    alignItems:'center',
-    backgroundColor:'#E5E4E4',
-  },
-  scrollView: {
-    backgroundColor: 'transparent',
-  },
-  text: {
-    justifyContent:"space-between",
-    fontSize: 15,
-  },
   image:{
-    width: "100%",
-    height: 250,
-    borderRadius: 15,
+    width: 380,
+    height: 280,
+    resizeMode:'contain',
+    borderRadius: 25,
   }
   });
 
