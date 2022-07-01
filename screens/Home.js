@@ -33,6 +33,7 @@ const Home = () => {
   const getMeal = () => {
     fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=healthy&number=1&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true`
+
     )
     .then(response => response.json())
     .then((data) => {

@@ -1,9 +1,9 @@
-import { View, Image, ScrollView, TextInput ,StyleSheet,KeyboardAvoidingView, FlatList, Text} from 'react-native'
+import { View, ScrollView ,StyleSheet, Text} from 'react-native'
 import React, { useEffect , useState} from 'react'
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Day from '../components/Day';
-import { apiKeyAnneJu, apiKeySimon, apiKeyTheo,apiKeyMael1 , apiKeySimon2, apiKey} from '../constants/api';
+import {apiKey} from '../constants/api';
 
 const Meal_plan = () => {
     const [mealPlan, setMealPlan] = useState(null)
@@ -13,7 +13,7 @@ const Meal_plan = () => {
           )
           .then(response => response.json())
           .then((data) => {
-            //console.log("\n\n\n\n\n\n\n\n\n\n\nMEAL PLAN\n",data)
+            //console.log("\n\n\n\n\n\n\n\n\n\n\n\nmeal plan",data)
             setMealPlan(data)
           })
           .catch(() => {

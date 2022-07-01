@@ -1,14 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import { View, Image , Text, TouchableOpacity, StyleSheet} from "react-native";
-import { useEffect } from "react";
 
-import { COLORS, SIZES, SHADOWS, assets } from "../constants";
-import { SubInfo, EthPrice, NFTTitle } from "./SubInfo";
-import { RectButton, CircleButton } from "./Button";
-import logo from '../assets/images/logo.png'
-import UserInfo from "../screens/UserInfo";
-import { apiKeyAnneJu, apiKeySimon, apiKeyTheo,apiKeyMael1 , apiKeySimon2, apiKey} from "../constants/api";
-import { useState } from "react";
+import {apiKey} from "../constants/api";
+import { useState, useEffect } from "react";
 
 
 function MealBox ({meal}) {
@@ -56,7 +50,7 @@ function MealBox ({meal}) {
             </View>
             </TouchableOpacity>
   );
-};
+}
 
 const styles = StyleSheet.create({
     container:{
