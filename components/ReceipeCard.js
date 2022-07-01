@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { View, Image } from "react-native";
 
 import { COLORS, SIZES, SHADOWS, assets } from "../constants";
-import { SubInfo, NFTTitle } from "./SubInfo";
+import { SubInfo, ReceipeTitle } from "./SubInfo";
 import { RectButton, CircleButton } from "./Button";
 
 import firebase from 'firebase/app';
@@ -13,7 +13,7 @@ import 'firebase/firestore';
 import { db, auth } from "../firebase";
 
 
-const NFTCard = ({ data }) => {
+const ReceipeCard = ({ data }) => {
 
   const navigation = useNavigation();
   const [FavColor, setFavColor] = useState(assets.heartEmpty);
@@ -100,7 +100,7 @@ const NFTCard = ({ data }) => {
       <SubInfo tmpPrep={data.readyInMinutes}/>
 
       <View style={{ width: "100%", padding: SIZES.font }}>
-        <NFTTitle
+        <ReceipeTitle
           title={data.title}
           titleSize={SIZES.large}
         />
@@ -124,4 +124,4 @@ const NFTCard = ({ data }) => {
   );
 };
 
-export default NFTCard;
+export default ReceipeCard;

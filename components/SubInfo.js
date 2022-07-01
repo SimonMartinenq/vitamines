@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 
 import { SIZES, FONTS, COLORS, SHADOWS } from "../constants";
 
-export const NFTTitle = ({ title, titleSize }) => {
+export const ReceipeTitle = ({ title, titleSize }) => {
   return (
     <View>
       <Text

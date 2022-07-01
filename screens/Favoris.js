@@ -1,7 +1,7 @@
 import { View , SafeAreaView,Image, TextInput, Text, StyleSheet, FlatList} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { auth , db} from '../firebase'
-import {CircleButton, NFTCard} from '../components'
+import {CircleButton, ReceipeCard} from '../components'
 import { assets, COLORS, SIZES} from '../constants'
 import { useState , useEffect} from 'react'
 import { apiKeySimon } from '../constants/api'
@@ -53,7 +53,7 @@ const Favoris = ({ onSearch }) => {
                 <Text style={styles.textFav}>Your favorites</Text>
                 <FlatList
                   data={mealData}
-                  renderItem={({ item }) => <NFTCard data={item} />}
+                  renderItem={({ item }) => <ReceipeCard data={item} />}
                   keyExtractor={(item) => item.id}
                   showsVerticalScrollIndicator={false}
                 />

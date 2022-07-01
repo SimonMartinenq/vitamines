@@ -3,7 +3,7 @@ import { View, Image , Text, TouchableOpacity, StyleSheet} from "react-native";
 import { useEffect } from "react";
 
 import { COLORS, SIZES, SHADOWS, assets } from "../constants";
-import { SubInfo, EthPrice, NFTTitle } from "./SubInfo";
+import { SubInfo, EthPrice, ReceipeTitle } from "./SubInfo";
 import { RectButton, CircleButton } from "./Button";
 import logo from '../assets/images/logo.png'
 import UserInfo from "../screens/UserInfo";
