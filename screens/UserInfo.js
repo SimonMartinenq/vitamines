@@ -44,21 +44,6 @@ export default function UserInfo() {
         contentContainerStyle={{alignItems:'center'}}
         showsVerticalScrollIndicator={false}
         >
-        <CircleButton
-        imgUrl={assets.left}
-        handlePress={() => navigation.goBack("Home")}
-        left={15}
-        />
-        <TouchableOpacity style={{left:"40%"}} onPress={() => navigation.navigate(Favoris)}>
-          <Image
-            source={assets.favIcon}
-            resizeMode="contain"
-            style={{
-              width: 40, 
-              height: 40, 
-            }}
-          />
-        </TouchableOpacity>
         <Image 
           style={styles.userImg} 
           source={require('../assets/users/vivi.jpg')}
