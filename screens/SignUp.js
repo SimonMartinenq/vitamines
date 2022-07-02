@@ -72,6 +72,33 @@ const SignUp = () => {
             item:  "Eat cheap",
         },
     ]
+    const Diet = [
+        {item: "Gluten Free"},
+        {item: "Ketogenic"},
+        {item: "Vegetarian"},
+        {item: "Lacto-Vegetarian"},
+        {item: "Ovo-Vegetarian"},
+        {item: "Vegan"},
+        {item: "Pescetarian"},
+        {item: "Paleo"},
+        {item: "Primal"},
+        {item: "Low FODMAP"},
+        {item: "Whole30"},
+    ]
+    const Intolerances = [
+        {item: "Dairy"},
+        {item: "Egg"},
+        {item: "Gluten"},
+        {item: "Grain"},
+        {item: "Peanut"},
+        {item: "Seafood"},
+        {item: "Sesame"},
+        {item: "Shellfish"},
+        {item: "Soy"},
+        {item: "Sulfite"},
+        {item: "Tree Nut"},
+        {item: "Wheat"},
+    ]
   return (
     <KeyboardAvoidingView
     style={styles.container}
@@ -84,81 +111,104 @@ const SignUp = () => {
             />
             <Text style={styles.txttittle}>Create an account</Text>
         </View>
-      <View  style={styles.inputcontainer}>
-      <TextInput
-            placeholder="Firstname"
+        <View  style={styles.inputcontainer}>
+            <TextInput
+                    placeholder="Firstname"
+                    placeholderTextColor="grey"
+                    value={prenom}
+                    onChangeText={text => setPrenom(text)}
+                    style={styles.input}
+            />
+            <TextInput
+                placeholder="Name"
+                placeholderTextColor="grey"
+                value={nom}
+                onChangeText={text => setNom(text)}
+                style={styles.input}
+            />
+            <TextInput
+            placeholder="Email"
             placeholderTextColor="grey"
-            value={prenom}
-            onChangeText={text => setPrenom(text)}
+            value={email}
+            onChangeText={text =>setEmail(text.toLowerCase())}
             style={styles.input}
-        />
-        <TextInput
-            placeholder="Name"
-            placeholderTextColor="grey"
-            value={nom}
-            onChangeText={text => setNom(text)}
-            style={styles.input}
-        />
-        <TextInput
-        placeholder="Email"
-        placeholderTextColor="grey"
-        value={email}
-        onChangeText={text =>setEmail(text.toLowerCase())}
-        style={styles.input}
-        />
-        <TextInput
-        placeholder="Password"
-        placeholderTextColor="grey"
-        value={password }
-        onChangeText={text => setPassword(text)}
-        style={styles.input}
-        secureTextEntry
-        />
-        <View style={styles.align}>
-            <View style={styles.box}>
-                <TextInput
-                    placeholder="Age"
-                    placeholderTextColor="grey"
-                    keyboardType= 'number-pad'
-                    value={age}
-                    onChangeText={text => setAge(text)}
-                    style={styles.input}
-                />
+            />
+            <TextInput
+                placeholder="Password"
+                placeholderTextColor="grey"
+                value={password}
+                onChangeText={text => setPassword(text)}
+                style={styles.input}
+                secureTextEntry
+            />
+            <View style={styles.align}>
+                <View style={styles.box}>
+                    <TextInput
+                        placeholder="Age"
+                        placeholderTextColor="grey"
+                        keyboardType= 'number-pad'
+                        value={age}
+                        onChangeText={text => setAge(text)}
+                        style={styles.input}
+                    />
+                </View>
+                <View style={styles.box}>
+                    <TextInput
+                        placeholder="Weight"
+                        placeholderTextColor="grey"
+                        keyboardType= 'number-pad'
+                        value={poid}
+                        onChangeText={text => setPoid(text)}
+                        style={styles.input}
+                    />
+                </View>
+                <View style={styles.box}>
+                    <TextInput
+                        placeholder="Size (cm)"
+                        placeholderTextColor="grey"
+                        keyboardType= 'number-pad'
+                        value={taille}
+                        onChangeText={text => setTaille(text)}
+                        style={styles.input}
+                    />
+                </View>
             </View>
-            <View style={styles.box}>
-                <TextInput
-                    placeholder="Weight"
-                    placeholderTextColor="grey"
-                    keyboardType= 'number-pad'
-                    value={poid}
-                    onChangeText={text => setPoid(text)}
-                    style={styles.input}
-                />
-            </View>
-            <View style={styles.box}>
-                <TextInput
-                    placeholder="Size (cm)"
-                    placeholderTextColor="grey"
-                    keyboardType= 'number-pad'
-                    value={taille}
-                    onChangeText={text => setTaille(text)}
-                    style={styles.input}
-                />
-             </View>
-        </View>
-            <View style={{ margin:10 }}>
+            <View>
+                <View style={styles.selectcontaineralign}>
+                    <View style={styles.boxselect}>
+                        <SelectBox
+                            label=""
+                            options={Diet}
+                            value={objectif}
+                            onChange={ val => setObjectif(val)}
+                            hideInputFilter={true}
+                            inputPlaceholder="Give your Diet"
+                            arrowIconColor="black"
+                        />
+                    </View>
+                    <View style={styles.boxselect}>
+                        <SelectBox
+                            label=""
+                            options={Intolerances}
+                            value={objectif}
+                            onChange={ val => setObjectif(val)}
+                            hideInputFilter={true}
+                            inputPlaceholder="Give your Intolerances"
+                            arrowIconColor="black"
+                        />
+                    </View>
+                </View>
                 <SelectBox
-                    label=""
-                    options={K_OPTIONS}
-                    value={objectif}
-                    onChange={ val => setObjectif(val)}
-                    hideInputFilter={true}
-                    inputPlaceholder="Choose your goal"
-                    arrowIconColor="black"
-                />
+                        label=""
+                        options={K_OPTIONS}
+                        value={objectif}
+                        onChange={ val => setObjectif(val)}
+                        hideInputFilter={true}
+                        inputPlaceholder="Choose your objective"
+                        arrowIconColor="black"
+                    />
             </View>
-        
-      </View>
+        </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
         onPress={hanfleSignUp}
@@ -209,8 +259,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical:10,
         borderRadius:10,
-        marginTop:'2%',
-        
+        marginTop:'2%',        
+
     },
     buttonContainer:{
         width:'60%',
@@ -241,6 +291,17 @@ const styles = StyleSheet.create({
         fontWeight:'700',
         fontSize:16,
     },
+    selectcontaineralign: {
+        flexDirection: 'row',
+        borderWidth: 0.8,
+        borderRadius:10,
+    },
+    boxselect:{
+        width: '45%',
+        paddingHorizontal: 5,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+    }
 })
 
 export default SignUp;
