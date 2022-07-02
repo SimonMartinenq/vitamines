@@ -31,19 +31,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
-    margin:30,
   },
-  scrollView: {
-    backgroundColor: 'transparent',
-  },
-  text: {
-    justifyContent:"space-between",
-    fontSize: 15,
-  },
-  image:{
-    width: "100%",
-    height: 250,
-  }
 });
 
 

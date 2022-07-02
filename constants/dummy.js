@@ -1,12 +1,12 @@
 import assets from "./assets";
 
-const NFTData = [{
-        id: "NFT-01",
+const ReceipeData = [{
+        id: "Receipe-01",
         name: "Rizoto",
         creator: "Putri Intan",
         price: 4.25,
         description: "The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural.",
-        image: assets.nft01,
+        image: assets.Receipe01,
         bids: [{
                 id: "BID-11",
                 name: "Jessica Tan",
@@ -31,12 +31,12 @@ const NFTData = [{
         ],
     },
     {
-        id: "NFT-02",
+        id: "Receipe-02",
         name: "Brochettes végétarienne",
         creator: "Siti Nurhaliza",
         price: 7.25,
         description: "The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis.",
-        image: assets.nft02,
+        image: assets.Receipe02,
         bids: [{
             id: "BID-21",
             name: "Jessica Tan",
@@ -46,12 +46,12 @@ const NFTData = [{
         }, ],
     },
     {
-        id: "NFT-03",
+        id: "Receipe-03",
         name: "Saucisse au tofu",
         creator: "Elisabeth aho",
         price: 95.25,
         description: "The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis. Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis.",
-        image: assets.nft03,
+        image: assets.Receipe03,
         bids: [{
                 id: "BID-31",
                 name: "Jessica Tan",
@@ -69,12 +69,12 @@ const NFTData = [{
         ],
     },
     {
-        id: "NFT-04",
+        id: "Receipe-04",
         name: "Brochette de champignons",
         creator: "Putri Intan",
         price: 54.25,
         description: "The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural.Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur.",
-        image: assets.nft04,
+        image: assets.Receipe04,
         bids: [{
                 id: "BID-41",
                 name: "Jessica Tan",
@@ -106,12 +106,12 @@ const NFTData = [{
         ],
     },
     {
-        id: "NFT-05",
+        id: "Receipe-05",
         name: "Colorful circles",
         creator: "David doe",
         price: 10.25,
         description: "The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural.",
-        image: assets.nft05,
+        image: assets.Receipe05,
         bids: [{
             id: "BID-51",
             name: "Jessica Tan",
@@ -121,12 +121,12 @@ const NFTData = [{
         }, ],
     },
     {
-        id: "NFT-06",
+        id: "Receipe-06",
         name: "Black box model",
         creator: "Leo Messi",
         price: 20.25,
         description: "The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis.",
-        image: assets.nft06,
+        image: assets.Receipe06,
         bids: [{
                 id: "BID-61",
                 name: "Jessica Tan",
@@ -165,14 +165,14 @@ const NFTData = [{
         ],
     },
     {
-        id: "NFT-07",
+        id: "Receipe-07",
         name: "Abstracto soulful art",
         creator: "Victor de la Cruz",
         price: 18.25,
         description: "The action painter abstract expressionists were directly influenced by automatism. Pollock channelled this into producing gestural. Lorem ipsum dolor sit amet consectetur adipiscing elit consequat accumsan sapien, lectus convallis malesuada odio curae habitasse dignissim nascetur. Nulla sed velit erat vitae leo sem inceptos diam fames arcu hendrerit, quis ultrices in eleifend posuere ipsum conubia porttitor felis. Ullamcorper platea penatibus ornare egestas nulla ligula hendrerit nisl suscipit sociosqu maximus, tincidunt aptent habitant purus pharetra ultrices dapibus laoreet nisi lacinia. Porta malesuada netus vel sapien conubia porttitor aliquam ut pretium ante litora molestie senectus magna egestas sociosqu, eget aliquet fames pharetra felis posuere varius fringilla quisque in arcu montes eu ullamcorper.",
-        image: assets.nft07,
+        image: assets.Receipe07,
         bids: [],
     },
 ];
 
-export { NFTData };
+export { ReceipeData };
