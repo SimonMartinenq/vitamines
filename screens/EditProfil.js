@@ -41,7 +41,7 @@ const EditProfilScreen = () => {
 
     
 
-    renderInner = () => (
+    const renderInner = () => (
         <View style={styles.panel}>
             <View style={{alignItems: 'center'}}>
                 <Text style={styles.panelTitle}>Import a photo</Text>

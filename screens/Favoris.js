@@ -27,7 +27,6 @@ const Favoris = ({ onSearch }) => {
             fetch(
               `https://api.spoonacular.com/recipes/${element}/information?apiKey=${apiKey}&includeNutrition=false`
             )
-            //?apiKey=1271db9043d840aeaf257403b2962d77
             .then(response => response.json())
             .then((data) => {
               favTab.push(data)

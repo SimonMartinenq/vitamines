@@ -1,30 +1,24 @@
 import {React, useState, useEffect} from "react";
-import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { View, Text, Image, TextInput,  } from "react-native";
 
 import { COLORS, FONTS, SIZES, assets } from "../constants";
 import { auth,db } from "../firebase";
-import UserInfo from "../screens/UserInfo";
-import Home from "../screens/Home";
-
-import About_us from "../screens/About_us";
-import Meal_plan from "../screens/Meal_plan";
 
 
 
 const HomeHeader = ({ onSearch }) => {
-  const navigation = useNavigation();
   const [user,setUser] = useState(null)
 
   const getUser = async () => {
-    db
-      .collection('Users')
-      .doc(auth.currentUser.uid)
-      .get()
-      .then((querySnapshot) => {
-          const dic = querySnapshot.data()
-          setUser(dic);
-        });
+      db
+        .collection('Users')
+        .doc(auth.currentUser.uid)
+        .get()
+        .then((querySnapshot) => {
+            const dic = querySnapshot.data()
+            setUser(dic);
+          });
+    
   };
 
   useEffect(() => {
