@@ -1,10 +1,10 @@
 import { View , SafeAreaView,Image, TextInput, Text, StyleSheet, FlatList} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { auth , db} from '../firebase'
-import {CircleButton, ReceipeCard} from '../components'
+import {CircleButton, MealCard} from '../components'
 import { assets, COLORS, SIZES} from '../constants'
 import { useState , useEffect} from 'react'
-import { apiKeySimon } from '../constants/api'
+import { apiKey } from '../constants/api'
 
 const Favoris = ({ onSearch }) => {
     const navigation = useNavigation();
@@ -25,7 +25,7 @@ const Favoris = ({ onSearch }) => {
           let favTab = []
           array.forEach(element => {
             fetch(
-              `https://api.spoonacular.com/recipes/${element}/information?apiKey=${apiKeySimon}&includeNutrition=false`
+              `https://api.spoonacular.com/recipes/${element}/information?apiKey=${apiKey}&includeNutrition=false`
             )
             //?apiKey=1271db9043d840aeaf257403b2962d77
             .then(response => response.json())
@@ -53,7 +53,7 @@ const Favoris = ({ onSearch }) => {
                 <Text style={styles.textFav}>Your favorites</Text>
                 <FlatList
                   data={mealData}
-                  renderItem={({ item }) => <ReceipeCard data={item} />}
+                  renderItem={({ item }) => <MealCard data={item} />}
                   keyExtractor={(item) => item.id}
                   showsVerticalScrollIndicator={false}
                 />
