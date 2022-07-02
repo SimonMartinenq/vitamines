@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { View, SafeAreaView, FlatList} from "react-native";
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
-import Footer from '../components/Footer'
+
 
 import { ReceipeCard, HomeHeader, FocusedStatusBar } from "../components";
-import { COLORS, ReceipeData } from "../constants";
-import { apiKeyAnneJu, apiKeySimon, apiKeyTheo ,apiKeyMael1, apiKeySimon2, apiKey} from "../constants/api";
+import { COLORS } from "../constants";
+import {apiKey} from "../constants/api";
+
 
 const Home = () => {
   const [mealData, setMealData] = useState(null);
@@ -32,7 +30,8 @@ const Home = () => {
 
   const getMeal = () => {
     fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=healthy&number=1&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=healthy&number=2&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true`
+
     )
     .then(response => response.json())
     .then((data) => {
@@ -59,11 +58,10 @@ const Home = () => {
             renderItem={({ item }) => <ReceipeCard data={item} />}
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
-            ListFooterComponent={<Footer/>}
             ListHeaderComponent={<HomeHeader onSearch={handleSearch} />}
+            ListFooterComponent={<View style={{margin:30}}></View>}
           />
         </View>
-
         <View
           style={{
             position: "absolute",
@@ -77,6 +75,7 @@ const Home = () => {
           <View
             style={{ height: 300, backgroundColor: COLORS.primary }} />
           <View style={{ flex: 1, backgroundColor: COLORS.primary }} />
+      
         </View>
 
       </View>

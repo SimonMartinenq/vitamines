@@ -4,7 +4,7 @@ import { auth , db} from '../firebase'
 import {CircleButton, ReceipeCard} from '../components'
 import { assets, COLORS, SIZES} from '../constants'
 import { useState , useEffect} from 'react'
-import { apiKeySimon } from '../constants/api'
+import { apiKey } from '../constants/api'
 
 const Favoris = ({ onSearch }) => {
     const navigation = useNavigation();
@@ -25,14 +25,13 @@ const Favoris = ({ onSearch }) => {
           let favTab = []
           array.forEach(element => {
             fetch(
-              `https://api.spoonacular.com/recipes/${element}/information?apiKey=${apiKeySimon}&includeNutrition=false`
+              `https://api.spoonacular.com/recipes/${element}/information?apiKey=${apiKey}&includeNutrition=false`
             )
-            //?apiKey=1271db9043d840aeaf257403b2962d77
             .then(response => response.json())
             .then((data) => {
               favTab.push(data)
               setMealData(favTab)
-              console.log("\n\n\n\n\n\n\n\n\n\n\nLISTS OF DISHES\n",favTab)
+              //console.log("\n\n\n\n\n\n\n\n\n\n\nLISTS OF DISHES\n",favTab)
             })
             .catch(() => {
               console.log("error")

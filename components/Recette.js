@@ -1,7 +1,7 @@
 import {React } from "react";
 import { View, Text, Image,StyleSheet, StatusBar,FlatList } from "react-native";
-
-import { COLORS, SIZES } from "../constants";
+import {RecaipeTitle } from "./SubInfo";
+import {COLORS, SIZES, FONTS } from "../constants";
 
 export const EtapeCard = ({ data }) => {
     return (
@@ -26,13 +26,23 @@ export const RecetteFooter = ({ data }) => {
       padding: SIZES.font,
     }}
     >
-        <FlatList
+      <Text style={{fontSize:20, fontWeight:'bold', marginTop:'5%', textAlign:'center'}}>Nutrients</Text>
+    
+      <View style={styles.align}>
+        <Text style={styles.txtnutrients}>{data.nutrition.nutrients[0].name} : {data.nutrition.nutrients[0].amount} {data.nutrition.nutrients[0].unit}</Text>
+        <Text style={styles.txtnutrients}>{data.nutrition.nutrients[3].name} : {data.nutrition.nutrients[3].amount} {data.nutrition.nutrients[3].unit}</Text>
+        <Text style={styles.txtnutrients}>{data.nutrition.nutrients[5].name} : {data.nutrition.nutrients[5].amount} {data.nutrition.nutrients[5].unit}</Text>
+        <Text style={styles.txtnutrients}>{data.nutrition.nutrients[10].name} : {data.nutrition.nutrients[10].amount} {data.nutrition.nutrients[10].unit}</Text>
+        <Text style={styles.txtnutrients}>{data.nutrition.nutrients[15].name} : {data.nutrition.nutrients[15].amount} {data.nutrition.nutrients[15].unit}</Text>
+      </View>
+
+        {/*<FlatList
           data={data.nutrition.nutrients}
           renderItem={({ item }) => <Text>{item.name} {item.amount} {item.unit} ({item.percentOfDailyNeeds}% of daily needs)</Text>}
           keyExtractor={(item) => item.name}
-          showsVerticalScrollIndicator={false}
-          
-      />
+          showsVerticalScrollIndicator={false}         
+        />*/}
+        
     </View>
   );
 };
@@ -97,6 +107,7 @@ export const RecetteHeader = ({ data }) => {
             ListHeaderComponent = {<Text style={styles.category}>Tools</Text>}
           />
         </View>
+
         <Text style={{fontSize:20, fontWeight:'bold', marginTop:'5%', textAlign:'center'}}> Preparation</Text>
     </View>
   );
@@ -151,6 +162,11 @@ const styles = StyleSheet.create({
   txtlist:{
     fontSize: 14,
     marginLeft: '15%',
+  },
+  txtnutrients:{
+    fontSize: 16,
+    textAlign: 'center',
+
   },
   txtstep:{
     fontSize: 14,
