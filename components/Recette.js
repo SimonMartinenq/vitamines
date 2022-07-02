@@ -1,38 +1,7 @@
 import {React } from "react";
 import { View, Text, Image,StyleSheet, StatusBar,FlatList } from "react-native";
-import { useState } from "react";
 import {RecaipeTitle } from "./SubInfo";
 import {COLORS, SIZES, FONTS } from "../constants";
-
-const DetailsDesc = ({ data }) => {  const [text, setText] = useState(data.description.slice(0, 100));  const [readMore, setReadMore] = useState(false);
-  return (
-  <>      
-    <View style={{ marginVertical: SIZES.extraLarge * 1.5 }}>
-      <Text  style={{fontSize: SIZES.font, fontFamily: FONTS.semiBold, color: COLORS.primary}}>Description</Text>
-      <View style={{marginTop: SIZES.base}}>
-        <Text style={{color: COLORS.secondary, fontSize: SIZES.small, fontFamily: FONTS.regular, lineHeight: SIZES.large}}>
-          {text}{!readMore && "..."}
-          <Text  style={{color: COLORS.primary, fontSize: SIZES.small, fontFamily: FONTS.semiBold}} 
-            onPress={() => {
-              if (!readMore) {
-                setText(data.description); 
-                setReadMore(true);
-              } 
-              else {
-                setText(data.description.slice(0, 100)); 
-                setReadMore(false);
-                }
-            }}>              
-            {readMore ? " Show Less" : " Read More"}
-          </Text>
-        </Text>
-      </View>
-    </View>
-  </>);
-};
-
-
-export default DetailsDesc;
 
 export const EtapeCard = ({ data }) => {
     return (
@@ -57,13 +26,23 @@ export const RecetteFooter = ({ data }) => {
       padding: SIZES.font,
     }}
     >
-        <FlatList
+      <Text style={{fontSize:20, fontWeight:'bold', marginTop:'5%', textAlign:'center'}}>Nutrients</Text>
+    
+      <View style={styles.align}>
+        <Text style={styles.txtnutrients}>{data.nutrition.nutrients[0].name} : {data.nutrition.nutrients[0].amount} {data.nutrition.nutrients[0].unit}</Text>
+        <Text style={styles.txtnutrients}>{data.nutrition.nutrients[3].name} : {data.nutrition.nutrients[3].amount} {data.nutrition.nutrients[3].unit}</Text>
+        <Text style={styles.txtnutrients}>{data.nutrition.nutrients[5].name} : {data.nutrition.nutrients[5].amount} {data.nutrition.nutrients[5].unit}</Text>
+        <Text style={styles.txtnutrients}>{data.nutrition.nutrients[10].name} : {data.nutrition.nutrients[10].amount} {data.nutrition.nutrients[10].unit}</Text>
+        <Text style={styles.txtnutrients}>{data.nutrition.nutrients[15].name} : {data.nutrition.nutrients[15].amount} {data.nutrition.nutrients[15].unit}</Text>
+      </View>
+
+        {/*<FlatList
           data={data.nutrition.nutrients}
           renderItem={({ item }) => <Text>{item.name} {item.amount} {item.unit} ({item.percentOfDailyNeeds}% of daily needs)</Text>}
           keyExtractor={(item) => item.name}
-          showsVerticalScrollIndicator={false}
-          
-      />
+          showsVerticalScrollIndicator={false}         
+        />*/}
+        
     </View>
   );
 };
@@ -183,6 +162,11 @@ const styles = StyleSheet.create({
   txtlist:{
     fontSize: 14,
     marginLeft: '15%',
+  },
+  txtnutrients:{
+    fontSize: 16,
+    textAlign: 'center',
+
   },
   txtstep:{
     fontSize: 14,
