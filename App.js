@@ -9,7 +9,7 @@ import LoginScreen from "./screens/LoginScreen";
 import SignUp from "./screens/SignUp";
 import Favoris from "./screens/Favoris";
 import UserInfo from "./screens/UserInfo";
-import EditProfil from "./screens/EditProfil"
+import EditProfil from "./screens/EditProfil";
 import { StatusBar } from "react-native";
 import { COLORS } from "./constants";
 import ForgotPassword from "./screens/ForgotPassword";
