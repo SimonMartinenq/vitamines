@@ -41,8 +41,6 @@ const HomeHeader = ({ onSearch }) => {
     >
       <View
         style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
           alignItems: "center",
         }}
       >
@@ -52,30 +50,6 @@ const HomeHeader = ({ onSearch }) => {
           resizeMode="contain"
           style={{ width: 60, height: 60 }}
         />
-        
-
-        <TouchableOpacity onPress={() => navigation.navigate(UserInfo)}>
-          <Image
-            source={assets.userIcon}
-            resizeMode="contain"
-            style={{
-              width: 50, 
-              height: 50
-            }}
-          />
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => navigation.navigate(Meal_plan)}>
-          <Image
-            source={assets.aboutus}
-            resizeMode="contain"
-            style={{
-              width: 50, 
-              height: 50
-            }}
-          />
-        </TouchableOpacity>
-
       </View>
 
       <View style={{ marginVertical: SIZES.font }}>

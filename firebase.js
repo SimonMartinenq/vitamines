@@ -11,6 +11,7 @@ import 'firebase/firestore';
 const firebaseConfig = {
     apiKey: "AIzaSyAmeSq7qLG26udfnC_ssV9io2Cqkm1NjI4",
     authDomain: "vitamines-2d9ef.firebaseapp.com",
+    databaseURL: "https://vitamines-2d9ef-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "vitamines-2d9ef",
     storageBucket: "vitamines-2d9ef.appspot.com",
     messagingSenderId: "548592613043",
