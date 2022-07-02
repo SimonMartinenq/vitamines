@@ -1,9 +1,7 @@
-import React, { useEffect , useState} from 'react'
+import React, { useState} from 'react'
 import { View,Text, KeyboardAvoidingView, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { auth } from '../firebase'
-import { CircleButton } from '../components'
-import { assets } from '../constants'
 
 function ForgotPassword() {
 
