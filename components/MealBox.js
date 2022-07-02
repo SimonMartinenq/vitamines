@@ -1,49 +1,33 @@
-import { useNavigation } from "@react-navigation/native";
-import { View, Image , Text, TouchableOpacity, StyleSheet} from "react-native";
+import { View, Image , Text, TouchableOpacity, StyleSheet, Linking} from "react-native";
 
-import {apiKey} from "../constants/api";
-import { useState, useEffect } from "react";
+import { assets } from "../constants";
 
 
 function MealBox ({meal}) {
-  const navigation = useNavigation();
-  const [data, setMealData] = useState(null);
-  
-  const getMeal = () => {
-    fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${meal.title}&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true`
-    )
-    .then(response => response.json())
-    .then((snap) => {
-        console.log("\n\n\n\n\n\n\n\n\n\n\nRecette du jour\n",snap.results)
-        setMealData(snap.results[0])
-    })
-    .catch(() => {
-      console.log("recette not found")
-    })
-  };
-  useEffect(() => {
-    getMeal();
-  }, []);
-
   return (
-            <TouchableOpacity onPress={() => navigation.navigate("Details", {data})}>
+          <TouchableOpacity onPress={() => Linking.openURL(meal.sourceUrl)}>
                 <View style={{height:200, width:260,marginBottom: 10, borderColor:'black', borderWidth: 1, borderRadius: 30, backgroundColor:"#F7F5F5"}}>
                 <View style={{flex:1, paddingLeft: 10,paddingRight:10, paddingTop: 10}}>
                     <Text style={{textAlign:'center', fontWeight: 'bold'}}>{meal.title}</Text>
                     <View style={styles.align}>
                         <View>
-                            <Image 
-                                style={styles.imagelogoleft}
-                                source={{uri : data?.image}}
+                            <Image
+                            source={assets.timer}
+                            style={styles.imagelogo}
                             />
+                            <Text>{meal.readyInMinutes}</Text>
+                        </View>
+                        <View>
+                            <Image
+                            source={assets.userIcon}
+                            style={styles.imagelogo}
+                            />
+                            <Text>{meal.servings} person</Text>
                         </View>
                         <View style={styles.txtbox}>
-                            
                                 <Text style={{fontSize: 12, color:'black', textAlign: "center", padding: 2}}>
                                     Click to see your meal in details
                                 </Text>
-                            
                         </View>
                     </View>
                 </View>
