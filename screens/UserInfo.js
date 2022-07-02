@@ -1,17 +1,14 @@
 import { View , Text, Image, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import Favoris from "../screens/Favoris"
 
 import { auth , db} from '../firebase'
-import { CircleButton} from '../components'
-import { assets } from '../constants'
 import { useState , useEffect} from 'react'
 
 
 
-export default function UserInfo() {
+export default function UserInfo({navigation}) {
 
-  const navigation = useNavigation();
+  //const navigation = useNavigation();
   const [user,setUser] = useState(null);
   const handleSignOut = () => {
     auth
@@ -59,7 +56,7 @@ export default function UserInfo() {
         <View style={styles.userBtnWrapper}>
           <TouchableOpacity 
             style={styles.userBtn} 
-            onPress={() => {navigation.navigate('EditProfil')}}>
+            onPress={() => navigation.navigate('EditProfilScreen')}>
             <Text style={styles.userBtnTxt}>
               Modify the profile
             </Text>

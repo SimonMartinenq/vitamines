@@ -3,14 +3,12 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet } from "react-native";
-import Home from "./screens/Home";
-import Favoris from "./screens/Favoris";
-import UserInfo from "./screens/UserInfo";
 import { StatusBar} from "react-native";
-import { assets, COLORS } from "./constants";
+import { COLORS } from "./constants";
 import About_us from "./screens/About_us";
 import Meal_plan from "./screens/Meal_plan";
 import { useFonts } from "expo-font";
+import { ProfileNavigation,HomeNavigation,FavorisNavigation } from "./CustomNavigation";
 
 const theme = {
   ...DefaultTheme,
@@ -41,7 +39,7 @@ const App = () => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-          if (route.name === 'Home') {
+          if (route.name === 'HomeNavigation') {
             iconName = focused
               ? 'ios-home'
               : 'ios-home-outline';
@@ -49,11 +47,11 @@ const App = () => {
             iconName = focused
               ? 'ios-information-circle'
               : 'ios-information-circle-outline';
-          }else if (route.name === 'UserInfo') {
+          }else if (route.name === 'ProfileNavigation') {
             iconName = focused
               ? 'ios-person'
               : 'ios-person-outline';
-          }else if (route.name === 'Favoris') {
+          }else if (route.name === 'FavorisNavigation') {
             iconName = focused
               ? 'ios-heart'
               : 'ios-heart-outline';
@@ -74,9 +72,9 @@ const App = () => {
       })}
       initialRouteName="LoginScreen"
       >
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="UserInfo" component={UserInfo} />
-        <Tab.Screen name="Favoris" component={Favoris} />
+        <Tab.Screen name="HomeNavigation" component={HomeNavigation} />
+        <Tab.Screen name="ProfileNavigation" component={ProfileNavigation} />
+        <Tab.Screen name="FavorisNavigation" component={FavorisNavigation} />
         <Tab.Screen name="Meal_plan" component={Meal_plan} />
         <Tab.Screen name="About_us" component={About_us} />
       </Tab.Navigator>

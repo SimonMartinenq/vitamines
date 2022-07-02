@@ -1,7 +1,7 @@
 import { View , SafeAreaView,Image, TextInput, Text, StyleSheet, FlatList} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { auth , db} from '../firebase'
-import {CircleButton, MealCard} from '../components'
+import {CircleButton, ReceipeCard} from '../components'
 import { assets, COLORS, SIZES} from '../constants'
 import { useState , useEffect} from 'react'
 import { apiKey } from '../constants/api'
@@ -27,12 +27,11 @@ const Favoris = ({ onSearch }) => {
             fetch(
               `https://api.spoonacular.com/recipes/${element}/information?apiKey=${apiKey}&includeNutrition=false`
             )
-            //?apiKey=1271db9043d840aeaf257403b2962d77
             .then(response => response.json())
             .then((data) => {
               favTab.push(data)
               setMealData(favTab)
-              console.log("\n\n\n\n\n\n\n\n\n\n\nLISTS OF DISHES\n",favTab)
+              //console.log("\n\n\n\n\n\n\n\n\n\n\nLISTS OF DISHES\n",favTab)
             })
             .catch(() => {
               console.log("error")
@@ -53,7 +52,7 @@ const Favoris = ({ onSearch }) => {
                 <Text style={styles.textFav}>Your favorites</Text>
                 <FlatList
                   data={mealData}
-                  renderItem={({ item }) => <MealCard data={item} />}
+                  renderItem={({ item }) => <ReceipeCard data={item} />}
                   keyExtractor={(item) => item.id}
                   showsVerticalScrollIndicator={false}
                 />

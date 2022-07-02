@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { View, SafeAreaView, FlatList} from "react-native";
 
 
-import { NFTCard, HomeHeader, FocusedStatusBar } from "../components";
-import { COLORS, NFTData } from "../constants";
+import { ReceipeCard, HomeHeader, FocusedStatusBar } from "../components";
+import { COLORS } from "../constants";
 import {apiKey} from "../constants/api";
 
 
@@ -59,9 +59,9 @@ const Home = () => {
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
             ListHeaderComponent={<HomeHeader onSearch={handleSearch} />}
+            ListFooterComponent={<View style={{margin:30}}></View>}
           />
         </View>
-
         <View
           style={{
             position: "absolute",
@@ -75,6 +75,7 @@ const Home = () => {
           <View
             style={{ height: 300, backgroundColor: COLORS.primary }} />
           <View style={{ flex: 1, backgroundColor: COLORS.primary }} />
+      
         </View>
 
       </View>
