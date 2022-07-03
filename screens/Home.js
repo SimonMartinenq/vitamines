@@ -10,19 +10,20 @@ import {apiKey} from "../constants/api";
 const Home = () => {
   const [mealData, setMealData] = useState(null);
   
+  
   const handleSearch = (value) => {
     if (value.length === 0) {
-      setReceipeData(ReceipeData);
+      setMealData(mealData);
     }
 
-    const filteredData = ReceipeData.filter((item) =>
-      item.name.toLowerCase().includes(value.toLowerCase())
+    const filteredData = mealData.filter((item) =>
+      item.title.toLowerCase().includes(value.toLowerCase())
     );
 
     if (filteredData.length === 0) {
-      setReceipeData(ReceipeData);
+      setMealData(mealData);
     } else {
-      setReceipeData(filteredData);
+      setMealData(filteredData);
     }
   };
 
@@ -35,7 +36,7 @@ const Home = () => {
     )
     .then(response => response.json())
     .then((data) => {
-      //console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",data)
+      console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",data)
       setMealData(data.results)
     })
     .catch(() => {

@@ -1,16 +1,29 @@
-import { View , SafeAreaView,Image, TextInput, Text, StyleSheet, FlatList} from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import { View , SafeAreaView,Image, TextInput, Text, StyleSheet, FlatList, ScrollView} from 'react-native'
 import { auth , db} from '../firebase'
 import {CircleButton, ReceipeCard} from '../components'
 import { assets, COLORS, SIZES} from '../constants'
 import { useState , useEffect} from 'react'
 import { apiKey } from '../constants/api'
 
-const Favoris = ({ onSearch }) => {
-    const navigation = useNavigation();
+const Favoris = () => {
     const [mealData,setMealData] = useState(null);
     const [nbrFav, setNbrFav] = useState(0)
-      
+    
+    const handleSearch = (value) => {
+      if (value.length === 0) {
+        setMealData(mealData);
+      }
+      const filteredData = mealData.filter((item) =>
+        item.results[0].title.toLowerCase().includes(value.toLowerCase())
+      );
+  
+      if (filteredData.length === 0) {
+        setMealData(mealData);
+      } else {
+        setMealData(filteredData);
+      }
+    };
+
     const getFavoris = async () => {
     db
         .collection('Users')
@@ -25,7 +38,8 @@ const Favoris = ({ onSearch }) => {
           let favTab = []
           array.forEach(element => {
             fetch(
-              `https://api.spoonacular.com/recipes/${element}/information?apiKey=${apiKey}&includeNutrition=false`
+              `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&titleMatch=${element}&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true`
+
             )
             .then(response => response.json())
             .then((data) => {
@@ -52,7 +66,7 @@ const Favoris = ({ onSearch }) => {
                 <Text style={styles.textFav}>Your favorites</Text>
                 <FlatList
                   data={mealData}
-                  renderItem={({ item }) => <ReceipeCard data={item} />}
+                  renderItem={({ item }) => <ReceipeCard data={item.results[0]} />}
                   keyExtractor={(item) => item.id}
                   showsVerticalScrollIndicator={false}
                 />
@@ -81,14 +95,12 @@ const Favoris = ({ onSearch }) => {
     <SafeAreaView style={{backgroundColor: COLORS.primary}}>
         <View style={styles.container}>
             <View style={{backgroundColor: COLORS.primary, alignItems: 'center'}}>
-                 <CircleButton
-                    imgUrl={assets.left}
-                    handlePress={() => navigation.goBack("Home")}
-                    left={15}
-                />
                 <Text style={styles.textnavbar}> Favorites </Text>
             </View>
-            <View style={{ marginTop: SIZES.font }}>
+            <View style={{ 
+              marginTop: SIZES.font,
+              width:"90%"
+              }}>
                 <View
                     style={styles.searchBarFav}
                 >
@@ -98,12 +110,12 @@ const Favoris = ({ onSearch }) => {
                     style={{ width: 20, height: 20, marginRight: SIZES.base }}
                 />
                 <TextInput
-                    placeholder="Find a recipe, a food,..."
+                    placeholder="Search through your favorites"
                     placeholderTextColor="gray"
                     style={{ 
                     flex: 1,
                     }}
-                    onChangeText={onSearch}
+                    onChangeText={handleSearch}
                 />
                 </View>
             </View>
@@ -123,6 +135,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: '20%',
     backgroundColor: COLORS.primary,
+    alignItems:'center'
   },
   navbarfav:{
     width: "100%",

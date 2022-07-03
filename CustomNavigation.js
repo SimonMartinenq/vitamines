@@ -69,7 +69,12 @@ export {ProfileNavigation}
 
 const FavorisNavigation = () => {
     return(
-        <Stack.Navigator>
+        <Stack.Navigator
+        screenOptions={{
+            headerShown: false
+        }}
+        initialRouteName="Favoris"
+        >
             <Stack.Screen 
                 name="Favoris"
                 component={Favoris}

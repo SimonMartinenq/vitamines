@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native'
 
 import { auth , db} from '../firebase'
 import { useState , useEffect} from 'react'
-import TagInput from '../components/TagInput';
 
 
 

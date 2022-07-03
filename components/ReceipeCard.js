@@ -29,14 +29,14 @@ const ReceipeCard = ({ data }) => {
         })
       .then((dic) => {
         const fav = dic.favoris
-        if(fav.includes(data.id) !== true){
-          fav.push(data.id)
+        if(fav.includes(data.title) !== true){
+          fav.push(data.title)
           db.collection('Users').doc(auth.currentUser.uid).update({favoris:fav})
           setFavColor(assets.heart)
           console.log("favoris add")
         }else{
           db.collection('Users').doc(auth.currentUser.uid).update({
-            favoris:firebase.firestore.FieldValue.arrayRemove(data.id)
+            favoris:firebase.firestore.FieldValue.arrayRemove(data.title)
           })
           setFavColor(assets.heartEmpty)
           console.log("favoris remove")
@@ -66,7 +66,7 @@ const ReceipeCard = ({ data }) => {
   useEffect(() => {
     updateColor();
   }, []);
-
+  console.log("favori 1 ou 2",data)
   return (
     <View
       style={{
