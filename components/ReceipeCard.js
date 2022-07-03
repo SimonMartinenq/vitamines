@@ -66,7 +66,7 @@ const ReceipeCard = ({ data }) => {
   useEffect(() => {
     updateColor();
   }, []);
-  console.log("favori 1 ou 2",data)
+  //console.log("favori 1 ou 2",data)
   return (
     <View
       style={{

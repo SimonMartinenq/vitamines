@@ -1,5 +1,4 @@
 import badge from "../assets/icons/badge.png";
-import eth from "../assets/icons/eth.png";
 import heart from "../assets/icons/heart.png";
 import heartEmpty from "../assets/icons/heartEmpty.png"
 import left from "../assets/icons/left.png";
@@ -12,26 +11,19 @@ import aboutus from "../assets/icons/aboutus.png";
 import favIcon from "../assets/icons/favicon.png";
 import heartbroken from "../assets/icons/heartbroken.png";
 import timer from "../assets/icons/timer.png"
+import CO2 from "../assets/images/CO2.png"
 
+// team
+import AnneJu from "../assets/users/Anne-ju.png"
+import Mael from "../assets/users/Mael.png"
+import Mike from "../assets/users/Mike.png"
+import Simon from "../assets/users/Simon.png"
+import Vivi from "../assets/users/Vivi.png"
+import Theo from "../assets/users/Theo.png"
 
-
-
-import Receipe01 from "../assets/images/recette01.jpeg";
-import Receipe02 from "../assets/images/recette02.jpeg";
-import Receipe03 from "../assets/images/recette03.jpeg";
-import Receipe04 from "../assets/images/recette04.jpeg";
-import Receipe05 from "../assets/images/Receipe05.jpeg";
-import Receipe06 from "../assets/images/Receipe06.jpeg";
-import Receipe07 from "../assets/images/Receipe07.jpeg";
-
-import person01 from "../assets/images/person01.png";
-import person02 from "../assets/images/person02.png";
-import person03 from "../assets/images/person03.png";
-import person04 from "../assets/images/person04.png";
 
 export default {
     badge,
-    eth,
     heart,
     heartEmpty,
     left,
@@ -40,23 +32,17 @@ export default {
     logo,
     userIcon,
     timer,
-
+    CO2,
     aboutus,
 
     favIcon,
     heartbroken,
 
+    AnneJu,
+    Mael,
+    Mike,
+    Simon,
+    Vivi,
+    Theo,
 
-    Receipe01,
-    Receipe02,
-    Receipe03,
-    Receipe04,
-    Receipe05,
-    Receipe06,
-    Receipe07,
-
-    person01,
-    person02,
-    person03,
-    person04,
 };

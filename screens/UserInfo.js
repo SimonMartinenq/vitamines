@@ -43,11 +43,11 @@ export default function UserInfo() {
         >
         <Image 
           style={styles.userImg} 
-          source={require('../assets/users/vivi.jpg')}
+          source={require('../assets/icons/user.png')}
         />
         <Text style={styles.userName}>{user?.prenom} {user?.nom}</Text>
         <Text style={styles.userEmail}>
-          {/* on mets ? au cas ou l'email est undefine */}
+
           {auth.currentUser?.email} 
         </Text>
         <Text style={styles.aboutUser}>

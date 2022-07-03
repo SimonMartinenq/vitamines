@@ -1,7 +1,6 @@
 import {React } from "react";
-import { View, Text, Image,StyleSheet, StatusBar,FlatList,Button,Linking } from "react-native";
-import {RecaipeTitle } from "./SubInfo";
-import {COLORS, SIZES, FONTS } from "../constants";
+import { View, Text, Image,StyleSheet,FlatList,Button,Linking } from "react-native";
+import {COLORS, SIZES, assets} from "../constants";
 
 export const EtapeCard = ({ data }) => {
     return (
@@ -45,7 +44,6 @@ export const RecetteFooter = ({ data }) => {
         <View
         style={{
           alignItems:"center",
-          marginBottom:100
         }}
         >
           <Button
@@ -54,6 +52,15 @@ export const RecetteFooter = ({ data }) => {
           />
         </View>
         
+        <View style={{justifyContent:'center',
+        alignItems:'center',
+        marginBottom:'25%'}}>
+          <Image 
+          source={assets.CO2}
+          style={styles.image}
+          />
+        </View> 
+
     </View>
   );
 };
