@@ -62,7 +62,8 @@ const Favoris = () => {
     function AffichageFav(){
         if (nbrFav){
             return (
-               <View style={{backgroundColor:COLORS.primary}}>
+
+               <View style={{backgroundColor:COLORS.primary, }}>
                 <Text style={styles.textFav}>Your favorites</Text>
                 <FlatList
                   data={mealData}
@@ -100,7 +101,7 @@ const Favoris = () => {
             </View>
             <View style={{ 
               marginTop: SIZES.font,
-              width:"90%"
+              width:"90%",
               }}>
                 <View
                     style={styles.searchBarFav}
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
   navbarfav:{
     width: "100%",
     height: "20%",
-    marginTop: 10,
+    marginTop: 8,
     backgroundColor: COLORS.primary,
   },
   textnavbar:{
@@ -152,6 +153,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: "auto",
     marginBottom: "auto",
+    color: 'white',
   },
   textFav:{
     width: "70%",
@@ -159,9 +161,10 @@ const styles = StyleSheet.create({
     marginLeft: "auto",
     fontSize:18,
     fontWeight: 'bold',
-    padding:5,
+    padding:10,
     justifyContent:"center",
     textAlign: "center",
+    color:'white',
   },
   searchBarFav:{
     width: "100%",
@@ -171,7 +174,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: SIZES.font,
     paddingVertical: SIZES.small - 2,
-    marginTop: "5%",
+    marginTop: "1%",
   },
   containerFav:{
     flex: 1,
