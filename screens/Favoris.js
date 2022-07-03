@@ -125,6 +125,9 @@ const Favoris = () => {
         <View style={{ width:"100%", height:"80%", backgroundColor: COLORS.primary}}> 
             <AffichageFav/>
         </View> 
+        <View style={{ height: '9%', backgroundColor: COLORS.primary }} >
+          
+        </View>
     </SafeAreaView>
   );
 };
@@ -146,6 +149,7 @@ const styles = StyleSheet.create({
   },
   textnavbar:{
     fontSize:25,
+    fontWeight: 'bold',
     marginTop: "auto",
     marginBottom: "auto",
   },
@@ -154,6 +158,7 @@ const styles = StyleSheet.create({
     marginRight:"auto",
     marginLeft: "auto",
     fontSize:18,
+    fontWeight: 'bold',
     padding:5,
     justifyContent:"center",
     textAlign: "center",
