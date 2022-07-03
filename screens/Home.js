@@ -3,18 +3,30 @@ import { View, SafeAreaView, FlatList} from "react-native";
 import { ReceipeCard, HomeHeader, FocusedStatusBar } from "../components";
 import { COLORS } from "../constants";
 import {apiKey} from "../constants/api";
-
+import { db,auth } from "../firebase";
 
 const Home = () => {
   const [mealData, setMealData] = useState(null);
+  const [user,setUser] = useState(null);
+
   
+  const getUser = async () => {
+      db
+        .collection('Users')
+        .doc(auth.currentUser.uid)
+        .get()
+        .then((querySnapshot) => {
+            const dic = querySnapshot.data()
+            setUser(dic);
+          });
+  };
   
   const handleSearch = (value) => {
     if (value.length === 0) {
       setMealData(mealData);
     }
     fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&titleMatch=${value}&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true&instructionsRequired=true&number=2`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&titleMatch=${value}&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true&instructionsRequired=true&number=2&intolerances=${user?.intolerence}&diet=${user?.diet}`
         
     )
     .then(response => response.json())
@@ -27,11 +39,9 @@ const Home = () => {
     })
   };
 
-
-
   const getMeal = () => {
     fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=healthy&number=2&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=healthy&number=2&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true&intolerances=${user?.intolerence}&diet=${user?.diet}`
         
     )
     .then(response => response.json())
@@ -46,6 +56,7 @@ const Home = () => {
 
   useEffect(() => {
     getMeal();
+    getUser();
   }, []);
 
   return (

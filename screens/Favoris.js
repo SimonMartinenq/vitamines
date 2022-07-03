@@ -60,11 +60,9 @@ const Favoris = () => {
     }, []);
 
     function AffichageFav(){
-        if (nbrFav){
+        if (nbrFav>0){
             return (
-
-               <View style={{backgroundColor:COLORS.primary, }}>
-                <Text style={styles.textFav}>Your favorites</Text>
+               <View style={{backgroundColor:COLORS.primary}}>
                 <FlatList
                   data={mealData}
                   renderItem={({ item }) => <ReceipeCard data={item.results[0]} />}
