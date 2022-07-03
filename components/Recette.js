@@ -1,5 +1,5 @@
 import {React } from "react";
-import { View, Text, Image,StyleSheet, StatusBar,FlatList } from "react-native";
+import { View, Text, Image,StyleSheet, StatusBar,FlatList,Button,Linking } from "react-native";
 import {RecaipeTitle } from "./SubInfo";
 import {COLORS, SIZES, FONTS } from "../constants";
 
@@ -27,7 +27,7 @@ export const RecetteFooter = ({ data }) => {
     }}
     >
       <Text style={{fontSize:20, fontWeight:'bold', marginTop:'5%', textAlign:'center'}}>Nutrients</Text>
-    
+ 
       <View style={styles.align}>
         <Text style={styles.txtnutrients}>{data.nutrition.nutrients[0].name} : {data.nutrition.nutrients[0].amount} {data.nutrition.nutrients[0].unit}</Text>
         <Text style={styles.txtnutrients}>{data.nutrition.nutrients[3].name} : {data.nutrition.nutrients[3].amount} {data.nutrition.nutrients[3].unit}</Text>
@@ -42,6 +42,17 @@ export const RecetteFooter = ({ data }) => {
           keyExtractor={(item) => item.name}
           showsVerticalScrollIndicator={false}         
         />*/}
+        <View
+        style={{
+          alignItems:"center",
+          marginBottom:100
+        }}
+        >
+          <Button
+          title="View original reciepe"
+          onPress={()=> Linking.openURL(data.sourceUrl)}
+          />
+        </View>
         
     </View>
   );

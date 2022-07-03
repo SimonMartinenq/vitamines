@@ -10,20 +10,23 @@ import {apiKey} from "../constants/api";
 const Home = () => {
   const [mealData, setMealData] = useState(null);
   
+  
   const handleSearch = (value) => {
     if (value.length === 0) {
-      setReceipeData(ReceipeData);
+      setMealData(mealData);
     }
-
-    const filteredData = ReceipeData.filter((item) =>
-      item.name.toLowerCase().includes(value.toLowerCase())
-    );
-
-    if (filteredData.length === 0) {
-      setReceipeData(ReceipeData);
-    } else {
-      setReceipeData(filteredData);
-    }
+    fetch(
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&titleMatch=${value}&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true&instructionsRequired=true&number=2`
+        
+    )
+    .then(response => response.json())
+    .then((data) => {
+      console.log("\n\n\n\n\n\n\n\n\n\n\ninfos recettes\n",data)
+      setMealData(data.results)
+    })
+    .catch(() => {
+      console.log("error")
+    })
   };
 
 
@@ -31,7 +34,7 @@ const Home = () => {
   const getMeal = () => {
     fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=healthy&number=2&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true`
-
+        
     )
     .then(response => response.json())
     .then((data) => {

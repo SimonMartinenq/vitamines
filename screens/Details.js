@@ -1,5 +1,5 @@
 
-import { StatusBar, FlatList ,StyleSheet,View} from "react-native";
+import { StatusBar, FlatList ,StyleSheet,View,Text} from "react-native";
 
 import { FocusedStatusBar } from "../components";
 
@@ -23,6 +23,7 @@ const Details = ({ route }) => {
           ListHeaderComponent={<RecetteHeader data={data} />}
           ListFooterComponent={<RecetteFooter data={data} />}
       />
+
     </View>
   );
 };
