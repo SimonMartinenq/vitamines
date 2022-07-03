@@ -1,19 +1,12 @@
-
-
-import Home from "./screens/Home";
-import Details from "./screens/Details";
-import LoginScreen from "./screens/LoginScreen";
-import SignUp from "./screens/SignUp";
-import Favoris from "./screens/Favoris";
-import UserInfo from "./screens/UserInfo";
-import EditProfil from "./screens/EditProfil";
-import { StatusBar } from "react-native";
-
+import { StatusBar ,StyleSheet} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "./constants";
 import About_us from "./screens/About_us";
 import Meal_plan from "./screens/Meal_plan";
 import { useFonts } from "expo-font";
 import { ProfileNavigation,HomeNavigation,FavorisNavigation } from "./CustomNavigation";
+import { DefaultTheme,NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const theme = {
   ...DefaultTheme,
@@ -23,7 +16,6 @@ const theme = {
   },
 };
 
-//const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const App = () => {
   const [loaded] = useFonts({
