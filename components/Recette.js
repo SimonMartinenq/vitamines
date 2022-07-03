@@ -1,5 +1,5 @@
 import {React } from "react";
-import { View, Text, Image,StyleSheet, StatusBar,FlatList } from "react-native";
+import { View, Text, Image,StyleSheet, StatusBar,FlatList,Button,Linking } from "react-native";
 import {RecaipeTitle } from "./SubInfo";
 import {COLORS, SIZES, FONTS } from "../constants";
 
@@ -42,6 +42,17 @@ export const RecetteFooter = ({ data }) => {
           keyExtractor={(item) => item.name}
           showsVerticalScrollIndicator={false}         
         />*/}
+        <View
+        style={{
+          alignItems:"center",
+          marginBottom:100
+        }}
+        >
+          <Button
+          title="View original reciepe"
+          onPress={()=> Linking.openURL(data.sourceUrl)}
+          />
+        </View>
         
     </View>
   );
