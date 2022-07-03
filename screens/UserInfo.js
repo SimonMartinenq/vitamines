@@ -3,7 +3,8 @@ import { useNavigation } from '@react-navigation/native'
 
 import { auth , db} from '../firebase'
 import { useState , useEffect} from 'react'
-
+import { FocusedStatusBar } from '../components'
+import { COLORS } from '../constants'
 
 
 export default function UserInfo() {
@@ -35,8 +36,8 @@ export default function UserInfo() {
   }, []);
 
   return (
-    <SafeAreaView style={{top:"5%"}}>
-    
+    <SafeAreaView style={{top:"5%",backgroundColor:"#E5E4E4", height:"100%", marginTop:-50}}>
+      <FocusedStatusBar backgroundColor={COLORS.gray} />
       <ScrollView
         contentContainerStyle={{alignItems:'center'}}
         showsVerticalScrollIndicator={false}

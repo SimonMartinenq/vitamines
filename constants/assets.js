@@ -12,6 +12,8 @@ import favIcon from "../assets/icons/favicon.png";
 import heartbroken from "../assets/icons/heartbroken.png";
 import timer from "../assets/icons/timer.png"
 import CO2 from "../assets/images/CO2.png"
+import meal from "../assets/icons/meal.png"
+import healthyEating from '../assets/icons/healthy-eating.png'
 
 // team
 import AnneJu from "../assets/users/Anne-ju.png"
@@ -31,9 +33,11 @@ export default {
 
     logo,
     userIcon,
+    healthyEating,
     timer,
     CO2,
     aboutus,
+    meal,
 
     favIcon,
     heartbroken,

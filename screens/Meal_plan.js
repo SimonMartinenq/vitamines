@@ -12,7 +12,7 @@ const Meal_plan = () => {
           )
           .then(response => response.json())
           .then((data) => {
-            console.log("\n\n\n\n\n\n\n\n\n\n\n\nmeal plan",data)
+            //console.log("\n\n\n\n\n\n\n\n\n\n\n\nmeal plan",data)
             setMealPlan(data)
           })
           .catch(() => {
