@@ -1,12 +1,8 @@
 import { StatusBar ,StyleSheet} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { COLORS } from "./constants";
-import About_us from "./screens/About_us";
-import Meal_plan from "./screens/Meal_plan";
 import { useFonts } from "expo-font";
-import { ProfileNavigation,HomeNavigation,FavorisNavigation } from "./CustomNavigation";
 import { DefaultTheme,NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
+import { UserConnectedNavigation, UserNotConnectedNavigation } from "./CustomNavigation";
 
 const theme = {
   ...DefaultTheme,
@@ -16,7 +12,7 @@ const theme = {
   },
 };
 
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 const App = () => {
   const [loaded] = useFonts({
     InterBold: require("./assets/fonts/Inter-Bold.ttf"),
@@ -31,50 +27,21 @@ const App = () => {
     <NavigationContainer theme={theme}>
       <StatusBar
         barStyle={'dark-content'}/>
-      <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
-          if (route.name === 'HomeNavigation') {
-            iconName = focused
-              ? 'ios-home'
-              : 'ios-home-outline';
-          } else if (route.name === 'About_us') {
-            iconName = focused
-              ? 'ios-information-circle'
-              : 'ios-information-circle-outline';
-          }else if (route.name === 'ProfileNavigation') {
-            iconName = focused
-              ? 'ios-person'
-              : 'ios-person-outline';
-          }else if (route.name === 'FavorisNavigation') {
-            iconName = focused
-              ? 'ios-heart'
-              : 'ios-heart-outline';
-          }else if (route.name === 'Meal_plan') {
-            iconName = focused
-              ? 'ios-calendar'
-              : 'ios-calendar-outline';
-          }
-
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color}/>;
-        },
-        tabBarActiveTintColor: COLORS.primary,
-        tabBarInactiveTintColor: 'gray',
-        headerShown: false,
-        tabBarShowLabel:false,
-        tabBarStyle:styles.navigator
-      })}
-      initialRouteName="LoginScreen"
-      >
-        <Tab.Screen name="HomeNavigation" component={HomeNavigation} />
-        <Tab.Screen name="ProfileNavigation" component={ProfileNavigation} />
-        <Tab.Screen name="FavorisNavigation" component={FavorisNavigation} />
-        <Tab.Screen name="Meal_plan" component={Meal_plan} />
-        <Tab.Screen name="About_us" component={About_us} />
-      </Tab.Navigator>
+              <Stack.Navigator
+        screenOptions={{
+            headerShown: false
+        }}
+        initialRouteName="UserNotConnectedNavigation"
+        >
+            <Stack.Screen 
+                name="UserNotConnectedNavigation"
+                component={UserNotConnectedNavigation}
+            />
+            <Stack.Screen
+                name="UserConnectedNavigation"
+                component={UserConnectedNavigation}
+            />
+        </Stack.Navigator>
     </NavigationContainer>
     
   );

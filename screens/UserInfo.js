@@ -14,7 +14,7 @@ export default function UserInfo() {
     auth
       .signOut()
       .then(()=>{
-        navigation.replace("LoginScreen")
+        navigation.replace("UserNotConnectedNavigation")
       })
       .catch(error => alert(error.message))
   }
