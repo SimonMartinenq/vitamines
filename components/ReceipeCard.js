@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, Image } from "react-native";
+import { View, Image,Linking} from "react-native";
 
 import { COLORS, SIZES, SHADOWS, assets } from "../constants";
 import { SubInfo, ReceipeTitle } from "./SubInfo";
@@ -116,7 +116,14 @@ const ReceipeCard = ({ data }) => {
           <RectButton
             minWidth={120}
             fontSize={SIZES.font}
-            handlePress={() => navigation.navigate("Details", { data })}
+            handlePress={() => {
+              if(data["analyzedInstructions"][0] !== undefined){
+                navigation.navigate("Details", { data })
+              }
+              else{
+                Linking.openURL(data.sourceUrl)
+              }
+            }}
           />
         </View>
       </View>

@@ -27,7 +27,7 @@ export const RecetteFooter = ({ data }) => {
     }}
     >
       <Text style={{fontSize:20, fontWeight:'bold', marginTop:'5%', textAlign:'center'}}>Nutrients</Text>
-    
+ 
       <View style={styles.align}>
         <Text style={styles.txtnutrients}>{data.nutrition.nutrients[0].name} : {data.nutrition.nutrients[0].amount} {data.nutrition.nutrients[0].unit}</Text>
         <Text style={styles.txtnutrients}>{data.nutrition.nutrients[3].name} : {data.nutrition.nutrients[3].amount} {data.nutrition.nutrients[3].unit}</Text>
