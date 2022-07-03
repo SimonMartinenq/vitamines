@@ -3,6 +3,7 @@ import { useFonts } from "expo-font";
 import { DefaultTheme,NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { UserConnectedNavigation, UserNotConnectedNavigation } from "./CustomNavigation";
+import { auth } from "./firebase";
 
 const theme = {
   ...DefaultTheme,
@@ -12,7 +13,15 @@ const theme = {
   },
 };
 
+const isLogin = ()=>{
+  if(auth.currentUser===null)
+    return false
+  else{
+    return true
+  }
+}
 const Stack = createStackNavigator();
+
 const App = () => {
   const [loaded] = useFonts({
     InterBold: require("./assets/fonts/Inter-Bold.ttf"),
@@ -21,26 +30,32 @@ const App = () => {
     InterRegular: require("./assets/fonts/Inter-Regular.ttf"),
     InterLight: require("./assets/fonts/Inter-Light.ttf"),
   });
-
+  
   if (!loaded) return null;
+  console.log("ici",isLogin())
   return (
     <NavigationContainer theme={theme}>
       <StatusBar
         barStyle={'dark-content'}/>
-              <Stack.Navigator
-        screenOptions={{
-            headerShown: false
-        }}
-        initialRouteName="UserNotConnectedNavigation"
+        <Stack.Navigator
+          screenOptions={{
+              headerShown: false
+          }}
+          initialRouteName="UserNotConnectedNavigation"
         >
-            <Stack.Screen 
-                name="UserNotConnectedNavigation"
-                component={UserNotConnectedNavigation}
-            />
+          {isLogin ? (
             <Stack.Screen
                 name="UserConnectedNavigation"
                 component={UserConnectedNavigation}
             />
+          ) : (
+            <Stack.Screen 
+                name="UserNotConnectedNavigation"
+                component={UserNotConnectedNavigation}
+            />
+          )}
+            
+            
         </Stack.Navigator>
     </NavigationContainer>
     

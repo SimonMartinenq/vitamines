@@ -53,6 +53,13 @@ export default function UserInfo() {
         <Text style={styles.aboutUser}>
           Goal : {user?.objectif}
         </Text>
+        <Text style={styles.aboutUser}>
+          Diet : {user?.diet}
+        </Text>
+        <Text style={styles.aboutUser}>
+          Intolerence : {user?.intolerence}
+        </Text>
+        
         <View style={styles.userBtnWrapper}>
           <TouchableOpacity 
             style={styles.userBtn} 

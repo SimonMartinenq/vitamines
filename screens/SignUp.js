@@ -15,6 +15,8 @@ const SignUp = () => {
     const [prenom, setPrenom] = useState('')
     const [nom, setNom] = useState('')
     const [objectif, setObjectif] = useState({})
+    const [diet, setDiet] = useState('')
+    const [intolerence, setIntolerence] = useState('')
     const navigation = useNavigation();
 
     useEffect(() => {
@@ -51,6 +53,8 @@ const SignUp = () => {
             taille:taille.toLowerCase(),
             objectif:objectif.item.toLowerCase(),
             favoris: [],
+            intolerence:intolerence.item,
+            diet:diet.item,
             })
         .then(() => {
           console.log("User successfully create!");
@@ -179,8 +183,8 @@ const SignUp = () => {
                         <SelectBox
                             label=""
                             options={Diet}
-                            value={objectif}
-                            onChange={ val => setObjectif(val)}
+                            value={diet}
+                            onChange={ val => setDiet(val)}
                             hideInputFilter={true}
                             inputPlaceholder="Give your Diet"
                             arrowIconColor="black"
@@ -190,8 +194,8 @@ const SignUp = () => {
                         <SelectBox
                             label=""
                             options={Intolerances}
-                            value={objectif}
-                            onChange={ val => setObjectif(val)}
+                            value={intolerence}
+                            onChange={ val => setIntolerence(val)}
                             hideInputFilter={true}
                             inputPlaceholder="Give your Intolerances"
                             arrowIconColor="black"

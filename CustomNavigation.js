@@ -53,13 +53,14 @@ const ProfileNavigation = () => {
                 component={UserInfo}
             />
             <Stack.Screen
-                name="UserNotConnectedNavigation"
-                component={UserNotConnectedNavigation}
-            />
-            <Stack.Screen
                 name="EditProfilScreen"
                 component={EditProfilScreen}
             />
+            <Stack.Screen
+                name="UserNotConnectedNavigation"
+                component={UserNotConnectedNavigation}
+            />
+
 
         </Stack.Navigator>
     )
@@ -149,7 +150,7 @@ const UserConnectedNavigation = () => {
       tabBarShowLabel:false,
       tabBarStyle:styles.navigator
     })}
-    initialRouteName="ProfileNavigation"
+    initialRouteName="UserInfo"
     >
       <Tab.Screen name="HomeNavigation" component={HomeNavigation} />
       <Tab.Screen name="ProfileNavigation" component={ProfileNavigation} />
@@ -169,7 +170,6 @@ const UserNotConnectedNavigation = () => {
     }}
     initialRouteName="LoginScreen"
     >
-
         <Stack.Screen
             name="ForgotPassword"
             component={ForgotPassword}
@@ -182,10 +182,7 @@ const UserNotConnectedNavigation = () => {
             name="SignUp"
             component={SignUp}
         />
-        <Stack.Screen
-            name="UserConnectedNavigation"
-            component={UserConnectedNavigation}
-        />
+    
     </Stack.Navigator>
     )
 }
