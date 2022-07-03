@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Team_left from '../components/Team_left';
 import Team_right from '../components/Team_right';
+import { COLORS } from '../constants';
 
 function About_us(){
     return (
@@ -33,6 +34,7 @@ function About_us(){
         },
         back:{
             backgroundColor: "#F1F1F1",
+            
         },
         tittle:{
             fontWeight: 'bold',

@@ -1,6 +1,6 @@
 import { View , SafeAreaView,Image, TextInput, Text, StyleSheet, FlatList, ScrollView} from 'react-native'
 import { auth , db} from '../firebase'
-import {CircleButton, ReceipeCard} from '../components'
+import {ReceipeCard} from '../components'
 import { assets, COLORS, SIZES} from '../constants'
 import { useState , useEffect} from 'react'
 import { apiKey } from '../constants/api'
@@ -62,12 +62,13 @@ const Favoris = () => {
     function AffichageFav(){
         if (nbrFav){
             return (
-               <View style={{flex:1}}>
+               <View style={{backgroundColor:COLORS.primary}}>
                 <Text style={styles.textFav}>Your favorites</Text>
                 <FlatList
                   data={mealData}
                   renderItem={({ item }) => <ReceipeCard data={item.results[0]} />}
                   keyExtractor={(item) => item.id}
+                  listKey="favoris"
                   showsVerticalScrollIndicator={false}
                 />
                 </View> 
@@ -92,7 +93,7 @@ const Favoris = () => {
     }
 
   return (
-    <SafeAreaView style={{backgroundColor: COLORS.primary}}>
+    <SafeAreaView style={{backgroundColor: COLORS.primary,width:"100%", height:"100%"}}>
         <View style={styles.container}>
             <View style={{backgroundColor: COLORS.primary, alignItems: 'center'}}>
                 <Text style={styles.textnavbar}> Favorites </Text>
@@ -121,7 +122,7 @@ const Favoris = () => {
             </View>
         </View>
     
-        <View style={{ width:"100%", height:"80%", backgroundColor: "#fff"}}> 
+        <View style={{ width:"100%", height:"80%", backgroundColor: COLORS.primary}}> 
             <AffichageFav/>
         </View> 
     </SafeAreaView>
