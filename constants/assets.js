@@ -11,6 +11,15 @@ import aboutus from "../assets/icons/aboutus.png";
 import favIcon from "../assets/icons/favicon.png";
 import heartbroken from "../assets/icons/heartbroken.png";
 import timer from "../assets/icons/timer.png"
+import CO2 from "../assets/images/CO2.png"
+
+// team
+import AnneJu from "../assets/users/Anne-ju.png"
+import Mael from "../assets/users/Mael.png"
+import Mike from "../assets/users/Mike.png"
+import Simon from "../assets/users/Simon.png"
+import Vivi from "../assets/users/Vivi.png"
+import Theo from "../assets/users/Theo.png"
 
 
 export default {
@@ -23,10 +32,17 @@ export default {
     logo,
     userIcon,
     timer,
-
+    CO2,
     aboutus,
 
     favIcon,
     heartbroken,
+
+    AnneJu,
+    Mael,
+    Mike,
+    Simon,
+    Vivi,
+    Theo,
 
 };

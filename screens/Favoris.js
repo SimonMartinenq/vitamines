@@ -1,4 +1,4 @@
-import { View , SafeAreaView,Image, TextInput, Text, StyleSheet, FlatList, ScrollView} from 'react-native'
+import { View , SafeAreaView,Image, TextInput, Text, StyleSheet, FlatList} from 'react-native'
 import { auth , db} from '../firebase'
 import {ReceipeCard} from '../components'
 import { assets, COLORS, SIZES} from '../constants'

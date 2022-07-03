@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
         paddingVertical:10,
         borderRadius:10,
         marginTop:'3%',
-        //color: "#000000",
     },
     buttonContainer:{
         width:'60%',

@@ -38,18 +38,10 @@ const styles = StyleSheet.create({
 
     align:{
         flexDirection: "row",
-        //color: 'black',
-        //backgroundColor: '#D26767',
-        //fontWeight: 'bold',
-        //fontSize: 20,
-        //borderColor: 'black',
-        //borderWidth: 2,
-        //borderRadius: 30,
         padding: 5,
         justifyContent:'center',
         alignItems:'center',
         marginTop: '2%',
-        //marginBottom: '2%',
         marginLeft: '20%',
         marginRight: '16%',
     },
@@ -59,13 +51,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         margin: '10%',
     },
-    
-    back:{
-        backgroundColor: "#E5E4E4",
-    },
-    decallage:{
-        marginLeft: '10%',
-    },
+
     imagelogo:{
         width: 25,
         height: 25,
@@ -75,25 +61,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    imagelogoleft:{
-        width: 120,
-        height: 120,
-        resizeMode: "contain",
-        //marginLeft: '50%',
-    },
-    txttittle:{
-        fontWeight: 'bold',
-        fontSize: 20,
-        padding: 5,
-        textAlign: 'center',
-        marginLeft: '10%',
-    },
-    tittle:{
-        fontWeight: 'bold',
-        fontSize: 28,
-        padding: 25,
-        textAlign: 'center',
-    },
+
     txtbox:{
         padding: 5,
         textAlign: 'center',

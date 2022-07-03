@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 import * as ImagePicker from 'expo-image-picker';
-import { StatusBar } from 'react-native-web';
+
 
 
 const EditProfilScreen = () => {
@@ -112,7 +112,7 @@ const EditProfilScreen = () => {
                                 alignItems: 'center'
                             }}>
                                 <ImageBackground
-                                    source={require('../assets/users/vivi.jpg')}
+                                    source={require('../assets/icons/user.png')}
                                     style = {{height:100, width: 100}}
                                     imageStyle={{borderRadius: 15}}
                                 >
@@ -134,9 +134,9 @@ const EditProfilScreen = () => {
                                 </ImageBackground>
                             </View>
                         </TouchableOpacity>
-                        <Text style={{marginTop: 10, fontSize: 18, fontWeight: 'bold'}}>
+                        {/*<Text style={{marginTop: 10, fontSize: 18, fontWeight: 'bold'}}>
                             Victoria Stasik
-                        </Text>
+                        </Text>*/}
                     </View>
                     <View style={styles.action}>
             

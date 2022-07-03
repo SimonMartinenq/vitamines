@@ -77,7 +77,7 @@ const HomeHeader = ({ onSearch }) => {
             style={{ width: 20, height: 20, marginRight: SIZES.base }}
           />
           <TextInput
-            placeholder="Trouver une recette, un aliment,..."
+            placeholder="Find a receipe..."
             placeholderTextColor="gray"
             style={{ 
               flex: 1,

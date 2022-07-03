@@ -1,13 +1,8 @@
-import {React, useState, useEffect} from "react";
-import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity } from "react-native";
+import {React} from "react";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
-import { COLORS, FONTS, SIZES, assets } from "../constants";
-import { auth,db } from "../firebase";
-import UserInfo from "../screens/UserInfo";
-import Home from "../screens/Home";
+import { assets } from "../constants";
 import About_us from "../screens/About_us";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 const Footer = () => {
   const navigation = useNavigation();

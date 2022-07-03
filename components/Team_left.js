@@ -1,16 +1,14 @@
 import React from "react";
 import { View, Image , Text, StyleSheet} from "react-native";
 
-import logo from '../assets/images/logo.png'
-
-function Team_left ({mates, info}) {
+function Team_left ({mates, info, img}) {
 
   return (
     <View style={styles.align}>
         <View>
             <Image 
                 style={styles.imagelogoleft}
-                source={logo}
+                source={img}
             />
         </View>
         <View>
@@ -40,8 +38,8 @@ const styles = StyleSheet.create({
         marginRight: '16%',
     },
     imagelogoleft:{
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 140,
         resizeMode: "contain",
         marginLeft: '50%',
     },

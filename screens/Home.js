@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { View, SafeAreaView, FlatList} from "react-native";
-
-
 import { ReceipeCard, HomeHeader, FocusedStatusBar } from "../components";
 import { COLORS } from "../constants";
 import {apiKey} from "../constants/api";
