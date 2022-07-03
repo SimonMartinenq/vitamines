@@ -3,12 +3,13 @@ import { useNavigation } from '@react-navigation/native'
 
 import { auth , db} from '../firebase'
 import { useState , useEffect} from 'react'
+import TagInput from '../components/TagInput';
 
 
 
-export default function UserInfo({navigation}) {
+export default function UserInfo() {
 
-  //const navigation = useNavigation();
+  const navigation = useNavigation();
   const [user,setUser] = useState(null);
   const handleSignOut = () => {
     auth
@@ -84,7 +85,9 @@ export default function UserInfo({navigation}) {
             <Text style={styles.buttonText}>Logout</Text>
           </TouchableOpacity>
         </View>
-        
+        <View>
+          
+        </View>
 
       </ScrollView>
     </SafeAreaView>
