@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {createStackNavigator} from '@react-navigation/stack'
@@ -112,7 +112,7 @@ const FavorisNavigation = () => {
 }
 export {FavorisNavigation}
 
-const UserConnectedNavigation = () => {
+/* const UserConnectedNavigation = () => {
    return (
     <Tab.Navigator
     screenOptions={({ route }) => ({
@@ -150,11 +150,11 @@ const UserConnectedNavigation = () => {
       tabBarShowLabel:false,
       tabBarStyle:styles.navigator
     })}
-    initialRouteName="UserInfo"
+    
     >
-      <Tab.Screen name="HomeNavigation" component={HomeNavigation} />
-      <Tab.Screen name="ProfileNavigation" component={ProfileNavigation} />
-      <Tab.Screen name="FavorisNavigation" component={FavorisNavigation} />
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="UserInfo" component={UserInfo} />
+      <Tab.Screen name="Favoris" component={Favoris} />
       <Tab.Screen name="Meal_plan" component={Meal_plan} />
       <Tab.Screen name="About_us" component={About_us} />
     </Tab.Navigator>
@@ -187,7 +187,7 @@ const UserNotConnectedNavigation = () => {
     )
 }
 export {UserNotConnectedNavigation}
-
+ */
 const styles = StyleSheet.create({
     navigator:{
       position: 'absolute',

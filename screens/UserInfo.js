@@ -5,6 +5,7 @@ import { auth , db} from '../firebase'
 import { useState , useEffect} from 'react'
 import { FocusedStatusBar } from '../components'
 import { COLORS } from '../constants'
+import NavigationBar from '../components/NavigationBar'
 
 
 export default function UserInfo() {
@@ -15,7 +16,7 @@ export default function UserInfo() {
     auth
       .signOut()
       .then(()=>{
-        navigation.replace("UserNotConnectedNavigation")
+        navigation.replace("LoginScreen")
       })
       .catch(error => alert(error.message))
   }
@@ -97,6 +98,7 @@ export default function UserInfo() {
         </View>
 
       </ScrollView>
+      <NavigationBar/>
     </SafeAreaView>
   )
 }

@@ -3,6 +3,7 @@ import React, { useEffect , useState} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Day from '../components/Day';
 import {apiKey} from '../constants/api';
+import NavigationBar from '../components/NavigationBar';
 
 const Meal_plan = () => {
     const [mealPlan, setMealPlan] = useState(null)
@@ -46,6 +47,7 @@ const Meal_plan = () => {
                     
                 </View>
             </ScrollView>
+            <NavigationBar/>
         </SafeAreaView>
         
         

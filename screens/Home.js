@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, SafeAreaView, FlatList} from "react-native";
-import { ReceipeCard, HomeHeader, FocusedStatusBar } from "../components";
+import { ReceipeCard, HomeHeader, FocusedStatusBar} from "../components";
+import NavigationBar from "../components/NavigationBar";
 import { COLORS } from "../constants";
 import {apiKey} from "../constants/api";
 import { db,auth } from "../firebase";
@@ -91,6 +92,7 @@ const Home = () => {
         </View>
 
       </View>
+      <NavigationBar/>
     </SafeAreaView>
   );
 };
