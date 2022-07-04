@@ -86,8 +86,21 @@ export default function UserInfo() {
             <Text style={styles.userInfoSubTitle}>Size</Text>
             <Text style={styles.userInfoTitle}>{userInfo?.taille} cm</Text>
           </View>
+          <View style={styles.userInfoItem}>
+            <Text style={styles.userInfoSubTitle}>IMC</Text>
+            <Text style={styles.userInfoTitle}>{Math.round((userInfo?.poid)/(userInfo?.taille/100)**2)}</Text>
+          </View>
         </View>
-
+        <View>
+          <View style={styles.ligne}><Text source={styles.row}>IMC</Text><Text source={styles.row}>Interpretation</Text></View>
+          <View style={styles.ligne}><Text source={styles.row}>+ de 40</Text><Text source={styles.row}>obésité morbide ou massive</Text></View>
+          <View style={styles.ligne}><Text source={styles.row}>35 à 40</Text><Text source={styles.row}>obésité sévère</Text></View>
+          <View style={styles.ligne}><Text source={styles.row}>30 à 35</Text><Text source={styles.row}>obésité modérée</Text></View>
+          <View style={styles.ligne}><Text source={styles.row}>25 à 30</Text><Text source={styles.row}>surpoids</Text></View>
+          <View style={styles.ligne}><Text source={styles.row}>18.5 à 25</Text><Text source={styles.row}>corpulence normale</Text></View>
+          <View style={styles.ligne}><Text source={styles.row}>16.5 à 18.5</Text><Text source={styles.row}>maigreur</Text></View>
+          <View style={styles.ligne}><Text source={styles.row}>- de 16.5</Text><Text source={styles.row}>famine</Text></View>
+        </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             onPress={handleSignOut}
@@ -95,10 +108,6 @@ export default function UserInfo() {
             <Text style={styles.buttonText}>Logout</Text>
           </TouchableOpacity>
         </View>
-        <View>
-          
-        </View>
-
       </ScrollView>
     </SafeAreaView>
   )
@@ -201,7 +210,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
-    marginVertical: 20
+    marginVertical: 15,
+    padding:10
   },
   userInfoItem: {
     justifyContent: 'center'
@@ -211,5 +221,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 5,
     textAlign: 'center'
+  },
+  ligne:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    margin:10,
+    
+  },
+  row:{
+    borderWidth:1,
+    borderColor:COLORS.primary,
+    color:COLORS.primary
   }
 });
