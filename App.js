@@ -2,7 +2,6 @@ import { StatusBar ,StyleSheet} from "react-native";
 import { useFonts } from "expo-font";
 import { DefaultTheme,NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { auth } from "./firebase";
 import Home from "./screens/Home"
 import Favoris from "./screens/Favoris";
 import Details from "./screens/Details";

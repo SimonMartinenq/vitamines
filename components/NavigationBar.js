@@ -1,35 +1,31 @@
-import { View, Text, StyleSheet ,TouchableOpacity} from 'react-native'
+import { View, StyleSheet ,TouchableOpacity} from 'react-native'
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from '../constants';
 import { useNavigation } from '@react-navigation/native';
 
 const NavigationBar = () => {
   const navigation = useNavigation();
-  
 
-  const HandlePress = (nom)=>{
-    navigation.navigate(nom)
-  }
   return (
     <View style={styles.container}>
 
     <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate("About_us")}>
-      <Ionicons name={"ios-information-circle"} style={styles.icon}/>
+      <Ionicons name={"ios-information-circle-outline"} style={styles.icon}/>
     </TouchableOpacity>
 
     <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate("UserInfo")}>
-      <Ionicons name={"ios-person"} style={styles.icon}/>
+      <Ionicons name={"ios-person-outline"} style={styles.icon}/>
     </TouchableOpacity>
     <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate("Home")}>
-      <Ionicons name={"ios-home"} style={styles.icon}/>
+      <Ionicons name={"ios-home-outline"} style={styles.icon}/>
     </TouchableOpacity>
 
     <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate("Favoris")}>
-      <Ionicons name={"ios-heart"} style={styles.icon}/>
+      <Ionicons name={"ios-heart-outline"} style={styles.icon}/>
     </TouchableOpacity>
 
     <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate("Meal_plan")}>
-      <Ionicons name={"ios-calendar"} style={styles.icon}/>
+      <Ionicons name={"ios-calendar-outline"} style={styles.icon}/>
     </TouchableOpacity>
 
     </View>

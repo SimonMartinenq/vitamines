@@ -2,7 +2,7 @@ import { View , Text, Image, TouchableOpacity, StyleSheet, ScrollView, SafeAreaV
 import { useNavigation } from '@react-navigation/native'
 
 import { auth , db} from '../firebase'
-import { useState , useEffect} from 'react'
+import { useState } from 'react'
 import { FocusedStatusBar } from '../components'
 import { COLORS } from '../constants'
 import NavigationBar from '../components/NavigationBar'
