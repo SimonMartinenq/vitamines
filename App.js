@@ -2,15 +2,12 @@ import { StatusBar ,StyleSheet} from "react-native";
 import { useFonts } from "expo-font";
 import { DefaultTheme,NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "./screens/Home"
-import Favoris from "./screens/Favoris";
 import Details from "./screens/Details";
-import About_us from "./screens/About_us";
-import Meal_plan from "./screens/Meal_plan";
 import ForgotPassword from "./screens/ForgotPassword";
 import LoginScreen from "./screens/LoginScreen";
 import SignUp from "./screens/SignUp";
-import UserInfo from "./screens/UserInfo";
+import EditProfilScreen from "./screens/EditProfil";
+import NavigationTab from "./CustomNavigation";
 
 const theme = {
   ...DefaultTheme,
@@ -43,32 +40,15 @@ const App = () => {
           initialRouteName="LoginScreen"
         >
       
-            <Stack.Screen 
-                name="Favoris"
-                component={Favoris}
-            />
-            <Stack.Screen
-                name="Details"
-                component={Details}
-            />
-            <Stack.Screen
-                name="Home"
-                component={Home}
-            />
-            <Stack.Screen
-                name="About_us"
-                component={About_us}
-            />
-            
-            <Stack.Screen
-                name="Meal_plan"
-                component={Meal_plan}
-            />
-            <Stack.Screen
-                name="UserInfo"
-                component={UserInfo}
-            />
 
+          <Stack.Screen
+              name="NavigationTab"
+              component={NavigationTab}
+          />
+          <Stack.Screen
+              name="Details"
+              component={Details}
+          />
           <Stack.Screen
               name="ForgotPassword"
               component={ForgotPassword}
@@ -80,6 +60,10 @@ const App = () => {
           <Stack.Screen
               name="SignUp"
               component={SignUp}
+          />
+          <Stack.Screen
+              name="EditProfilScreen"
+              component={EditProfilScreen}
           />
         
   

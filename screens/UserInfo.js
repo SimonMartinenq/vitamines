@@ -5,7 +5,6 @@ import { auth , db} from '../firebase'
 import { useState } from 'react'
 import { FocusedStatusBar } from '../components'
 import { COLORS } from '../constants'
-import NavigationBar from '../components/NavigationBar'
 
 
 export default function UserInfo() {
@@ -101,7 +100,6 @@ export default function UserInfo() {
         </View>
 
       </ScrollView>
-      <NavigationBar/>
     </SafeAreaView>
   )
 }

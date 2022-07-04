@@ -4,7 +4,6 @@ import {ReceipeCard} from '../components'
 import { assets, COLORS, SIZES} from '../constants'
 import { useState , useEffect} from 'react'
 import { apiKey } from '../constants/api'
-import NavigationBar from '../components/NavigationBar'
 
 const Favoris = () => {
     const [mealData,setMealData] = useState(null);
@@ -128,7 +127,6 @@ const Favoris = () => {
         <View style={{ height: '9%', backgroundColor: COLORS.primary }} >
           
         </View>
-        <NavigationBar/>
     </SafeAreaView>
   );
 };

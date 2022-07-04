@@ -5,7 +5,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Team_left from '../components/Team_left';
 import Team_right from '../components/Team_right';
 import { assets } from "../constants";
-import NavigationBar from '../components/NavigationBar';
 
 function About_us(){
     return (
@@ -21,7 +20,6 @@ function About_us(){
                     <Team_right mates={'Theo Masson'} info={"I am a student in engineering school, I am a sports enthusiast. And sport is about healthy eating. That is why I felt very concerned about this project. Long live Vitamins!"} img={assets.Theo}/>
                 </View>
             </ScrollView>
-            <NavigationBar/>
         </SafeAreaView>
         
         
