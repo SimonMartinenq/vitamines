@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {View, Text, Button, StyleSheet, TouchableOpacity, SafeAreaView, ImageBackground, TextInput, Platform, ImagePickerIOS} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, SafeAreaView, ImageBackground, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { CircleButton } from '../components'
 import { assets } from '../constants'
@@ -41,7 +41,7 @@ const EditProfilScreen = () => {
 
     
 
-    const renderInner = () => (
+    renderInner = () => (
         <View style={styles.panel}>
             <View style={{alignItems: 'center'}}>
                 <Text style={styles.panelTitle}>Import a photo</Text>
@@ -88,7 +88,7 @@ const EditProfilScreen = () => {
                 <BottomSheet
                     ref={this.bs}
                     snapPoints={[400, 0]}
-                    renderContent={this.renderInner}
+                    renderContent={this.const }
                     renderHeader={this.renderHeader}
                     initialSnap={1}
                     callbackNode={this.fall}

@@ -1,5 +1,5 @@
 
-import { StatusBar, FlatList ,StyleSheet,View,Text} from "react-native";
+import { StatusBar, FlatList ,StyleSheet,View} from "react-native";
 
 import { FocusedStatusBar } from "../components";
 

@@ -2,8 +2,12 @@ import { StatusBar ,StyleSheet} from "react-native";
 import { useFonts } from "expo-font";
 import { DefaultTheme,NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { UserConnectedNavigation, UserNotConnectedNavigation } from "./CustomNavigation";
-import { auth } from "./firebase";
+import Details from "./screens/Details";
+import ForgotPassword from "./screens/ForgotPassword";
+import LoginScreen from "./screens/LoginScreen";
+import SignUp from "./screens/SignUp";
+import EditProfilScreen from "./screens/EditProfil";
+import NavigationTab from "./CustomNavigation";
 
 const theme = {
   ...DefaultTheme,
@@ -13,13 +17,6 @@ const theme = {
   },
 };
 
-const isLogin = ()=>{
-  if(auth.currentUser===null)
-    return false
-  else{
-    return true
-  }
-}
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -32,7 +29,6 @@ const App = () => {
   });
   
   if (!loaded) return null;
-  console.log("ici",isLogin())
   return (
     <NavigationContainer theme={theme}>
       <StatusBar
@@ -41,21 +37,36 @@ const App = () => {
           screenOptions={{
               headerShown: false
           }}
-          initialRouteName="UserNotConnectedNavigation"
+          initialRouteName="LoginScreen"
         >
-          {isLogin ? (
-            <Stack.Screen
-                name="UserConnectedNavigation"
-                component={UserConnectedNavigation}
-            />
-          ) : (
-            <Stack.Screen 
-                name="UserNotConnectedNavigation"
-                component={UserNotConnectedNavigation}
-            />
-          )}
-            
-            
+      
+
+          <Stack.Screen
+              name="NavigationTab"
+              component={NavigationTab}
+          />
+          <Stack.Screen
+              name="Details"
+              component={Details}
+          />
+          <Stack.Screen
+              name="ForgotPassword"
+              component={ForgotPassword}
+          />
+          <Stack.Screen
+              name="LoginScreen"
+              component={LoginScreen}
+          />
+          <Stack.Screen
+              name="SignUp"
+              component={SignUp}
+          />
+          <Stack.Screen
+              name="EditProfilScreen"
+              component={EditProfilScreen}
+          />
+        
+  
         </Stack.Navigator>
     </NavigationContainer>
     

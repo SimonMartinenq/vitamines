@@ -2,7 +2,7 @@ import { View , Text, Image, TouchableOpacity, StyleSheet, ScrollView, SafeAreaV
 import { useNavigation } from '@react-navigation/native'
 
 import { auth , db} from '../firebase'
-import { useState , useEffect} from 'react'
+import { useState } from 'react'
 import { FocusedStatusBar } from '../components'
 import { COLORS } from '../constants'
 
@@ -10,30 +10,33 @@ import { COLORS } from '../constants'
 export default function UserInfo() {
 
   const navigation = useNavigation();
-  const [user,setUser] = useState(null);
+  const [userInfo,setUser] = useState(null);
   const handleSignOut = () => {
     auth
       .signOut()
       .then(()=>{
-        navigation.replace("UserNotConnectedNavigation")
+        navigation.replace("LoginScreen")
       })
       .catch(error => alert(error.message))
   }
   
-  const getUser = async () => {
+  
+
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      const uid = user.uid;
       db
         .collection('Users')
-        .doc(auth.currentUser.uid)
+        .doc(uid)
         .get()
         .then((querySnapshot) => {
             const dic = querySnapshot.data()
             setUser(dic);
           });
-  };
+    }
+  });
 
-  useEffect(() => {
-    getUser();
-  }, []);
+
 
   return (
     <SafeAreaView style={{top:"5%",backgroundColor:"#E5E4E4", height:"100%", marginTop:-50}}>
@@ -46,19 +49,19 @@ export default function UserInfo() {
           style={styles.userImg} 
           source={require('../assets/icons/user.png')}
         />
-        <Text style={styles.userName}>{user?.prenom} {user?.nom}</Text>
+        <Text style={styles.userName}>{userInfo?.prenom} {userInfo?.nom}</Text>
         <Text style={styles.userEmail}>
 
           {auth.currentUser?.email} 
         </Text>
         <Text style={styles.aboutUser}>
-          Goal : {user?.objectif}
+          Goal : {userInfo?.objectif}
         </Text>
         <Text style={styles.aboutUser}>
-          Diet : {user?.diet}
+          Diet : {userInfo?.diet}
         </Text>
         <Text style={styles.aboutUser}>
-          Intolerence : {user?.intolerence}
+          Intolerence : {userInfo?.intolerence}
         </Text>
         
         <View style={styles.userBtnWrapper}>
@@ -73,15 +76,15 @@ export default function UserInfo() {
         <View style={styles.userInfoWrapper}>
           <View style={styles.userInfoItem}>
             <Text style={styles.userInfoSubTitle}>Age</Text>
-            <Text style={styles.userInfoTitle}>{user?.age}</Text>
+            <Text style={styles.userInfoTitle}>{userInfo?.age}</Text>
           </View>
           <View style={styles.userInfoItem}>
             <Text style={styles.userInfoSubTitle}>Weight</Text>
-            <Text style={styles.userInfoTitle}> {user?.poid} kg</Text>
+            <Text style={styles.userInfoTitle}> {userInfo?.poid} kg</Text>
           </View>
           <View style={styles.userInfoItem}>
             <Text style={styles.userInfoSubTitle}>Size</Text>
-            <Text style={styles.userInfoTitle}>{user?.taille} cm</Text>
+            <Text style={styles.userInfoTitle}>{userInfo?.taille} cm</Text>
           </View>
         </View>
 

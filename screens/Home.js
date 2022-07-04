@@ -1,32 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { View, SafeAreaView, FlatList} from "react-native";
-import { ReceipeCard, HomeHeader, FocusedStatusBar } from "../components";
+import { ReceipeCard, HomeHeader, FocusedStatusBar} from "../components";
 import { COLORS } from "../constants";
 import {apiKey} from "../constants/api";
 import { db,auth } from "../firebase";
 
 const Home = () => {
   const [mealData, setMealData] = useState(null);
-  const [user,setUser] = useState(null);
+  const [userInfo,setUser] = useState(null);
 
   
-  const getUser = async () => {
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      const uid = user.uid;
       db
         .collection('Users')
-        .doc(auth.currentUser.uid)
+        .doc(uid)
         .get()
         .then((querySnapshot) => {
             const dic = querySnapshot.data()
             setUser(dic);
           });
-  };
+    }
+  });
   
   const handleSearch = (value) => {
     if (value.length === 0) {
       setMealData(mealData);
     }
     fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&titleMatch=${value}&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true&instructionsRequired=true&number=2&intolerances=${user?.intolerence}&diet=${user?.diet}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&titleMatch=${value}&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true&instructionsRequired=true&number=2&intolerances=${userInfo?.intolerence}&diet=${userInfo?.diet}`
         
     )
     .then(response => response.json())
@@ -41,7 +44,7 @@ const Home = () => {
 
   const getMeal = () => {
     fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=healthy&number=2&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true&intolerances=${user?.intolerence}&diet=${user?.diet}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=healthy&number=2&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true&intolerances=${userInfo?.intolerence}&diet=${userInfo?.diet}`
         
     )
     .then(response => response.json())
@@ -56,7 +59,6 @@ const Home = () => {
 
   useEffect(() => {
     getMeal();
-    getUser();
   }, []);
 
   return (

@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Image , Text, StyleSheet} from "react-native";
 
-import logo from '../assets/images/logo.png'
 
 function Team_right ({mates, info, img}) {
 
@@ -19,7 +18,7 @@ function Team_right ({mates, info, img}) {
         </View> 
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
     align2:{
