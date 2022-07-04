@@ -21,13 +21,6 @@ const theme = {
   },
 };
 
-const isLogin = ()=>{
-  if(auth.currentUser===null)
-    return false
-  else{
-    return true
-  }
-}
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -40,7 +33,6 @@ const App = () => {
   });
   
   if (!loaded) return null;
-  console.log("ici",isLogin())
   return (
     <NavigationContainer theme={theme}>
       <StatusBar
@@ -49,7 +41,7 @@ const App = () => {
           screenOptions={{
               headerShown: false
           }}
-          initialRouteName="Home"
+          initialRouteName="LoginScreen"
         >
       
             <Stack.Screen 
