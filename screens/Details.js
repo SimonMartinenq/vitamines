@@ -4,6 +4,7 @@ import { StatusBar, FlatList ,StyleSheet,View,Text} from "react-native";
 import { FocusedStatusBar } from "../components";
 
 import {RecetteHeader, EtapeCard, RecetteFooter} from "../components/Recette";
+import { COLORS } from "../constants";
 
 const Details = ({ route }) => {
   const {data} = route.params;
@@ -32,6 +33,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
+    backgroundColor:COLORS.primary,
+    padding:20,
+    
   },
 });
 

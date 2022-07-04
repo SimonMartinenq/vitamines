@@ -87,6 +87,7 @@ export const RecetteHeader = ({ data }) => {
       style={{
         backgroundColor: COLORS.primary,
         padding: SIZES.font,
+        paddingTop:40,
       }}
     >
         <Text style={styles.tittle}>{data.title}</Text>
@@ -97,12 +98,39 @@ export const RecetteHeader = ({ data }) => {
         style={styles.image}
         />
       </View> 
-
-        <Text style={styles.txttittle}>Preparation time : {data.readyInMinutes}</Text>
-
-        <Text style={styles.txtsubtittle}>For {data.servings} people </Text>
-        <Text style={styles.txtsubtittle}>${data.pricePerServing/100} per serving</Text>
-        <Text style={styles.txtsubtittle}>Health score : {data.healthScore}%</Text>
+      <View style={styles.subInfo}>
+          <View style={styles.box}>
+              <Image
+              source={assets.timer}
+              style={styles.imagelogo}
+              />
+              <Text>{data.readyInMinutes} min</Text>
+          </View>
+          <View style={styles.box}>
+              <Image
+              source={assets.userIcon}
+              style={styles.imagelogo}
+              />
+              <Text>{data.servings} person</Text>
+          </View>
+          <View style={styles.box}>
+              <Image
+              source={assets.meal}
+              style={styles.imagelogo}
+              />
+              <Text>${Math.round(data.pricePerServing/100)}</Text>
+          </View>
+          <View style={styles.box}>
+              <Image
+              source={assets.healthyEating}
+              style={styles.imagelogo}
+              />
+              <Text style={styles.txtsubtittle}>{data.healthScore}%</Text>
+          </View>
+      </View>
+        
+        
+        
 
         <View style={styles.align}>
         <FlatList
@@ -133,17 +161,18 @@ export const RecetteHeader = ({ data }) => {
 
 const styles = StyleSheet.create({
   align:{
-      backgroundColor: '#F9D2D2',
-      borderRadius: 30,
-      padding: 5,
+      backgroundColor: COLORS.white,
+      borderRadius: 10,
+      padding: '3%',
+      paddingBottom:'4%',
       marginTop: '5%',
       marginBottom: '5%',
   },
   stepbox:{
-    backgroundColor: '#F9D2D2',
-    borderRadius: 30,
+    backgroundColor: COLORS.white,
+    borderRadius: 10,
     padding: 2,
-    margin:'1%'
+    margin:'1%',
   },
   txttittle:{
     fontWeight: 'bold',
@@ -165,25 +194,33 @@ const styles = StyleSheet.create({
       padding: 5,
       textAlign: 'center',
       marginLeft: '5%',
+      
   },
   category:{
     fontSize:16, 
     fontWeight:'bold',
     padding: 5,
-    marginLeft: '10%'
+    marginLeft: '10%',
+    color:COLORS.primary
   },
   step:{
     fontSize:14, 
     fontWeight:'bold',
     marginLeft: '5%',
+    color:COLORS.primary,
+    padding:'3%',
+    
+    marginBottom:'1%'
   },
   txtlist:{
     fontSize: 14,
     marginLeft: '15%',
+    
   },
   txtnutrients:{
     fontSize: 16,
     textAlign: 'center',
+    padding:'1%'
 
   },
   txtstep:{
@@ -191,12 +228,36 @@ const styles = StyleSheet.create({
     marginLeft: '10%',
     textAlign:'justify',
     marginRight: '10%',
+    marginBottom:'3%'
   },
   image:{
     width: 380,
     height: 280,
     resizeMode:'contain',
-    borderRadius: 25,
-  }
+    borderRadius: 10,
+  },
+  imagelogo:{
+    width: 25,
+    height: 25,
+    resizeMode: "contain",
+    marginLeft: '5%',
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  box:{
+    justifyContent:'center',
+    alignItems:'center',
+    margin: '10%',
+},
+  subInfo:{
+    flexDirection: "row",
+    padding: 5,
+    justifyContent:'center',
+    alignItems:'center',
+    marginTop: '2%',
+    marginLeft: '20%',
+    marginRight: '16%',
+  },
   });
 
