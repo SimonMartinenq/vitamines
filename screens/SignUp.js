@@ -15,8 +15,8 @@ const SignUp = () => {
     const [prenom, setPrenom] = useState('')
     const [nom, setNom] = useState('')
     const [objectif, setObjectif] = useState({})
-    const [diet, setDiet] = useState('')
-    const [intolerence, setIntolerence] = useState('')
+    const [diet, setDiet] = useState("None")
+    const [intolerence, setIntolerence] = useState("None")
     const navigation = useNavigation();
 
     useEffect(() => {
@@ -77,6 +77,7 @@ const SignUp = () => {
         },
     ]
     const Diet = [
+        {item: "None"},
         {item: "Gluten Free"},
         {item: "Ketogenic"},
         {item: "Vegetarian"},
@@ -90,6 +91,7 @@ const SignUp = () => {
         {item: "Whole30"},
     ]
     const Intolerances = [
+        {item: "None"},
         {item: "Dairy"},
         {item: "Egg"},
         {item: "Gluten"},
