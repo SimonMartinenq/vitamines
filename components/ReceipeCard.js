@@ -19,6 +19,7 @@ const ReceipeCard = ({ data }) => {
   const [FavColor, setFavColor] = useState(assets.heartEmpty);
 
   const updateFav = () => {
+
     db
       .collection('Users')
       .doc(auth.currentUser.uid)
@@ -42,9 +43,11 @@ const ReceipeCard = ({ data }) => {
           console.log("favoris remove")
         }
       })
+      updateColor()
   };
 
   const updateColor = () => {
+    console.log("coucou")
     db
       .collection('Users')
       .doc(auth.currentUser.uid)
@@ -63,9 +66,8 @@ const ReceipeCard = ({ data }) => {
       })
   };
 
-  useEffect(() => {
-    updateColor();
-  }, []);
+
+
   //console.log("favori 1 ou 2",data)
   return (
     <View

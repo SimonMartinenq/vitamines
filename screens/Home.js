@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, SafeAreaView, FlatList} from "react-native";
+import { View,Text, SafeAreaView, FlatList, TouchableOpacity} from "react-native";
 import { ReceipeCard, HomeHeader, FocusedStatusBar} from "../components";
 import { COLORS } from "../constants";
 import {apiKey} from "../constants/api";
@@ -9,20 +9,22 @@ const Home = () => {
   const [mealData, setMealData] = useState(null);
   const [userInfo,setUser] = useState(null);
 
-  
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      const uid = user.uid;
-      db
-        .collection('Users')
-        .doc(uid)
-        .get()
-        .then((querySnapshot) => {
-            const dic = querySnapshot.data()
-            setUser(dic);
-          });
-    }
-  });
+  const getUser = () => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        const uid = user.uid;
+        db
+          .collection('Users')
+          .doc(uid)
+          .get()
+          .then((querySnapshot) => {
+              const dic = querySnapshot.data()
+              setUser(dic);
+              console.log(dic)
+            });
+      }
+    });
+  }
   
   const handleSearch = (value) => {
     if (value.length === 0) {
@@ -44,11 +46,12 @@ const Home = () => {
 
   const getMeal = () => {
     fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=healthy&number=2&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true&intolerances=${userInfo?.intolerence}&diet=${userInfo?.diet}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=healthy&number=1&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true&intolerances=${userInfo?.intolerence}&diet=${userInfo?.diet}`
         
     )
     .then(response => response.json())
     .then((data) => {
+      //console.log("suer infos",userInfo?.intolerence)
       //console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",data)
       setMealData(data.results)
     })
@@ -58,14 +61,16 @@ const Home = () => {
   };
 
   useEffect(() => {
-    getMeal();
+    getUser();
   }, []);
-
+  useEffect(() => {
+    getMeal();
+  }, [userInfo]);
+  
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.primary}}>
       <FocusedStatusBar backgroundColor={COLORS.primary} />
       <View style={{ flex: 1 }}>
-
         <View style={{ zIndex: 0 }}>
           <FlatList
             data={mealData}
