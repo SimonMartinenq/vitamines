@@ -92,14 +92,14 @@ export default function UserInfo() {
           </View>
         </View>
         <View>
-          <View style={styles.ligne}><Text source={styles.row}>IMC</Text><Text source={styles.row}>Interpretation</Text></View>
-          <View style={styles.ligne}><Text source={styles.row}>+ de 40</Text><Text source={styles.row}>obésité morbide ou massive</Text></View>
-          <View style={styles.ligne}><Text source={styles.row}>35 à 40</Text><Text source={styles.row}>obésité sévère</Text></View>
-          <View style={styles.ligne}><Text source={styles.row}>30 à 35</Text><Text source={styles.row}>obésité modérée</Text></View>
-          <View style={styles.ligne}><Text source={styles.row}>25 à 30</Text><Text source={styles.row}>surpoids</Text></View>
-          <View style={styles.ligne}><Text source={styles.row}>18.5 à 25</Text><Text source={styles.row}>corpulence normale</Text></View>
-          <View style={styles.ligne}><Text source={styles.row}>16.5 à 18.5</Text><Text source={styles.row}>maigreur</Text></View>
-          <View style={styles.ligne}><Text source={styles.row}>- de 16.5</Text><Text source={styles.row}>famine</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30, color:COLORS.primary, fontWeight:'bold'}}>IMC</Text><Text source={styles.row} style={{marginHorizontal: 30, color:COLORS.primary, fontWeight:'bold'}}>Interpretation</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>+ de 40</Text><Text source={styles.row} style={{marginHorizontal: 30}}>obésité morbide ou massive</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>35 à 40</Text><Text source={styles.row} style={{marginHorizontal: 30}}>obésité sévère</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>30 à 35</Text><Text source={styles.row} style={{marginHorizontal: 30}}>obésité modérée</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>25 à 30</Text><Text source={styles.row} style={{marginHorizontal: 30}}>surpoids</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>18.5 à 25</Text><Text source={styles.row} style={{marginHorizontal: 30}}>corpulence normale</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>16.5 à 18.5</Text><Text source={styles.row} style={{marginHorizontal: 30}}>maigreur</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>- de 16.5</Text><Text source={styles.row} style={{marginHorizontal: 30}}>famine</Text></View>
         </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
@@ -108,6 +108,7 @@ export default function UserInfo() {
             <Text style={styles.buttonText}>Logout</Text>
           </TouchableOpacity>
         </View>
+        <View style={{marginBottom:100}}></View>
       </ScrollView>
     </SafeAreaView>
   )
@@ -231,6 +232,6 @@ const styles = StyleSheet.create({
   row:{
     borderWidth:1,
     borderColor:COLORS.primary,
-    color:COLORS.primary
+    color:COLORS.primary,
   }
 });
