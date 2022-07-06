@@ -19,6 +19,7 @@ const ReceipeCard = ({ data }) => {
   const [FavColor, setFavColor] = useState(assets.heartEmpty);
 
   const updateFav = () => {
+
     db
       .collection('Users')
       .doc(auth.currentUser.uid)
@@ -45,6 +46,7 @@ const ReceipeCard = ({ data }) => {
   };
 
   const updateColor = () => {
+    console.log("set the current color")
     db
       .collection('Users')
       .doc(auth.currentUser.uid)
@@ -55,10 +57,11 @@ const ReceipeCard = ({ data }) => {
         })
       .then((dic) => {
         const fav = dic.favoris
-        if(fav.includes(data.id) !== true){
-          setFavColor(assets.heartEmpty)
-        }else{
+        if(fav.includes(data.title)){
           setFavColor(assets.heart)
+        }
+        else{
+          setFavColor(assets.heartEmpty)
         }
       })
   };
@@ -66,7 +69,9 @@ const ReceipeCard = ({ data }) => {
   useEffect(() => {
     updateColor();
   }, []);
-  //console.log("favori 1 ou 2",data)
+
+
+  console.log("favori 1 ou 2",data)
   return (
     <View
       style={{

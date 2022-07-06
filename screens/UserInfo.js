@@ -2,7 +2,7 @@ import { View , Text, Image, TouchableOpacity, StyleSheet, ScrollView, SafeAreaV
 import { useNavigation } from '@react-navigation/native'
 
 import { auth , db} from '../firebase'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { FocusedStatusBar } from '../components'
 import { COLORS } from '../constants'
 
@@ -22,19 +22,26 @@ export default function UserInfo() {
   
   
 
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      const uid = user.uid;
-      db
-        .collection('Users')
-        .doc(uid)
-        .get()
-        .then((querySnapshot) => {
-            const dic = querySnapshot.data()
-            setUser(dic);
-          });
-    }
-  });
+  const getUser = () => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        const uid = user.uid;
+        db
+          .collection('Users')
+          .doc(uid)
+          .get()
+          .then((querySnapshot) => {
+              const dic = querySnapshot.data()
+              setUser(dic);
+              //console.log("user infos",dic)
+            });
+      }
+    });
+  }
+  
+  useEffect(() => {
+    getUser();
+  }, []);
 
 
 

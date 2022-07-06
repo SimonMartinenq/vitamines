@@ -66,7 +66,7 @@ const Favoris = () => {
                 <FlatList
                   data={mealData}
                   renderItem={({ item }) => <ReceipeCard data={item.results[0]} />}
-                  keyExtractor={(item) => item.id}
+                  keyExtractor={(item) => item.results[0].id}
                   listKey="favoris"
                   showsVerticalScrollIndicator={false}
                 />
