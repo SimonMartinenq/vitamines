@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, SafeAreaView, ImageBackground, TextInput} from 'react-native';
+import {View, Text, Button, StyleSheet, TouchableOpacity, SafeAreaView, ImageBackground, TextInput, Platform, ImagePickerIOS} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { CircleButton } from '../components'
 import { assets } from '../constants'
@@ -7,7 +7,9 @@ import { useNavigation } from '@react-navigation/native'
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 import * as ImagePicker from 'expo-image-picker';
-
+import { StatusBar } from 'react-native-web';
+import SelectBox from 'react-native-multi-selectbox'
+import { auth , db} from '../firebase'
 
 
 const EditProfilScreen = () => {
@@ -36,7 +38,7 @@ const EditProfilScreen = () => {
     };
 
     if (hasGalleryPermission === false){
-        return <Text>Vitamins does not have access to the photo gallery!</Text>
+        return <Text>Vitamines n'a pas accès à la galerie photo!</Text>
     }
 
     
@@ -44,17 +46,17 @@ const EditProfilScreen = () => {
     renderInner = () => (
         <View style={styles.panel}>
             <View style={{alignItems: 'center'}}>
-                <Text style={styles.panelTitle}>Import a photo</Text>
-                <Text style={styles.panelSubtitle}>What will be your new profile photo?</Text>
+                <Text style={styles.panelTitle}>Importer une photo</Text>
+                <Text style={styles.panelSubtitle}>Quel sera votre nouvelle photo de profil?</Text>
             </View>
             <TouchableOpacity style={styles.panelButton}>
-                <Text style={styles.panelButtonTitle}>Take a photo</Text>
+                <Text style={styles.panelButtonTitle}>Prendre Une Photo</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.panelButton} onPress={() => pickImage()}>
-                <Text style={styles.panelButtonTitle}>Choose In The Library</Text>
+                <Text style={styles.panelButtonTitle}>Choisir Dans La Bibliothèque</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.panelButton} onPress={() => this.bs.current.snapTo(1)}>
-                <Text style={styles.panelButtonTitle}>Cancel</Text>
+                <Text style={styles.panelButtonTitle}>Annuler</Text>
             </TouchableOpacity>
         </View> 
     );
@@ -72,23 +74,67 @@ const EditProfilScreen = () => {
     
     const K_OPTIONS = [
         {
-          item: "Lose weight",
+            item: "Lose weight",
         },
         {
-          item: "Eat better",
+            item: "Eat better",
         },
         {
-          item:  "Eat cheap",
+            item:  "Eat cheap",
         },
       ]
 
+    const [age, setAge] = useState('')
+    const [poid, setPoid] = useState('')
+    const [taille, setTaille] = useState('')
+    const [prenom, setPrenom] = useState('')
+    const [nom, setNom] = useState('')
+    const [objectif, setObjectif] = useState({})
+
+    const editUser = async() => {
+        var userRef = db.collection("Users");
+    
+        userRef.doc(auth.currentUser.uid).update({
+            nom:nom,
+            prenom:prenom,
+            age:age,
+            poid:poid,
+            taille:taille.toLowerCase(),
+            objectif:objectif.item.toLowerCase()
+            })
+        .then(() => {
+          console.log("User successfully create!");
+        })
+        .catch((error) => {
+          console.error("Error creating document: ", error);
+        });
+        navigation.navigate('UserInfo')
+    }
+
+    
+    const getUser = async () => {
+        db
+          .collection('Users')
+          .doc(auth.currentUser.uid)
+          .get()
+          .then((querySnapshot) => {
+              const dic = querySnapshot.data()
+              setUser(dic);
+            });
+    };
+  
+    useEffect(() => {
+      getUser();
+    }, []);
+
+    
     return (
         <SafeAreaView>
             <View style = {StyleSheet.container}>
                 <BottomSheet
                     ref={this.bs}
                     snapPoints={[400, 0]}
-                    renderContent={this.const }
+                    renderContent={this.renderInner}
                     renderHeader={this.renderHeader}
                     initialSnap={1}
                     callbackNode={this.fall}
@@ -134,58 +180,79 @@ const EditProfilScreen = () => {
                                 </ImageBackground>
                             </View>
                         </TouchableOpacity>
-                        {/*<Text style={{marginTop: 10, fontSize: 18, fontWeight: 'bold'}}>
-                            Victoria Stasik
-                        </Text>*/}
+                        <Text style={{marginTop: 10, fontSize: 18, fontWeight: 'bold'}}>
+                            Please enter all the information
+                        </Text>
                     </View>
                     <View style={styles.action}>
             
                         <TextInput
-                            placeholder="Name"
+                            placeholder="Lastname *"
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             style={styles.textInput}
+                            value={nom}
+                            onChangeText={text => setNom(text)}
                         />
                     </View>
                     <View style={styles.action}>
             
                         <TextInput
-                            placeholder="Firstname"
+                            placeholder="Firstname * "
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             style={styles.textInput}
+                            value={prenom}
+                            onChangeText={text => setPrenom(text)}
                         />
                     </View>
                     <View style={styles.action}>
                     
                         <TextInput
-                            placeholder="Age"
+                            placeholder="Age *"
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             keyboardType= 'number-pad'
                             style={styles.textInput}
+                            value={age}
+                            onChangeText={text => setAge(text)}
                         />
                     </View>
                     <View style={styles.action}>
                         
                         <TextInput
-                            placeholder="Weight (kg)"
+                            placeholder="Weight (kg) *"
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             keyboardType= 'number-pad'
                             style={styles.textInput}
+                            value={poid}
+                            onChangeText={text => setPoid(text)}
                         />
                     </View>
                     <View style={styles.action}>
                         <TextInput
-                            placeholder="Size (cm)"
+                            placeholder="Size (cm) *"
                             placeholderTextColor='#D26767'
                             autocorrect={false}
                             keyboardType= 'number-pad'
                             style={styles.textInput}
+                            value={taille}
+                            onChangeText={text => setTaille(text)}
                         />
                     </View>
-                    <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
+                    <View style={{ margin:10 }}>
+                        <SelectBox
+                            label="Goal"
+                            options={K_OPTIONS}
+                            value={objectif}
+                            onChange={ val => setObjectif(val)}
+                            hideInputFilter={true}
+                            inputPlaceholder="Choose your goal *"
+                            arrowIconColor="black"
+                        />
+                    </View>
+                    <TouchableOpacity style={styles.commandButton} onPress={editUser}>
                         <Text style={styles.panelButtonTitle}>Update</Text>
                     </TouchableOpacity>
                 </Animated.View>
@@ -271,7 +338,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 10,
         paddingLeft: 10,
-        color: '#05375a'
+        color: '#D26767'
     },
     panelHandel:{
         width:40,
@@ -283,5 +350,4 @@ const styles = StyleSheet.create({
     }
 
 });
-
 

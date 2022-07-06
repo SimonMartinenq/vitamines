@@ -1,10 +1,9 @@
 import { View , Text, Image, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-
 import { auth , db} from '../firebase'
 import { useState } from 'react'
 import { FocusedStatusBar } from '../components'
-import { COLORS } from '../constants'
+import { COLORS,assets } from '../constants'
 
 
 export default function UserInfo() {
@@ -39,7 +38,7 @@ export default function UserInfo() {
 
 
   return (
-    <SafeAreaView style={{top:"5%",backgroundColor:"#E5E4E4", height:"100%", marginTop:-50}}>
+    <SafeAreaView style={{top:"5%",backgroundColor:'#F1F1F1', height:"100%", marginTop:-50}}>
       <FocusedStatusBar backgroundColor={COLORS.gray} />
       <ScrollView
         contentContainerStyle={{alignItems:'center'}}
@@ -63,16 +62,6 @@ export default function UserInfo() {
         <Text style={styles.aboutUser}>
           Intolerence : {userInfo?.intolerence}
         </Text>
-        
-        <View style={styles.userBtnWrapper}>
-          <TouchableOpacity 
-            style={styles.userBtn} 
-            onPress={() => navigation.navigate('EditProfilScreen')}>
-            <Text style={styles.userBtnTxt}>
-              Modify the profile
-            </Text>
-          </TouchableOpacity>
-        </View>
         <View style={styles.userInfoWrapper}>
           <View style={styles.userInfoItem}>
             <Text style={styles.userInfoSubTitle}>Age</Text>
@@ -91,15 +80,37 @@ export default function UserInfo() {
             <Text style={styles.userInfoTitle}>{Math.round((userInfo?.poid)/(userInfo?.taille/100)**2)}</Text>
           </View>
         </View>
+        <View
+        style={{
+          alignItems: "center",
+        }}
+      >
+    
+        <Image
+          source={assets.logo}
+          resizeMode="contain"
+          style={{ width: 60, height: 60 }}
+        />
+      </View>
+       
         <View>
-          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30, color:COLORS.primary, fontWeight:'bold'}}>IMC</Text><Text source={styles.row} style={{marginHorizontal: 30, color:COLORS.primary, fontWeight:'bold'}}>Interpretation</Text></View>
-          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>+ de 40</Text><Text source={styles.row} style={{marginHorizontal: 30}}>Morbid or massive obesity</Text></View>
-          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>35 à 40</Text><Text source={styles.row} style={{marginHorizontal: 30}}>Severe obesity</Text></View>
-          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>30 à 35</Text><Text source={styles.row} style={{marginHorizontal: 30}}>Moderate obesity</Text></View>
-          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>25 à 30</Text><Text source={styles.row} style={{marginHorizontal: 30}}>Overweight</Text></View>
-          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>18.5 à 25</Text><Text source={styles.row} style={{marginHorizontal: 30}}>Normal weight</Text></View>
-          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>16.5 à 18.5</Text><Text source={styles.row} style={{marginHorizontal: 30}}>Thinness</Text></View>
-          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>- de 16.5</Text><Text source={styles.row} style={{marginHorizontal: 30}}>Famine</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30, color:COLORS.primary, fontWeight:'bold'}}>BMI</Text><Text source={styles.row} style={{marginHorizontal: 30, color:COLORS.primary, fontWeight:'bold'}}>Interpretation</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>+ 40        </Text><Text source={styles.row} style={{marginHorizontal: 30}}>Morbid or massive obesity</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>35 - 40     </Text><Text source={styles.row} style={{marginHorizontal: 30}}>Severe obesity</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>30 - 35     </Text><Text source={styles.row} style={{marginHorizontal: 30}}>Moderate obesity</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>25 - 30     </Text><Text source={styles.row} style={{marginHorizontal: 30}}>Overweight</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>18.5 - 25   </Text><Text source={styles.row} style={{marginHorizontal: 30}}>Normal weight</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>16.5 - 18.5 </Text><Text source={styles.row} style={{marginHorizontal: 30}}>Thinness</Text></View>
+          <View style={styles.ligne}><Text source={styles.row} style={{marginHorizontal: 30}}>- 16.5      </Text><Text source={styles.row} style={{marginHorizontal: 30}}>Famine</Text></View>
+        </View>
+        <View style={styles.userBtnWrapper}>
+          <TouchableOpacity 
+            style={styles.userBtn} 
+            onPress={() => navigation.navigate('EditProfilScreen')}>
+            <Text style={styles.userBtnTxt}>
+              Update profil
+            </Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
@@ -136,7 +147,7 @@ const styles = StyleSheet.create({
       width:'60%',
       justifyContent:'center',
       alignItems:'center',
-      marginTop:40,
+      marginTop:10,
   },
   button:{
      backgroundColor:'#D26767',
@@ -161,9 +172,6 @@ const styles = StyleSheet.create({
       fontWeight:'700',
       fontSize:16,
   },
-
-
-
   contentContainer:{
     justifyContent : 'center',
     alignItems : 'center'
@@ -177,6 +185,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginTop: 10,
+    color: '#D26767'
   },
   userEmail: {
     fontSize: 12,
@@ -202,7 +211,8 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     paddingVertical: 8,
     paddingHorizontal: 12,
-    marginHorizontal: 5
+    marginHorizontal: 5,
+    marginTop : 20
   },
   userBtnTxt: {
     color: '#D26767'
