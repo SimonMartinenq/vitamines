@@ -20,7 +20,7 @@ const Home = () => {
           .then((querySnapshot) => {
               const dic = querySnapshot.data()
               setUser(dic);
-              console.log(dic)
+              //console.log(dic)
             });
       }
     });
@@ -31,16 +31,16 @@ const Home = () => {
       setMealData(mealData);
     }
     fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&titleMatch=${value}&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true&instructionsRequired=true&number=2&intolerances=${userInfo?.intolerence}&diet=${userInfo?.diet}`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&titleMatch=${value}&addRecipeInformation=true&fillIngredients=true&addRecipeNutrition=true&addRecipeInformation=true&instructionsRequired=true&number=1&intolerances=${userInfo?.intolerence}&diet=${userInfo?.diet}`
         
     )
     .then(response => response.json())
     .then((data) => {
-      console.log("\n\n\n\n\n\n\n\n\n\n\ninfos recettes\n",data)
+      //console.log("\n\n\n\n\n\n\n\n\n\n\ninfos recettes\n",data)
       setMealData(data.results)
     })
     .catch(() => {
-      console.log("error")
+      //console.log("error")
     })
   };
 
@@ -51,12 +51,11 @@ const Home = () => {
     )
     .then(response => response.json())
     .then((data) => {
-      //console.log("suer infos",userInfo?.intolerence)
       //console.log("\n\n\n\n\n\n\n\n\n\n\nLISTES DES PLATS\n",data)
       setMealData(data.results)
     })
     .catch(() => {
-      console.log("error")
+      //console.log("error")
     })
   };
 
