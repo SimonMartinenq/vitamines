@@ -8,6 +8,7 @@ import LoginScreen from "./screens/LoginScreen";
 import SignUp from "./screens/SignUp";
 import EditProfilScreen from "./screens/EditProfil";
 import NavigationTab from "./CustomNavigation";
+import UserInfo from "./screens/UserInfo";
 
 const theme = {
   ...DefaultTheme,
@@ -64,6 +65,10 @@ const App = () => {
           <Stack.Screen
               name="EditProfilScreen"
               component={EditProfilScreen}
+          />
+          <Stack.Screen
+              name="UserInfo"
+              component={UserInfo}
           />
         
   
