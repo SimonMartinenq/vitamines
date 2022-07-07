@@ -55,9 +55,9 @@ const Favoris = () => {
         
     };
       
-    useEffect(() => {
+    /* useEffect(() => {
         getFavoris();
-    }, []);
+    }, []); */
 
     function AffichageFav(){
         if (nbrFav>0){

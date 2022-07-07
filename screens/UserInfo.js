@@ -7,9 +7,8 @@ import { COLORS,assets } from '../constants'
 
 
 export default function UserInfo() {
-
+  const [userInfo,setUser]=useState(null)
   const navigation = useNavigation();
-  const [userInfo,setUser] = useState(null);
   const handleSignOut = () => {
     auth
       .signOut()
@@ -20,29 +19,35 @@ export default function UserInfo() {
   }
   
   
-
-  const getUser = () => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        const uid = user.uid;
-        db
-          .collection('Users')
-          .doc(uid)
-          .get()
-          .then((querySnapshot) => {
-              const dic = querySnapshot.data()
-              setUser(dic);
-              //console.log("user infos",dic)
-            });
-      }
-    });
-  }
+  useEffect(()=>{
+    getData()
+  })
   
-  useEffect(() => {
-    getUser();
-  }, []);
+   
+  function getData() {
+    getDanceMoves(danceRetrived)
+  }
+  function danceRetrived(userInfo) {
+    console.log(userInfo)
+    setUser(userInfo)
+  }
 
-
+  function getDanceMoves(danceRetrived) {
+    if(auth.currentUser.uid){
+      let userInfo = 
+      db
+        .collection('Users')
+        .doc("xXMW51QIWpacKaWNkfMB4yH4wws1")
+        .get()
+        .then((querySnapshot) => {
+            const dic = querySnapshot.data()
+            setUser(dic);
+            console.log("user infos",dic)
+          });
+          danceRetrived(userInfo)
+      }
+  }
+ 
 
   return (
     <SafeAreaView style={{top:"5%",backgroundColor:'#F1F1F1', height:"100%", marginTop:-50}}>

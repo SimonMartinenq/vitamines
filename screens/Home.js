@@ -59,26 +59,26 @@ const Home = () => {
     })
   };
 
-  useEffect(() => {
+/*   useEffect(() => {
     getUser();
   }, []);
   useEffect(() => {
     getMeal();
-  }, [userInfo]);
+  }, [userInfo]); */
   
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.primary}}>
       <FocusedStatusBar backgroundColor={COLORS.primary} />
       <View style={{ flex: 1 }}>
         <View style={{ zIndex: 0 }}>
-          <FlatList
+          {/* <FlatList
             data={mealData}
             renderItem={({ item }) => <ReceipeCard data={item} />}
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
             ListHeaderComponent={<HomeHeader onSearch={handleSearch} />}
             ListFooterComponent={<View style={{margin:30}}></View>}
-          />
+          /> */}
         </View>
         <View
           style={{

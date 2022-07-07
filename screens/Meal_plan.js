@@ -19,9 +19,9 @@ const Meal_plan = () => {
             console.log("error")
           })
     } 
-      useEffect(() => {
+      /* useEffect(() => {
         getMealPlan();
-      }, []);
+      }, []); */
 
     return (
         <SafeAreaView style={styles.back}>
